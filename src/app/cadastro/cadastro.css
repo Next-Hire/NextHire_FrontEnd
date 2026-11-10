@@ -1,0 +1,37 @@
+@reference "../globals.css";
+
+.cadastroPage {
+    @apply relative isolate grid grid-cols-2 min-h-screen;
+}
+
+.containerForm {
+    @apply flex flex-col justify-around items-center bg-linear-to-r from-blue-50 to-blue-500/20 h-[100vh] p-10 backdrop-blur-[6px];
+}
+
+.tituloCadastro {
+    @apply text-5xl font-bold text-blue-950 font-(family-name:--font-instrument-sans);
+}
+
+.formularioCadastro {
+    @apply flex flex-col justify-between h-85;
+}
+
+.labelCadastro {
+    @apply font-semibold text-blue-950 font-(family-name:--font-jost);
+}
+
+.inputCadastro {
+    @apply border border-blue-950 rounded-md h-10 w-100 bg-white px-4;
+}
+
+.inputCadastro::placeholder {
+    @apply text-blue-950/50 font-(family-name:--font-jost) m-10;
+}
+
+.botaoCadastro {
+    @apply bg-blue-950 text-white h-10 w-100 rounded-md text-2xl font-medium font-display;
+}
+
+.linkAdministrador {
+    @apply text-blue-950/80 font-display underline;
+}

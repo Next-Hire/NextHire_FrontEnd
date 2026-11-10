@@ -3,5 +3,5 @@
 import { redirect, RedirectType } from 'next/navigation';
 
 export default function Cadastro() {
-  redirect('/cadastro', RedirectType.replace);
+  redirect('/home', RedirectType.replace);
 }

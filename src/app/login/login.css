@@ -1,0 +1,49 @@
+@reference "../globals.css";
+
+.loginPage {
+    @apply relative isolate grid grid-cols-2 min-h-screen;
+}
+
+.containerForm {
+    @apply flex flex-col justify-around items-center bg-linear-to-r from-blue-50 to-blue-500/20 h-[100vh] p-10 backdrop-blur-[6px];
+}
+
+.tituloLogin {
+    @apply text-5xl font-bold text-blue-950 font-(family-name:--font-instrument-sans);
+}
+
+.formularioLogin {
+    @apply flex flex-col justify-between h-45;
+}
+
+.labelLogin {
+    @apply font-semibold text-blue-950 font-(family-name:--font-jost);
+}
+
+.inputLogin {
+    @apply border border-blue-950 rounded-md h-10 w-100 bg-white px-4;
+}
+
+.inputLogin::placeholder {
+    @apply text-blue-950/50 font-(family-name:--font-jost) m-10;
+}
+
+.botaoLogin {
+    @apply bg-blue-950 text-white h-10 w-100 rounded-md text-2xl font-medium font-display;
+}
+
+.linkAdministrador {
+    @apply text-blue-950/80 font-display underline;
+}
+
+.asideLogin {
+    @apply flex flex-col justify-center items-center text-center;
+}
+
+.bemvindoLogin {
+    @apply text-blue-950 text-6xl font-bold font-(family-name:--font-instrument-sans) leading-20 h-70 w-70 text-shadow-lg/20;
+}
+
+.subtituloBemvindo {
+    @apply text-blue-950 text-xl font-semibold font-(family-name:--font-instrument-sans) w-100 text-shadow-lg/20;
+}

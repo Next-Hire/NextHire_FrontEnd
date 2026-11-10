@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, type HTMLAttributes } from 'react';
 
-import '@/components/GhostFibers.css';
+import './GhostFibers.css';
 
 export type GhostFibersFiberStyle = 'dots' | 'dashes' | 'lines';
 

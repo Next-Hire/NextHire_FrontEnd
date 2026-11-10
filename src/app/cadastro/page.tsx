@@ -1,10 +1,10 @@
-import GhostFibers from '@/components/GhostFibers';
-import './cadastro.module.css';
+import GhostFibers from '@/components/ghostfibers/GhostFibers';
+import './cadastro.css';
 
 export default function CadastroPage() {
   return (
     <main className='cadastroPage'>
-      <div className="fixed inset-0 -z-10">
+      <div className='fixed inset-0 -z-10'>
         <GhostFibers
           glowColor="#3b82f6"
           layers={3}
@@ -41,37 +41,37 @@ export default function CadastroPage() {
       </div>
 
       <section className='containerForm'>
-        <h1 className="tituloCadastro">Cadastro</h1>
-        <form className="formularioCadastro">
-          <div className="flex flex-col justify-between h-14">
-            <label className="labelCadastro" htmlFor="nome">Nome:</label>
-            <input className="inputCadastro" type="text" id="nome" name="nome" placeholder="Seu nome aqui" />
+        <h1 className='tituloCadastro'>Cadastro</h1>
+        <form className='formularioCadastro'>
+          <div className='flex flex-col justify-between h-18'>
+            <label className='labelCadastro' htmlFor='nome'>Nome:</label>
+            <input className='inputCadastro' type='text' id='nome' name='nome' placeholder='Seu nome aqui' />
           </div>
 
-          <div className="flex flex-col justify-between h-14">
-            <label className="labelCadastro" htmlFor="email">Email:</label>
-            <input className="inputCadastro" type="email" id="email" name="email" />
+          <div className='flex flex-col justify-between h-18'>
+            <label className='labelCadastro' htmlFor='email'>Email:</label>
+            <input className='inputCadastro' type='email' id='email' name='email' placeholder='emailfuncionario@vortex.com' />
           </div>
 
-          <div className="flex flex-col justify-between h-14">
-            <label className="labelCadastro" htmlFor="senha">Senha:</label>
-            <input className="inputCadastro" type="password" id="senha" name="senha" />
+          <div className='flex flex-col justify-between h-18'>
+            <label className='labelCadastro' htmlFor='senha'>Senha:</label>
+            <input className='inputCadastro' type='password' id='senha' name='senha' placeholder='Digite a senha' />
           </div>
 
-          <div className="flex flex-col justify-between h-14">
-            <label className="labelCadastro" htmlFor="confirmarSenha">Confirmar Senha:</label>
-            <input className="inputCadastro" type="password" id="confirmarSenha" name="confirmarSenha" />
+          <div className='flex flex-col justify-between h-18'>
+            <label className='labelCadastro' htmlFor='confirmarSenha'>Confirmar Senha:</label>
+            <input className='inputCadastro' type='password' id='confirmarSenha' name='confirmarSenha' placeholder='Insira novamente a senha' />
           </div>
         </form>
-        <div className="flex flex-col items-center justify-between h-18">
-          <button className="botaoCadastro" type="submit">Cadastrar</button>
-          <a className="font-display" href="/login">Entrar no sistema como administrador</a>
+        <div className='flex flex-col items-center justify-between h-18'>
+          <button className='botaoCadastro' type='submit'>Cadastrar</button>
+          <a className='linkAdministrador' href='/login'>Entrar no sistema como administrador</a>
         </div>
       </section>
 
-      <aside>
-        <h1 className="font-display">Seja bem vindo ao NextHire</h1>
-        <h2 className="font-sans">Seu sistema para criação de vagas e avaliação de candidatos</h2>
+      <aside className='flex flex-col justify-center items-center text-center'>
+        <h1 className='text-blue-950 text-6xl font-bold font-(family-name:--font-instrument-sans) self-between leading-20 h-70 w-70 text-shadow-md/30'>Seja bem vindo ao NextHire</h1>
+        <h2 className='text-blue-950 text-xl font-semibold font-(family-name:--font-instrument-sans) w-100 text-shadow-md/30'>Seu sistema para criação de vagas e avaliação de candidatos</h2>
       </aside>
     </main>
   );

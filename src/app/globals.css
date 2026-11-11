@@ -9,12 +9,14 @@
   --font-display: var(--font-jost);
 }
 
-* {
-  @apply m-0 p-0 box-border;
-}
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+  }
 
-body {
-  @apply font-sans;
+  body {
+    @apply font-sans;
+  }
 }
 
 @theme inline {
@@ -133,9 +135,11 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }

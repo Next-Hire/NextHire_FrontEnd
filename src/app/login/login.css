@@ -21,7 +21,7 @@
 }
 
 .inputLogin {
-    @apply border border-blue-950 rounded-md h-10 w-100 bg-white px-4;
+    @apply border-2 border-blue-950 rounded-md h-10 w-100 bg-white px-4;
 }
 
 .inputLogin::placeholder {

@@ -7,7 +7,7 @@ export default function Header() {
             <div className='rowHeader'>
                 <img className='Logo w-34' src="/imgs/logo.svg" alt="Logo NextHire" />
                 <div className='nav'>
-                    <Link href="">Vagas</Link>
+                    <Link href="/vagas">Vagas</Link>
                     <Link href="">Processos Seletivos</Link>
                     <Link href="">Entrevistas</Link>
                 </div>

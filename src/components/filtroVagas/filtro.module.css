@@ -1,0 +1,13 @@
+@reference "../../app/globals.css";
+
+.inputFiltroVaga {
+    @apply border-2 border-blue-950 rounded-md h-8 w-65 bg-white pl-4;
+}
+
+.inputFiltroVaga::placeholder {
+    @apply text-blue-950/50 font-(family-name:--font-jost);
+}
+
+.selectFiltroVaga {
+    @apply border-2 border-blue-950 rounded-md h-8 w-40 bg-white px-4 text-blue-950/50 font-(family-name:--font-jost);
+}

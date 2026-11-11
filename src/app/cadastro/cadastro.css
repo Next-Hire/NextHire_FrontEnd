@@ -5,7 +5,7 @@
 }
 
 .containerForm {
-    @apply flex flex-col justify-around items-center bg-linear-to-r from-blue-50 to-blue-500/20 h-[100vh] p-10 backdrop-blur-[6px];
+    @apply flex flex-col justify-center items-center bg-linear-to-r from-blue-50 to-blue-500/20 h-[100vh] p-10 backdrop-blur-[6px] gap-[5%] ;
 }
 
 .tituloCadastro {
@@ -13,7 +13,11 @@
 }
 
 .formularioCadastro {
-    @apply flex flex-col justify-between h-85;
+    @apply flex flex-col justify-between;
+
+    label{
+        @apply text-2xl
+    }
 }
 
 .labelCadastro {

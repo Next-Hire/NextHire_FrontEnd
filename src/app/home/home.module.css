@@ -2,30 +2,51 @@
 
 @reference "../../app/globals.css";
 
-.containerMain{
-    @apply  flex justify-center bg-[#EDF0F7] min-h-[88vh];
+.containerMain {
+    @apply flex justify-center bg-[#EDF0F7] min-h-[88vh];
 }
 
 .layoutGuide {
-    @apply flex flex-col w-4/5 gap-[8%] font-(family-name:--font-instrument-sans); /*se eu coloco um gap em % muito grande, ele ultrapassa a div e invade outras*/
+    @apply flex flex-col w-4/5 gap-[8%] font-(family-name:--font-instrument-sans);
 }
 
 .saudacao {
     @apply flex flex-col gap-[15%] pt-14 h-auto;
 }
 
-.saudacao h1{
+.saudacao h1 {
     @apply text-5xl text-blue-950 font-bold;
 }
 
-.saudacao p{
+.saudacao p {
     @apply text-xl text-blue-950 font-medium;
 }
 
-.estatisticas{
-    @apply flex justify-between;   
+.estatisticas {
+    @apply flex justify-between gap-[2%] h-60;
+
+    article {
+        @apply flex flex-col items-center justify-between;
+        box-shadow: 12px 12px 20px rgba(4, 31, 105, 0.125), 6px 6px 10px rgba(4, 31, 105, 0.25);
+
+        h3{
+            @apply text-3xl font-semibold text-center text-blue-950;
+        }
+
+        > p{
+            @apply text-4xl font-semibold;
+        }
+    }
 }
 
-.estatisticas article{
-    @apply border border-2 border-blue-950 w-[32%] rounded-xl shadow-xl ; /*nao faz sentido usar % em width ne*/
+.comparacao {
+    @apply flex gap-1.5 text-lg;
+}
+
+.destaqueComparacao {
+    @apply flex text-green-600;
+}
+
+.graficoAgenda {
+    @apply grid grid-cols-[1.5fr_1fr]  gap-[2%];
 }

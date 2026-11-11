@@ -144,3 +144,8 @@
     @apply font-sans;
   }
 }
+
+.card {
+  @apply border border-1 border-blue-950 w-[100%] rounded-xl py-8 bg-white;
+  box-shadow: 12px 12px 20px rgba(4, 31, 105, 0.125), 6px 6px 10px rgba(4, 31, 105, 0.25);
+}

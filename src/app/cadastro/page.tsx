@@ -42,7 +42,7 @@ export default function CadastroPage() {
 
       <section className='containerForm'>
         <h1 className='tituloCadastro'>Cadastro</h1>
-        <form className='formularioCadastro'>
+        <form className='formularioCadastro gap-[10%]'>
           <div className='flex flex-col justify-between h-18'>
             <label className='labelCadastro' htmlFor='nome'>Nome:</label>
             <input className='inputCadastro' type='text' id='nome' name='nome' placeholder='Seu nome aqui' />
@@ -62,11 +62,11 @@ export default function CadastroPage() {
             <label className='labelCadastro' htmlFor='confirmarSenha'>Confirmar Senha:</label>
             <input className='inputCadastro' type='password' id='confirmarSenha' name='confirmarSenha' placeholder='Insira novamente a senha' />
           </div>
+          <div className='flex flex-col items-center justify-between h-18'>
+            <button className='botaoCadastro' type='submit'>Cadastrar</button>
+            <a className='linkAdministrador' href='/login'>Entrar no sistema como administrador</a>
+          </div>
         </form>
-        <div className='flex flex-col items-center justify-between h-18'>
-          <button className='botaoCadastro' type='submit'>Cadastrar</button>
-          <a className='linkAdministrador' href='/login'>Entrar no sistema como administrador</a>
-        </div>
       </section>
 
       <aside className='flex flex-col justify-center items-center text-center'>

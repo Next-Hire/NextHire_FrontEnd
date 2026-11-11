@@ -1,16 +1,17 @@
 import './header.module.css';
+import Link from "next/link";
 
 export default function Header() {
     return (
         <header className='containerMain'>
             <div className='rowHeader'>
-                <img className='Logo' src="/imgs/logo.svg" alt="Logo NextHire" />
+                <img className='Logo w-34' src="/imgs/logo.svg" alt="Logo NextHire" />
                 <div className='nav'>
-                    <p>Vagas</p>
-                    <p>Processos Seletivos</p>
-                    <p>Entrevistas</p>
+                    <Link href="">Vagas</Link>
+                    <Link href="">Processos Seletivos</Link>
+                    <Link href="">Entrevistas</Link>
                 </div>
-                <div className='w-14 h-14 bg-blue-500 rounded-full'>
+                <div className='circleUser'>
                     <p>rh</p>
                 </div>
             </div>

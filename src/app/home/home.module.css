@@ -1,2 +1,31 @@
 @reference "../globals.css";
 
+@reference "../../app/globals.css";
+
+.containerMain{
+    @apply  flex justify-center bg-[#EDF0F7] min-h-[88vh];
+}
+
+.layoutGuide {
+    @apply flex flex-col w-4/5 gap-[8%] font-(family-name:--font-instrument-sans); /*se eu coloco um gap em % muito grande, ele ultrapassa a div e invade outras*/
+}
+
+.saudacao {
+    @apply flex flex-col gap-[15%] pt-14 h-auto;
+}
+
+.saudacao h1{
+    @apply text-5xl text-blue-950 font-bold;
+}
+
+.saudacao p{
+    @apply text-xl text-blue-950 font-medium;
+}
+
+.estatisticas{
+    @apply flex justify-between;   
+}
+
+.estatisticas article{
+    @apply border border-2 border-blue-950 w-[32%] rounded-xl shadow-xl ; /*nao faz sentido usar % em width ne*/
+}

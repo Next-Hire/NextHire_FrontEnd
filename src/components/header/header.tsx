@@ -3,14 +3,14 @@ import Link from "next/link";
 
 export default function Header() {
     return (
-        <header className='containerMain'>
+        <header className='headerContainer'>
             <div className='rowHeader'>
                 <img className='Logo w-34' src="/imgs/logo.svg" alt="Logo NextHire" />
-                <div className='nav'>
+                <nav className='nav'>
                     <Link href="/vagas">Vagas</Link>
                     <Link href="">Processos Seletivos</Link>
                     <Link href="">Entrevistas</Link>
-                </div>
+                </nav>
                 <div className='circleUser'>
                     <p>rh</p>
                 </div>

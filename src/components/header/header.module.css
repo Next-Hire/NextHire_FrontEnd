@@ -1,6 +1,6 @@
 @reference "../../app/globals.css";
 
-.containerMain {
+.headerContainer {
     @apply flex justify-center bg-blue-950 h-[12vh];
 }
 

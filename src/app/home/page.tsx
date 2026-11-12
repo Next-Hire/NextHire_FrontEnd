@@ -1,6 +1,7 @@
 import Header from "@/components/header/header";
-import { ArrowUp, CalendarCheck2 } from 'lucide-react';
+import { ArrowUp, CalendarCheck2, CalendarDays } from 'lucide-react';
 import './home.module.css';
+import CardAgendaHome from "@/components/cardAgendaHome/cardAgendaHome";
 
 export default function Home() {
 	return (
@@ -53,8 +54,24 @@ export default function Home() {
 					</section>
 
 					<section className="graficoAgenda">
-						<article className='card'></article>
-						<article className='card'></article>
+						<article className='card'>
+							<h3>Quantidade geral de candidatos</h3>
+
+						</article>
+						<article className='card'>
+							<div className='topoAgenda'>
+								<div className=''>
+									<CalendarDays size={36} />
+								</div>
+								<div className='flex gap-2'>
+									<h4>Agenda de Entrevistas - </h4>
+									<h4>Hoje</h4>
+								</div>
+							</div>
+							<CardAgendaHome />
+							<CardAgendaHome />
+							<CardAgendaHome />
+						</article>
 					</section>
 
 				</div>

@@ -1,0 +1,22 @@
+@reference "../../app/globals.css";
+
+.mainCardAgendaHome{
+    @apply flex flex-col gap-3;
+}
+
+.linhaHorizontal{
+    @apply w-9/10 border-t-1 border-t-blue-950  mt-3 self-center;
+}
+
+.infosAgenda{
+    @apply flex gap-4 items-center justify-start pl-8;
+
+    .textoInfos{
+        @apply flex gap-3 text-xl;
+    }
+}
+
+.userCircle{
+    @apply flex  justify-center items-center min-w-12 h-12 bg-blue-100 rounded-full text-2xl text-blue-950 font-semibold border border-1 border-blue-950;
+}
+

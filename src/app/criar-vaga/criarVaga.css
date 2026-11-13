@@ -1,0 +1,50 @@
+@reference "../../app/globals.css";
+
+.mainCriarVaga {
+    @apply bg-blue-800/15 min-h-screen;
+}
+
+.sectionCriarVaga {
+    @apply flex flex-col items-center justify-center py-8;
+}
+
+.secaoFormVaga {
+    @apply flex flex-col gap-6 bg-white rounded-lg w-4/5 p-8 shadow-md;
+}
+
+.tituloCriarVaga {
+    @apply text-4xl font-bold text-blue-950 font-(family-name:--font-instrument-sans) text-shadow-sm place-self-start px-36 mb-6;
+}
+
+.subtituloCriarVaga {
+    @apply font-(family-name:--font-instrument-sans) text-xl font-semibold text-blue-950 mb-1;
+}
+
+.inputCriarVaga {
+    @apply border-2 border-blue-950 rounded-md h-10 w-full bg-white px-4 text-blue-950 font-(family-name:--font-jost) outline-none;
+}
+
+.inputCriarVaga::placeholder {
+    @apply text-blue-950/50 font-(family-name:--font-jost);
+}
+
+.textareaCriarVaga {
+    @apply border-2 border-blue-950 rounded-md min-h-28 w-full bg-white p-4 text-blue-950 font-(family-name:--font-jost) outline-none resize-y;
+}
+
+.textareaCriarVaga::placeholder {
+    @apply text-blue-950/50 font-(family-name:--font-jost);
+}
+
+.selectCriarVaga {
+    @apply border-2 border-blue-950 rounded-md h-10 w-full bg-white px-4 text-blue-950 font-(family-name:--font-jost) outline-none cursor-pointer;
+}
+
+/* Botão que abre o Popover do Calendário seguindo o padrão dos inputs/selects do projeto */
+.btnSeletorData {
+    @apply flex items-center justify-between border-2 border-blue-950 rounded-md h-10 w-full bg-white px-4 text-left font-(family-name:--font-jost) text-blue-950 cursor-pointer hover:bg-blue-50/50 transition-colors;
+}
+
+.btnSalvarVaga {
+    @apply bg-blue-950 rounded-md text-white px-8 py-2.5 font-(family-name:--font-instrument-sans) font-semibold text-lg shadow-md cursor-pointer hover:bg-blue-900 transition-colors;
+}

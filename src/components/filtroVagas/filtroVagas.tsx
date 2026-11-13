@@ -1,3 +1,5 @@
+'use client';
+
 import './filtro.module.css';
 
 
@@ -6,7 +8,7 @@ export default function FiltroVagas() {
         <main className='mainFiltroVaga'>
             <div className='flex content-center self-center justify-between w-[95%]'>
                 <h1 className='tituloFiltroVaga'>Vagas em andamento</h1>
-                <button className='btnAdicionarVaga'>+ Abrir nova vaga</button>
+                <button className='btnAdicionarVaga' onClick={() => window.location.href = '/criar-vaga'}>+ Abrir nova vaga</button>
             </div>
             <div className='flex content-center justify-between w-[62%] ml-[2.5%]'>
                 <input type="text" placeholder='Pesquisar por vaga, candidato...' className='inputFiltroVaga' />

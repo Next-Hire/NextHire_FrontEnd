@@ -1,0 +1,38 @@
+@reference "../../app/globals.css";
+
+
+.mainCardVaga {
+    @apply flex flex-col bg-white rounded-lg w-4/5 shadow-md overflow-hidden transition-all duration-300;
+}
+
+.cardVaga {
+    @apply flex items-center justify-around min-h-20 w-full py-4 cursor-pointer;
+}
+
+.tituloCardVaga {
+    @apply w-[44%] line-clamp-2 font-(family-name:--font-instrument-sans) text-xl text-blue-950 font-semibold;
+}
+
+.periodoCardVaga {
+    @apply w-62 flex flex-row items-center gap-2 text-base font-semibold font-(family-name:--font-jost) text-blue-950;
+}
+
+.cardVagaAberto {
+    @apply border-t border-blue-950/15 bg-blue-50/40 px-10 py-5 text-blue-950 font-(family-name:--font-jost);
+}
+
+.subtituloCardVagaAberto {
+    @apply font-(family-name:--font-instrument-sans) text-xl text-blue-950 font-semibold;
+}
+
+.txtCardVagaAberto {
+    @apply text-sm leading-relaxed text-blue-950/85;
+}
+
+.linkCardVagaAberto {
+    @apply flex flex-row justify-between items-center w-44 underline text-shadow-sm;
+}
+
+.btnCardVagaAberto {
+    @apply bg-blue-950 rounded-md text-white w-64 p-2 font-(family-name:--font-instrument-sans) font-semibold shadow-md;
+}

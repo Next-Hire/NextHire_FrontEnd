@@ -1,10 +1,8 @@
 import FiltroVagas from '@/components/filtroVagas/filtroVagas';
-import './vagas.css';
 import Header from '@/components/header/header';
-import CardVaga from '@/components/cardVaga/cardVaga';
 import ListaVaga from '@/components/listaVaga/listaVaga';
 
-export default function LoginPage() {
+export default function VagasPage() {
   return (
     <main className='bg-blue-800/15'>
       <Header />

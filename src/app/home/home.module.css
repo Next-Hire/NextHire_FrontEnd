@@ -34,13 +34,17 @@
         }
 
         >p {
-            @apply text-3xl font-medium;
+            @apply text-3xl font-medium ;
         }
     }
 }
 
 .comparacao {
     @apply flex gap-1.5 text-base;
+
+    p{
+        @apply font-(family-name:--font-jost);
+    }
 }
 
 .destaqueComparacao {
@@ -48,17 +52,19 @@
 }
 
 .agendaCalendario {
-    @apply grid grid-cols-[1.8fr_1fr] gap-[4%];
+    @apply grid grid-cols-[2.1fr_1fr] gap-[4%];
 
     h3{
          @apply text-2xl font-semibold text-center text-blue-950;
     }
 
     .topoAgenda{
-        @apply flex font-semibold text-blue-950 justify-center gap-1 items-center;
+        @apply flex font-semibold text-blue-950 pl-8 gap-2 items-center;
     }
 }
 
 .graficos{
-    
+    h3{
+        @apply text-2xl font-semibold text-center text-blue-950;
+    }
 }

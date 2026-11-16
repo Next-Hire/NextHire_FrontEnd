@@ -9,14 +9,14 @@
 }
 
 .infosAgenda{
-    @apply flex gap-4 items-center justify-start pl-8 w-9/10;
+    @apply flex gap-2 items-center justify-start pl-8 w-9/10;
 
     .textoInfos{
-        @apply flex gap-3 text-lg;
+        @apply flex gap-2 text-base font-(family-name:--font-jost);
     }
 }
 
 .userCircle{
-    @apply flex  justify-center items-center min-w-11 h-11 bg-blue-100 rounded-full text-2xl text-blue-950 font-semibold border border-1 border-blue-950;
+    @apply flex  justify-center items-center min-w-10 h-10 bg-blue-100 rounded-full text-xl text-blue-950 font-semibold border border-1 border-blue-950;
 }
 

@@ -59,13 +59,14 @@ export default function Home() {
 							<h3>Calendário de entrevistas</h3>
 							<MiniCalendarioHome />
 						</article>
-						<article className='card'>
+						<article className='card h-min'>
 							<div className='topoAgenda'>
-								<div className=''>
-									<CalendarDays size={30} />
+								<div>
+									<CalendarDays size={28} />
 								</div>
 								<div className='flex gap-1'>
-									<h3 className='text-xl'>Agenda de Entrevistas - Hoje</h3>
+									<h3>Entrevistas -</h3>
+									<h3>Hoje</h3>
 								</div>
 							</div>
 							<CardAgendaHome />
@@ -76,11 +77,11 @@ export default function Home() {
 
 					<section className='graficos flex gap-[4%]'>
 						<article className='card'>
-							<h3>Quantidade geral de candidatos</h3>
+							<h3>Visão Geral de vagas</h3>
 						</article>
 
 						<article className='card'>
-
+							<h3>Visão geral de candidatos</h3>
 						</article>
 					</section>
 

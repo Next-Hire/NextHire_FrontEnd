@@ -24,10 +24,6 @@ export default function MiniCalendarioHome() {
 
     return (
         <div className='flex flex-col items-center justify-between w-full h-full py-4 px-6'>
-            <h3 className='text-2xl font-semibold text-blue-950 font-(family-name:--font-instrument-sans)'>
-                Calendário de Entrevistas
-            </h3>
-
             <Calendar
                 mode='single'
                 selected={diaSelecionado}

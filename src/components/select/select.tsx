@@ -20,7 +20,7 @@ export function SelectTrigger({
             data-slot='select-trigger'
             className={cn(
                 // A borda, o espaçamento e o fundo do campo seguem o padrão dos inputs da tela.
-                'flex h-10 w-full items-center justify-between gap-2 rounded-md border-2 border-blue-950 bg-white px-4 text-left text-blue-950 transition-colors outline-none hover:bg-blue-50/60 focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2',
+                'flex h-8 w-50 items-center justify-between gap-2 rounded-md border-2 border-blue-950 bg-white px-4 text-left text-blue-950 transition-colors outline-none hover:bg-blue-50/60 focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2',
                 className,
             )}
             {...props}

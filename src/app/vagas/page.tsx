@@ -4,7 +4,7 @@ import ListaVaga from '@/components/listaVaga/listaVaga';
 
 export default function VagasPage() {
   return (
-    <main className='bg-blue-800/15'>
+    <main>
       <Header />
       <section className='flex flex-col items-center py-8'>
         <FiltroVagas />

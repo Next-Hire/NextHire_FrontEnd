@@ -2,6 +2,7 @@ import Header from "@/components/header/header";
 import { ArrowUp, CalendarCheck2, CalendarDays } from 'lucide-react';
 import './home.module.css';
 import CardAgendaHome from "@/components/cardAgendaHome/cardAgendaHome";
+import MiniCalendarioHome from "@/components/calendario/miniCalendarioHome";
 
 export default function Home() {
 	return (
@@ -55,8 +56,7 @@ export default function Home() {
 
 					<section className="graficoAgenda">
 						<article className='card'>
-							<h3>Quantidade geral de candidatos</h3>
-
+							<MiniCalendarioHome />
 						</article>
 						<article className='card'>
 							<div className='topoAgenda'>

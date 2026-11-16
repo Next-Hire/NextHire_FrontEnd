@@ -36,7 +36,11 @@ export default function MiniCalendarioHome() {
                 modifiers={{
                     comEntrevista: DATAS_COM_ENTREVISTA,
                 }}
-                className='font-(family-name:--font-jost) text-blue-950 [--cell-size:--spacing(9)] bg-transparent'
+                className='w-full font-(family-name:--font-jost) text-blue-950 [--cell-size:--spacing(10)] bg-transparent'
+                classNames={{
+                    root: 'w-full',
+                    day: 'flex-1 h-10 aspect-auto',
+                }}
                 components={{
                     DayButton: ({ children, modifiers, className, ...props }) => {
                         const temEntrevista = modifiers.comEntrevista;
@@ -44,11 +48,10 @@ export default function MiniCalendarioHome() {
                         return (
                             <CalendarDayButton
                                 modifiers={modifiers}
-                                className={`relative ${
-                                    temEntrevista
+                                className={`relative aspect-auto h-10 w-full ${temEntrevista
                                         ? 'text-blue-950 font-semibold'
                                         : 'text-slate-400 font-normal'
-                                } ${className ?? ''}`}
+                                    } ${className ?? ''}`}
                                 {...props}
                             >
                                 {children}

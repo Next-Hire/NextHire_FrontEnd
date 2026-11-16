@@ -9,9 +9,9 @@
 }
 
 .nav {
-    @apply flex w-6/10 justify-between text-2xl text-white font-semibold;
+    @apply flex w-6/10 justify-between text-xl text-white font-semibold;
 }
 
 .circleUser {
-    @apply flex items-center justify-center w-15 h-15 bg-[#5682D9] rounded-full text-3xl text-blue-950 font-bold;
+    @apply flex items-center justify-center w-14 h-14 bg-[#5682D9] rounded-full text-3xl text-blue-950 font-bold;
 }

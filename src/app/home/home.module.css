@@ -11,7 +11,7 @@
 }
 
 .saudacao {
-    @apply flex flex-col gap-[15%] pt-14 h-auto;
+    @apply flex flex-col gap-[15%] pt-10 h-full ;
 }
 
 .saudacao h1 {
@@ -19,42 +19,46 @@
 }
 
 .saudacao p {
-    @apply text-xl text-blue-950 font-medium;
+    @apply text-xl text-blue-950 font-normal;
 }
 
 .estatisticas {
-    @apply flex justify-between gap-[2%] h-60;
+    @apply flex justify-between gap-[4%];
 
     article {
-        @apply flex flex-col items-center justify-between;
+        @apply flex flex-col items-center justify-between gap-4;
         box-shadow: 12px 12px 20px rgba(4, 31, 105, 0.125), 6px 6px 10px rgba(4, 31, 105, 0.25);
 
         h3 {
-            @apply text-3xl font-semibold text-center text-blue-950;
+            @apply text-2xl font-semibold text-center text-blue-950;
         }
 
         >p {
-            @apply text-4xl font-semibold;
+            @apply text-3xl font-medium;
         }
     }
 }
 
 .comparacao {
-    @apply flex gap-1.5 text-lg;
+    @apply flex gap-1.5 text-base;
 }
 
 .destaqueComparacao {
     @apply flex text-green-600;
 }
 
-.graficoAgenda {
-    @apply grid grid-cols-[1.5fr_1fr] gap-[2%];
+.agendaCalendario {
+    @apply grid grid-cols-[1.8fr_1fr] gap-[4%];
 
     h3{
-         @apply text-3xl font-semibold text-center text-blue-950;
+         @apply text-2xl font-semibold text-center text-blue-950;
     }
 
     .topoAgenda{
-        @apply flex text-2xl font-semibold text-blue-950 justify-center gap-3 items-center;
+        @apply flex font-semibold text-blue-950 justify-center gap-1 items-center;
     }
+}
+
+.graficos{
+    
 }

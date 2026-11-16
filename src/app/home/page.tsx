@@ -22,7 +22,7 @@ export default function Home() {
 							<p>99</p>
 							<div className='comparacao'>
 								<div className='destaqueComparacao'>
-									<ArrowUp />
+									<ArrowUp size={20} />
 									<p>+3</p>
 								</div>
 								<p>vs. mês passado</p>
@@ -30,11 +30,11 @@ export default function Home() {
 						</article>
 
 						<article className='card'>
-							<h3>Processos seletivos em andamento</h3>
+							<h3>Processos em andamento</h3>
 							<p>99</p>
 							<div className='comparacao'>
 								<div className='destaqueComparacao'>
-									<ArrowUp />
+									<ArrowUp size={20} />
 									<p>+3</p>
 								</div>
 								<p>concluídos nesse mês</p>
@@ -45,8 +45,8 @@ export default function Home() {
 							<h3>Entrevistas marcadas</h3>
 							<p>55</p>
 							<div className="comparacao">
-								<div className='destaqueComparacao gap-1'>
-									<CalendarCheck2 />
+								<div className='destaqueComparacao gap-1 items-center'>
+									<CalendarCheck2 size={20} />
 									<p>3</p>
 								</div>
 								<p>marcadas hoje</p>
@@ -54,23 +54,33 @@ export default function Home() {
 						</article>
 					</section>
 
-					<section className="graficoAgenda">
+					<section className='agendaCalendario'>
 						<article className='card'>
+							<h3>Calendário de entrevistas</h3>
 							<MiniCalendarioHome />
 						</article>
 						<article className='card'>
 							<div className='topoAgenda'>
 								<div className=''>
-									<CalendarDays size={36} />
+									<CalendarDays size={30} />
 								</div>
-								<div className='flex gap-2'>
-									<h4>Agenda de Entrevistas - </h4>
-									<h4>Hoje</h4>
+								<div className='flex gap-1'>
+									<h3 className='text-xl'>Agenda de Entrevistas - Hoje</h3>
 								</div>
 							</div>
 							<CardAgendaHome />
 							<CardAgendaHome />
 							<CardAgendaHome />
+						</article>
+					</section>
+
+					<section className='graficos flex gap-[4%]'>
+						<article className='card'>
+							<h3>Quantidade geral de candidatos</h3>
+						</article>
+
+						<article className='card'>
+
 						</article>
 					</section>
 

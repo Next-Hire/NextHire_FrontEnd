@@ -5,7 +5,7 @@ export default function Header() {
     return (
         <header className='headerContainer'>
             <div className='rowHeader'>
-                <img className='Logo w-34' src="/imgs/logo.svg" alt="Logo NextHire" />
+                <img className='Logo w-30' src="/imgs/logo.svg" alt="Logo NextHire" />
                 <nav className='nav'>
                     <Link href="/vagas">Vagas</Link>
                     <Link href="">Processos Seletivos</Link>

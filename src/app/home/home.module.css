@@ -1,70 +1,82 @@
-@reference "../globals.css";
+    @reference "../globals.css";
 
-@reference "../../app/globals.css";
+    @reference "../../app/globals.css";
 
-.containerMain {
-    @apply flex justify-center min-h-[88vh];
-}
+    .containerMain {
+        @apply flex justify-center min-h-[88vh];
+    }
 
-.layoutGuide {
-    @apply flex flex-col w-4/5 gap-[8%] font-(family-name:--font-instrument-sans);
-}
+    .layoutGuide {
+        @apply flex flex-col w-4/5 gap-[8%] font-(family-name:--font-instrument-sans);
+    }
 
-.saudacao {
-    @apply flex flex-col gap-[15%] pt-10 h-full ;
-}
+    .saudacao {
+        @apply flex flex-col gap-[15%] pt-10 h-full ;
+    }
 
-.saudacao h1 {
-    @apply text-5xl text-blue-950 font-bold;
-}
+    .saudacao h1 {
+        @apply text-5xl text-blue-950 font-bold;
+    }
 
-.saudacao p {
-    @apply text-xl text-blue-950 font-normal;
-}
+    .saudacao p {
+        @apply text-xl text-blue-950 font-normal;
+    }
 
-.estatisticas {
-    @apply flex justify-between gap-[4%];
+    .estatisticas {
+        @apply flex justify-between gap-[4%];
 
-    article {
-        @apply flex flex-col items-center justify-between gap-4;
-        box-shadow: 12px 12px 20px rgba(4, 31, 105, 0.125), 6px 6px 10px rgba(4, 31, 105, 0.25);
+        article {
+            @apply flex flex-col items-center justify-between gap-4;
+            box-shadow: 12px 12px 20px rgba(4, 31, 105, 0.125), 6px 6px 10px rgba(4, 31, 105, 0.25);
 
-        h3 {
+            h3 {
+                @apply text-2xl font-semibold text-center text-blue-950;
+            }
+
+            >p {
+                @apply text-3xl font-medium ;
+            }
+        }
+    }
+
+    .comparacao {
+        @apply flex gap-1.5 text-base;
+
+        p{
+            @apply font-(family-name:--font-jost);
+        }
+    }
+
+    .destaqueComparacao {
+        @apply flex text-green-600;
+    }
+
+    .agendaCalendario {
+        @apply grid grid-cols-[2.1fr_1fr] gap-[4%];
+
+        h3{
             @apply text-2xl font-semibold text-center text-blue-950;
         }
 
-        >p {
-            @apply text-3xl font-medium ;
+        .topoAgenda{
+            @apply flex font-semibold text-blue-950 pl-8 gap-2 items-center;
         }
     }
-}
 
-.comparacao {
-    @apply flex gap-1.5 text-base;
+    /* .graficos{
+        h3{
+            @apply text-2xl font-semibold text-center text-blue-950;
+        }
+    } */
 
-    p{
-        @apply font-(family-name:--font-jost);
+    .graficos {
+        @apply flex gap-[4%] pb-10;
+    
+        article {
+            @apply flex-1 flex flex-col items-center gap-4;
+        }
+    
+        h3 {
+            @apply text-2xl font-semibold text-center text-blue-950;
+        }
     }
-}
-
-.destaqueComparacao {
-    @apply flex text-green-600;
-}
-
-.agendaCalendario {
-    @apply grid grid-cols-[2.1fr_1fr] gap-[4%];
-
-    h3{
-         @apply text-2xl font-semibold text-center text-blue-950;
-    }
-
-    .topoAgenda{
-        @apply flex font-semibold text-blue-950 pl-8 gap-2 items-center;
-    }
-}
-
-.graficos{
-    h3{
-        @apply text-2xl font-semibold text-center text-blue-950;
-    }
-}

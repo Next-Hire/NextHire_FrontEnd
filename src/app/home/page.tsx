@@ -3,6 +3,29 @@ import { ArrowUp, CalendarCheck2, CalendarDays } from 'lucide-react';
 import './home.module.css';
 import CardAgendaHome from "@/components/cardAgendaHome/cardAgendaHome";
 import MiniCalendarioHome from "@/components/calendario/miniCalendarioHome";
+import GraficoCandidatos from "@/components/graficos/graficoCandidatos";
+import GraficoVagas, { type SetorVagasData } from "@/components/graficos/graficoVagas";
+
+const dadosVagasPorSetor: SetorVagasData[] = [
+	{
+	  setor: "TI",
+	  vagasAbertas: 14,
+	  processoAndamento: 9,
+	  entrevistas: 6,
+	},
+	{
+	  setor: "RH",
+	  vagasAbertas: 8,
+	  processoAndamento: 5,
+	  entrevistas: 4,
+	},
+	{
+	  setor: "Administração",
+	  vagasAbertas: 11,
+	  processoAndamento: 7,
+	  entrevistas: 3,
+	},
+  ];
 
 export default function Home() {
 	return (
@@ -78,10 +101,16 @@ export default function Home() {
 					<section className='graficos flex gap-[4%]'>
 						<article className='card'>
 							<h3>Visão Geral de vagas</h3>
+							<GraficoVagas dados={dadosVagasPorSetor} />
 						</article>
 
 						<article className='card'>
 							<h3>Visão geral de candidatos</h3>
+							<GraficoCandidatos
+								emAnalise={85}
+								entrevistaMarcada={55}
+								dispensados={30}
+							/>
 						</article>
 					</section>
 

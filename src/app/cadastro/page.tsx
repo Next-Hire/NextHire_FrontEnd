@@ -6,16 +6,16 @@ export default function CadastroPage() {
     <main className='cadastroPage'>
       <div className='fixed inset-0 -z-10'>
         <GhostFibers
-          glowColor="#3b82f6"
+          glowColor="#66a5ecff"
           layers={3}
           twist={1.55}
-          threads={39}
+          threads={40}
           fiberStyle="dots"
           depthOfField={0.75}
           hoverEffect="focus"
           intro={true}
           mouseInteraction={true}
-          lineColor="#063ed4"
+          lineColor="#4c72daff"
           secondaryColor="#069fd4"
           gradient="across"
           waves={0.4}
@@ -42,7 +42,7 @@ export default function CadastroPage() {
 
       <section className='containerForm'>
         <h1 className='tituloCadastro'>Cadastro</h1>
-        <form className='formularioCadastro gap-[10%]'>
+        <form className='formularioCadastro'>
           <div className='flex flex-col justify-between h-18'>
             <label className='labelCadastro' htmlFor='nome'>Nome:</label>
             <input className='inputCadastro' type='text' id='nome' name='nome' placeholder='Seu nome aqui' />
@@ -62,7 +62,7 @@ export default function CadastroPage() {
             <label className='labelCadastro' htmlFor='confirmarSenha'>Confirmar Senha:</label>
             <input className='inputCadastro' type='password' id='confirmarSenha' name='confirmarSenha' placeholder='Insira novamente a senha' />
           </div>
-          <div className='flex flex-col items-center justify-between h-18'>
+          <div className='flex flex-col gap-3 mt-5'>
             <button className='botaoCadastro' type='submit'>Cadastrar</button>
             <a className='linkAdministrador' href='/login'>Entrar no sistema como administrador</a>
           </div>
@@ -70,8 +70,8 @@ export default function CadastroPage() {
       </section>
 
       <aside className='flex flex-col justify-center items-center text-center'>
-        <h1 className='text-blue-950 text-6xl font-bold font-(family-name:--font-instrument-sans) self-between leading-20 h-70 w-70 text-shadow-md/30'>Seja bem vindo ao NextHire</h1>
-        <h2 className='text-blue-950 text-xl font-semibold font-(family-name:--font-instrument-sans) w-100 text-shadow-md/30'>Seu sistema para criação de vagas e avaliação de candidatos</h2>
+        <h1 className='tituloBemVindo'>Seja bem vindo ao NextHire</h1>
+        <h2 className='subtituloBemVindo'>Seu sistema para criação de vagas e avaliação de candidatos</h2>
       </aside>
     </main>
   );

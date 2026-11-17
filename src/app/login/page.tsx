@@ -4,18 +4,18 @@ import './login.css';
 export default function LoginPage() {
   return (
     <main className='loginPage'>
-      <div className='fixed inset-0 -z-10'>
+      <div className='fixed inset-0 -z-10 opacity-85'>
         <GhostFibers
-          glowColor="#3b82f6"
+          glowColor="#66a5ecff"
           layers={3}
           twist={1.55}
-          threads={39}
+          threads={40}
           fiberStyle="dots"
           depthOfField={0.75}
           hoverEffect="focus"
           intro={true}
           mouseInteraction={true}
-          lineColor="#063ed4"
+          lineColor="#4c72daff"
           secondaryColor="#069fd4"
           gradient="across"
           waves={0.4}
@@ -40,7 +40,7 @@ export default function LoginPage() {
         />
       </div>
 
-      <section className='containerForm'>
+      <section className='containerForm '>
         <h1 className='tituloLogin'>Login</h1>
         <form className='formularioLogin'>
           <div className='flex flex-col justify-between h-18'>
@@ -52,11 +52,12 @@ export default function LoginPage() {
             <label className='labelLogin' htmlFor='senha'>Senha:</label>
             <input className='inputLogin' type='password' id='senha' name='senha' placeholder='Digite a senha' />
           </div>
+
+          <div className='flex flex-col gap-3 mt-5'>
+            <button className='botaoLogin' type='submit'>Entrar</button>
+            <a className='linkAdministrador' href='/login'>Esqueceu a senha?</a>
+          </div>
         </form>
-        <div className='flex flex-col items-center justify-between h-18'>
-          <button className='botaoLogin' type='submit'>Entrar</button>
-          <a className='linkAdministrador' href='/login'>Esqueceu a senha?</a>
-        </div>
       </section>
 
       <aside className='asideLogin'>

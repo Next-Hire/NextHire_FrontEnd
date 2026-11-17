@@ -22,15 +22,15 @@ const chartConfig = {
   },
   analise: {
     label: "Em análise",
-    color: "#1e3a8a", // blue-900
+    color: "#1e3a8a", 
   },
   entrevista: {
     label: "Entrevista marcada",
-    color: "#2563eb", // blue-600
+    color: "#2563eb", 
   },
   dispensados: {
     label: "Dispensados",
-    color: "#94a3b8", // slate-400
+    color: "#9bc4fd",
   },
 } satisfies ChartConfig
 
@@ -48,7 +48,6 @@ export default function GraficoCandidatos({
   return (
     <ChartContainer
       config={chartConfig}
-      // 1. Aumentamos de max-h-[280px] para max-h-[380px]
       className="mx-auto aspect-square max-h-[380px] w-full"
     >
       <PieChart>
@@ -59,11 +58,10 @@ export default function GraficoCandidatos({
           data={chartData}
           dataKey="quantidade"
           nameKey="status"
-          // 2. Aumentamos o raio de 78 para 115
           outerRadius={115}
           labelLine={false}
           label={({ cx, cy, midAngle, outerRadius, payload }) => {
-            if (!payload.quantidade) return null
+            if (!payload.quantidade || midAngle === undefined) return null
 
             const RADIAN = Math.PI / 180
             const radius = outerRadius + 18
@@ -77,7 +75,7 @@ export default function GraficoCandidatos({
                 fill="#172554"
                 textAnchor={x > cx ? "start" : "end"}
                 dominantBaseline="central"
-                fontSize={16} // 3. Fonte levemente maior para acompanhar a proporção
+                fontSize={16}
                 fontWeight={700}
               >
                 {payload.quantidade}

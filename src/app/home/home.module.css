@@ -7,7 +7,7 @@
     }
 
     .layoutGuide {
-        @apply flex flex-col w-4/5 gap-[8%] font-(family-name:--font-instrument-sans);
+        @apply flex flex-col w-4/5 gap-[5%] font-(family-name:--font-instrument-sans);
     }
 
     .saudacao {

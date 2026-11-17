@@ -24,15 +24,15 @@ interface GraficoVagasProps {
 const chartConfig = {
   vagasAbertas: {
     label: "Vagas em aberto",
-    color: "#1e3a8a", // blue-900
+    color: "#1e3a8a",
   },
   processoAndamento: {
     label: "Processo em andamento",
-    color: "#2563eb", // blue-600
+    color: "#2563eb", 
   },
   entrevistas: {
     label: "Entrevistas",
-    color: "#0ea5e9", // sky-500
+    color: "#9bc4fd", 
   },
 } satisfies ChartConfig
 
@@ -42,7 +42,6 @@ export default function GraficoVagas({ dados }: GraficoVagasProps) {
       config={chartConfig}
       className="min-h-[300px] max-h-[380px] w-full"
     >
-      {/* barGap={6} deixa um respiro sutil entre as barras do mesmo setor */}
       <BarChart accessibilityLayer data={dados} margin={{ top: 24 }} barGap={6}>
         <CartesianGrid vertical={false} strokeDasharray="3 3" />
         <XAxis
@@ -59,8 +58,7 @@ export default function GraficoVagas({ dados }: GraficoVagasProps) {
           content={<ChartLegendContent />}
           className="pt-4 flex-wrap gap-6 justify-center text-sm"
         />
-
-        {/* barSize={24} define a largura exata de cada barra em pixels */}
+        
         <Bar
           dataKey="vagasAbertas"
           fill="var(--color-vagasAbertas)"

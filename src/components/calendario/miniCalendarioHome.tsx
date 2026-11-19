@@ -62,8 +62,7 @@ export default function MiniCalendarioHome() {
                     },
                 }}
             />
-
-            {/* Legenda */}
+            
             <div className='flex items-center justify-center gap-6 pt-2 border-t border-blue-950/10 w-full text-sm font-(family-name:--font-jost)'>
                 <div className='flex items-center gap-2 text-blue-950 font-medium'>
                     <span className='w-2.5 h-2.5 rounded-full bg-green-500 shrink-0' />

@@ -8,24 +8,24 @@ import GraficoVagas, { type SetorVagasData } from "@/components/graficos/grafico
 
 const dadosVagasPorSetor: SetorVagasData[] = [
 	{
-	  setor: "TI",
-	  vagasAbertas: 14,
-	  processoAndamento: 9,
-	  entrevistas: 6,
+		setor: "TI",
+		vagasAbertas: 14,
+		processoAndamento: 9,
+		entrevistas: 6,
 	},
 	{
-	  setor: "RH",
-	  vagasAbertas: 8,
-	  processoAndamento: 5,
-	  entrevistas: 4,
+		setor: "RH",
+		vagasAbertas: 8,
+		processoAndamento: 5,
+		entrevistas: 4,
 	},
 	{
-	  setor: "Administração",
-	  vagasAbertas: 11,
-	  processoAndamento: 7,
-	  entrevistas: 3,
+		setor: "Administração",
+		vagasAbertas: 11,
+		processoAndamento: 7,
+		entrevistas: 3,
 	},
-  ];
+];
 
 export default function Home() {
 	return (
@@ -40,39 +40,52 @@ export default function Home() {
 					</div>
 
 					<section className='estatisticas'>
+
 						<article className='card'>
-							<h3>Vagas abertas</h3>
-							<p>99</p>
-							<div className='comparacao'>
-								<div className='destaqueComparacao'>
-									<ArrowUp size={20} />
-									<p>+3</p>
+							<div>
+								<h2>99</h2>
+							</div>
+							<div className='textosCardEstatisticas'>
+								<h3>Vagas abertas</h3>
+								<div className='comparacao'>
+									<div className='destaqueComparacao'>
+										<ArrowUp size={18} />
+										<p>+3</p>
+									</div>
+									<p>vs. mês passado</p>
 								</div>
-								<p>vs. mês passado</p>
 							</div>
 						</article>
 
 						<article className='card'>
-							<h3>Processos em andamento</h3>
-							<p>99</p>
-							<div className='comparacao'>
-								<div className='destaqueComparacao'>
-									<ArrowUp size={20} />
-									<p>+3</p>
+							<div>
+								<h2>99</h2>
+							</div>
+							<div className='textosCardEstatisticas'>
+								<h3>Processos em andamento</h3>
+								<div className='comparacao'>
+									<div className='destaqueComparacao'>
+										<ArrowUp size={18} />
+										<p>+3</p>
+									</div>
+									<p>concluídos nesse mês</p>
 								</div>
-								<p>concluídos nesse mês</p>
 							</div>
 						</article>
 
 						<article className='card'>
-							<h3>Entrevistas marcadas</h3>
-							<p>55</p>
-							<div className="comparacao">
-								<div className='destaqueComparacao gap-1 items-center'>
-									<CalendarCheck2 size={20} />
-									<p>3</p>
+							<div>
+								<h2>55</h2>
+							</div>
+							<div className='textosCardEstatisticas'>
+								<h3>Entrevistas marcadas</h3>
+								<div className='comparacao'>
+									<div className='destaqueComparacao gap-1'>
+										<CalendarCheck2 size={18} />
+										<p>3</p>
+									</div>
+									<p>marcadas hoje</p>
 								</div>
-								<p>marcadas hoje</p>
 							</div>
 						</article>
 					</section>

@@ -1,7 +1,5 @@
     @reference "../globals.css";
 
-    @reference "../../app/globals.css";
-
     .containerMain {
         @apply flex justify-center min-h-[88vh];
     }
@@ -22,7 +20,7 @@
         @apply text-xl text-blue-950 font-normal;
     }
 
-    .estatisticas {
+    /* .estatisticas {
         @apply flex justify-between gap-[4%];
 
         article {
@@ -37,6 +35,27 @@
                 @apply text-3xl font-medium ;
             }
         }
+    } */
+
+    .estatisticas {
+        @apply flex justify-between gap-[4%];
+
+        article {
+            @apply flex items-center justify-center gap-6;
+            box-shadow: 12px 12px 20px rgba(4, 31, 105, 0.125), 6px 6px 10px rgba(4, 31, 105, 0.25);
+
+            h2{
+                @apply text-5xl font-normal;
+            }
+
+            h3 {
+                @apply text-2xl font-semibold text-center text-blue-950;
+            }
+        }
+    }
+
+    .textosCardEstatisticas{
+        @apply flex flex-col gap-2 items-center;
     }
 
     .comparacao {
@@ -62,12 +81,6 @@
             @apply flex font-semibold text-blue-950 pl-8 gap-2 items-center;
         }
     }
-
-    /* .graficos{
-        h3{
-            @apply text-2xl font-semibold text-center text-blue-950;
-        }
-    } */
 
     .graficos {
         @apply flex gap-[4%] pb-10;

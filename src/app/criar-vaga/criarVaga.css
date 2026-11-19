@@ -1,7 +1,7 @@
 @reference "../../app/globals.css";
 
 .mainCriarVaga {
-    @apply bg-blue-800/15 min-h-screen;
+    @apply min-h-screen;
 }
 
 .sectionCriarVaga {
@@ -16,8 +16,8 @@
     @apply text-4xl font-bold text-blue-950 font-(family-name:--font-instrument-sans) text-shadow-sm place-self-start px-36 mb-6;
 }
 
-.subtituloCriarVaga {
-    @apply font-(family-name:--font-instrument-sans) text-xl font-semibold text-blue-950 mb-1;
+.labelCriarVaga {
+    @apply font-(family-name:--font-instrument-sans) text-base font-semibold text-blue-950 mb-1;
 }
 
 .inputCriarVaga {
@@ -46,5 +46,17 @@
 }
 
 .btnSalvarVaga {
-    @apply bg-blue-950 rounded-md text-white px-8 py-2.5 font-(family-name:--font-instrument-sans) font-semibold text-lg shadow-md cursor-pointer hover:bg-blue-900 transition-colors;
+    @apply bg-blue-950 rounded-md text-white w-40 h-10 font-(family-name:--font-instrument-sans) font-semibold shadow-md;
+}
+
+.btnSalvarVaga:hover {
+    @apply motion-safe:animate-pulse;
+}
+
+.tagCompetencia {
+    @apply bg-blue-950 text-white px-3 rounded-md font-(family-name:--font-jost) text-base flex flex-row items-center gap-5 py-2 px-5;
+}
+
+.subtituloCriarVaga {
+    @apply font-(family-name:--font-instrument-sans) text-2xl font-bold text-blue-950 my-5 text-shadow-sm;
 }

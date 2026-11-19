@@ -1,3 +1,5 @@
+'use client';
+
 import GhostFibers from '@/components/ghostfibers/GhostFibers';
 import './login.css';
 
@@ -54,7 +56,7 @@ export default function LoginPage() {
           </div>
 
           <div className='flex flex-col gap-3 mt-5'>
-            <button className='botaoLogin' type='submit'>Entrar</button>
+            <button className='botaoLogin' type='button' onClick={() => window.location.href = '/home'}>Entrar</button>
             <a className='linkAdministrador' href='/login'>Esqueceu a senha?</a>
           </div>
         </form>

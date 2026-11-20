@@ -43,7 +43,7 @@ export default function CriarVagaPage() {
                 <h1 className='tituloCriarVaga'>Adicionar nova vaga</h1>
                 <div className='secaoFormVaga'>
 
-                    <div className='flex flex-col justify-between h-full gap-8'>
+                    <form className='flex flex-col justify-between h-full gap-8'>
 
                         <div className='flex flex-col'>
                             <label className='labelCriarVaga'>Título da vaga</label>
@@ -93,7 +93,7 @@ export default function CriarVagaPage() {
                                 className='textareaCriarVaga'
                             />
                         </div>
-                    </div>
+                    </form>
 
                     {/* Linha com Período, Setor e Prioridade */}
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
@@ -324,9 +324,40 @@ export default function CriarVagaPage() {
                                     </SelectPositioner>
                                 </SelectPortal>
                             </SelectRoot>
+
                         </div>
                     </div>
-                    <div className='flex flex-col'>
+                    <div className='flex flex-col justify-around'>
+
+                        <h2 className='subtituloCriarVaga'>Adicionar competência</h2>
+                        <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+                            <input
+                                type='text'
+                                placeholder='Digite o nome da competência...'
+                                className='inputCriarVaga'
+                            />
+                            <SelectRoot defaultValue=''>
+                                <SelectTrigger className='h-10 w-full'>
+                                    <SelectValue placeholder='Selecione o nível da competência...' />
+                                </SelectTrigger>
+
+                                <SelectPortal>
+                                    <SelectPositioner>
+                                        <SelectPopup>
+                                            {[1, 2, 3, 4, 5, 6, 7].map((num) => (
+                                                <SelectItem key={num} value={String(num)}>
+                                                    {num}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectPopup>
+                                    </SelectPositioner>
+                                </SelectPortal>
+                            </SelectRoot>
+                            <button type='button' className='btnSalvar'>
+                                Adicionar competência
+                            </button>
+                        </div>
+
                         <h2 className='subtituloCriarVaga'>Competências</h2>
                         <div className='flex flex-wrap gap-8'>
                             <span className='tagCompetencia'>
@@ -398,40 +429,11 @@ export default function CriarVagaPage() {
                                 </button>
                             </span>
                         </div>
-                        <div>
-                            <div className='flex flex-col'>
-                                <label className='labelCriarVaga'>Adicionar habilidade</label>
-                                <input
-                                    type='text'
-                                    placeholder='Digite aqui o nome da habilidade...'
-                                    className='inputCriarVaga'
-                                />
-                            </div>
-
-                            <div className='flex flex-col'>
-                                <label className='labelCriarVaga'>Nível da habilidade</label>
-                                <SelectRoot defaultValue=''>
-                                    <SelectTrigger className='h-10 w-full'>
-                                        <SelectValue placeholder='Selecione o regime contratual...' />
-                                    </SelectTrigger>
-
-                                    <SelectPortal>
-                                        <SelectPositioner>
-                                            <SelectPopup>
-                                                {[1, 2, 3, 4, 5, 6, 7].map((num) => (
-                                                    <SelectItem key={num} value={String(num)}>
-                                                        {num}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectPopup>
-                                        </SelectPositioner>
-                                    </SelectPortal>
-                                </SelectRoot>
-                            </div>
-                        </div>
                     </div>
-                    <div className='flex justify-end mt-2'>
-                        <button type='button' className='btnSalvarVaga'>
+                    <div className='flex justify-end mt-8'>
+                        <button className='btnRascunho'>Salvar rascunho <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-save-pen preview-icon"><path d="M13.33 13H8a1 1 0 00-1 1v7" /><path d="M14.363 17.634a2 2 0 00-.506.854l-.837 2.87a.5.5 0 00.62.62l2.87-.837a2 2 0 00.854-.506l4.013-4.009a1 1 0 10-3.004-3.004z" /><path d="M7 3v4a1 1 0 001 1h7" /><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h10.2a2 2 0 011.4.6l3.8 3.8a2 2 0 01.6 1.4v.3" /></svg></button>
+
+                        <button type='button' className='btnSalvar'>
                             Salvar vaga
                         </button>
                     </div>

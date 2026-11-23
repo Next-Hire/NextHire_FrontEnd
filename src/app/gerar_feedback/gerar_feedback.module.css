@@ -1,0 +1,20 @@
+@reference "../../app/globals.css";
+
+
+    .containerMain {
+        @apply flex min-h-[88vh] ;
+        
+    }
+
+.titulo_vaga {
+        @apply text-4xl font-bold text-blue-950 font-(family-name:--font-instrument-sans) text-shadow-sm place-self-start px-36 mb-6;
+        margin-top: 2%;
+}
+
+
+.candidatoSidebar {
+    width: 20%;
+    border: 1px solid black;
+}
+
+

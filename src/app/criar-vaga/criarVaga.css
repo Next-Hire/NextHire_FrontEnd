@@ -5,11 +5,11 @@
 }
 
 .sectionCriarVaga {
-    @apply flex flex-col items-center justify-center py-8;
+    @apply flex flex-col items-center justify-center py-10;
 }
 
 .secaoFormVaga {
-    @apply flex flex-col gap-6 bg-white rounded-lg w-4/5 p-8 shadow-md;
+    @apply flex flex-col gap-6 bg-white rounded-lg w-4/5 p-8 pb-12 shadow-md;
 }
 
 .tituloCriarVaga {

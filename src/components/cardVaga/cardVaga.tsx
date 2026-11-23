@@ -61,7 +61,7 @@ export default function CardVaga({
                         </p>
                     </div>
                     <div className='flex flex-row justify-between'>
-                        <a href="/detalheVaga" className='linkCardVagaAberto'>Ver detalhes da vaga <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right-to-line preview-icon w-5 "><path d="M17 12H3" /><path d="m11 18 6-6-6-6" /><path d="M21 5v14" /></svg></a>
+                        <a href="/detalhe-vaga" className='linkCardVagaAberto'>Ver detalhes da vaga <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right-to-line preview-icon w-5 "><path d="M17 12H3" /><path d="m11 18 6-6-6-6" /><path d="M21 5v14" /></svg></a>
                         <button className='btnCardVagaAberto'>Baixar informações da vaga</button>
                     </div>
                 </div>

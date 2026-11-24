@@ -6,10 +6,11 @@ import './cardVaga.module.css';
 export type PrioridadeVaga = 'baixa' | 'media' | 'alta';
 
 interface CardVagaProps {
-    titulo?: string;
-    periodo?: string;
-    prioridade?: PrioridadeVaga;
-    descricao?: string;
+    produtoId: number,
+    titulo: string,
+    periodo: string,
+    prioridade: PrioridadeVaga,
+    descricao: string,
 }
 
 const PRIORIDADE_STYLES: Record<PrioridadeVaga, { texto: string; cor: string }> = {
@@ -27,14 +28,10 @@ const PRIORIDADE_STYLES: Record<PrioridadeVaga, { texto: string; cor: string }> 
     },
 };
 
-export default function CardVaga({
-    titulo = 'Desenvolvedor Pleno - Back-end(Python/Django)',
-    periodo = '12/11/2026 - 12/12/2026',
-    prioridade = 'media',
-    descricao = 'Buscamos uma pessoa Desenvolvedora Back-end Pleno com experiência em Python e Django para atuar na construção de APIs REST escaláveis, integração de serviços e manutenção do banco de dados junto ao time de engenharia.',
-}: CardVagaProps) {
+export default function CardVaga(
+{vaga}: {vaga: CardVagaProps}) {
     const [aberto, setAberto] = useState(false);
-    const badge = PRIORIDADE_STYLES[prioridade];
+    const badge = PRIORIDADE_STYLES[vaga.prioridade];
 
     return (
         <main className='mainCardVaga'>
@@ -42,9 +39,9 @@ export default function CardVaga({
                 onClick={() => setAberto(!aberto)}
                 className='cardVaga'
             >
-                <h3 className='tituloCardVaga'>{titulo}</h3>
+                <h3 className='tituloCardVaga'>{vaga.titulo}</h3>
                 <p className='periodoCardVaga'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-calendar-clock preview-icon shrink-0"><path d="M16 14v2.2l1.6 1" /><path d="M16 2v3" /><path d="M21 7.338V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2.338" /><path d="M3 9h5.859" /><path d="M8 2v3" /><circle cx="16" cy="16" r="6" /></svg>{periodo}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-calendar-clock preview-icon shrink-0"><path d="M16 14v2.2l1.6 1" /><path d="M16 2v3" /><path d="M21 7.338V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2.338" /><path d="M3 9h5.859" /><path d="M8 2v3" /><circle cx="16" cy="16" r="6" /></svg>{vaga.periodo}
                 </p>
                 <p className={`w-40 text-center text-sm font-semibold font-(family-name:--font-jost)  rounded-md px-5 py-1 shadow-sm ${badge.cor}`}>
                     {badge.texto}
@@ -57,7 +54,7 @@ export default function CardVaga({
                     <div className='flex flex-col h-25 justify-around mb-5'>
                         <h3 className='subtituloCardVagaAberto'>Descrição da vaga</h3>
                         <p className='txtCardVagaAberto'>
-                            {descricao}
+                            {vaga.descricao}
                         </p>
                     </div>
                     <div className='flex flex-row justify-between'>

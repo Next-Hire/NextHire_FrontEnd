@@ -1,5 +1,6 @@
+import { StringToBoolean } from "class-variance-authority/types"
 
-export interface ListarVaga {
+export interface VagaRecebida {
     vagaId: number,
     nomeAnalista: string,
     analistaRh: number,
@@ -15,9 +16,10 @@ export interface ListarVaga {
     tipoVaga: string,
     tempoExperienciaDesejado: number,
     tituloVaga: string
+    escala: string
 }
 
-export interface CadastrarVaga {
+export interface VagaCadastrada {
     tituloVaga: string
     analistaRh: number,
     setorOcupacaoId: number,
@@ -29,9 +31,10 @@ export interface CadastrarVaga {
     tipoVaga: string,
     nivelPrioridade: string,
     tempoExperienciaDesejado: number,
+    escala: string
 }
 
-export interface AtualizarVaga {
+export interface VagaAtualizada {
     tituloVaga: string
     analistaRh: number,
     setorOcupacaoId: number,
@@ -43,4 +46,5 @@ export interface AtualizarVaga {
     tipoVaga: string,
     nivelPrioridade: string,
     tempoExperienciaDesejado: number,
+    escala: string
 }

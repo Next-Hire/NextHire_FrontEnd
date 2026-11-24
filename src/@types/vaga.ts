@@ -1,5 +1,7 @@
 import { StringToBoolean } from "class-variance-authority/types"
 
+export type PrioridadeVaga = 'baixa' | 'media' | 'alta';
+
 export interface VagaRecebida {
     vagaId: number,
     nomeAnalista: string,
@@ -11,11 +13,11 @@ export interface VagaRecebida {
     empresaId: number
     IdiomasDesejados: string[],
     StatusVaga: boolean,
-    nivelPrioridade: string,
+    nivelPrioridade: PrioridadeVaga,
     remuneracao: number
     tipoVaga: string,
     tempoExperienciaDesejado: number,
-    tituloVaga: string
+    titulo: string
     escala: string
 }
 

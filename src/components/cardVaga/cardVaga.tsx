@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import './cardVaga.module.css';
-
-export type PrioridadeVaga = 'baixa' | 'media' | 'alta';
+import { PrioridadeVaga } from '@/@types/vaga';
 
 interface CardVagaProps {
-    produtoId: number,
+    vagaId: number,
     titulo: string,
     periodo: string,
     prioridade: PrioridadeVaga,
@@ -29,7 +28,7 @@ const PRIORIDADE_STYLES: Record<PrioridadeVaga, { texto: string; cor: string }> 
 };
 
 export default function CardVaga(
-{vaga}: {vaga: CardVagaProps}) {
+vaga: CardVagaProps) {
     const [aberto, setAberto] = useState(false);
     const badge = PRIORIDADE_STYLES[vaga.prioridade];
 

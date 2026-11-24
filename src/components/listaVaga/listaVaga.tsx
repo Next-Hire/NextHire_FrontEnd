@@ -1,68 +1,50 @@
-import { useStackId } from 'recharts/types/cartesian/BarStack';
-import CardVaga, { PrioridadeVaga } from '../cardVaga/cardVaga';
+"use client";
+
 import { useEffect, useState } from 'react';
-import { VagaRecebida } from '@/@types/vaga';
+import { useStackId } from 'recharts/types/cartesian/BarStack';
+import { PrioridadeVaga, VagaRecebida } from '@/@types/vaga';
+import CardVaga from '../cardVaga/cardVaga';
+import { vagaService } from '@/service/vagaService';
 
-const VAGAS_MOCK: {
-    id: number;
-    titulo: string;
-    periodo: string;
-    prioridade: PrioridadeVaga;
-    descricao: string;
-}[] = [
-        {
-            id: 1,
-            titulo: 'Desenvolvedor Sênior - Full Stack (Next.js/Node)',
-            periodo: '10/11/2026 - 30/11/2026',
-            prioridade: 'alta',
-            descricao: 'Buscamos uma pessoa Desenvolvedora Full Stack Sênior para liderar o desenvolvimento de novas funcionalidades críticas na plataforma, garantindo performance e escalabilidade.',
-        },
-        {
-            id: 2,
-            titulo: 'Desenvolvedor Pleno - Back-end (Python/Django)',
-            periodo: '12/11/2026 - 12/12/2026',
-            prioridade: 'media',
-            descricao: 'Buscamos uma pessoa Desenvolvedora Back-end Pleno com experiência em Python e Django para atuar na construção de APIs REST escaláveis, integração de serviços e manutenção do banco de dados.',
-        },
-        {
-            id: 3,
-            titulo: 'Analista de Recursos Humanos - Tech Recruiter',
-            periodo: '15/11/2026 - 20/12/2026',
-            prioridade: 'baixa',
-            descricao: 'Responsável pela condução de processos seletivos de tecnologia de ponta a ponta, triagem de perfis, entrevistas por competências e acompanhamento de indicadores de RH.',
-        },
-        {
-            id: 4,
-            titulo: 'Engenheiro de Dados Pleno - (Spark/AWS)',
-            periodo: '18/11/2026 - 18/12/2026',
-            prioridade: 'alta',
-            descricao: 'Atuação na construção e manutenção de pipelines de dados em nuvem, modelagem de Data Warehouse e suporte aos times de Analytics e Ciência de Dados.',
-        },
-        {
-            id: 5,
-            titulo: 'UX/UI Designer Júnior - Produtos Digitais',
-            periodo: '20/11/2026 - 10/01/2027',
-            prioridade: 'baixa',
-            descricao: 'Apoio na criação de protótipos no Figma, pesquisas com usuários, evolução do Design System e acompanhamento de handoff junto ao time de Front-end.',
-        },
-    ];
+export default function ListaVaga() {
+    const [vagas, setVagas] = useState<VagaRecebida[]>()
+    const [carregado, setCarregado] = useState(false);
 
-export default function ListaVaga({ vagas }: { vagas: VagaRecebida[] }) {
-    const [listaVagas, setListaVagas] = useState(vagas);
+    async function carregarVagas() {
+        try {
+            setCarregado(true);
+            const data = await vagaService.listarVagas()
+
+            if (!Array.isArray(data)) {
+                setVagas([]);
+                return;
+            }
+
+            setVagas(data);
+        } catch (error) {
+            console.error("Erro ao carregar vagas", error);
+        } finally {
+            setCarregado(false);
+        }
+    }
+
+    const formatarData = (data?: Date | string | null) => {
+        if (!data) return ""; // ou "A definir"
+        return new Date(data).toLocaleDateString("pt-BR");
+    };
 
     useEffect(() => {
-        if(vagas)
-            setListaVagas(vagas);
-    }, [vagas])
+        carregarVagas();
+    }, [])
 
     return (
         <main className='flex flex-col items-center justify-around min-h-130 gap-4 py-4 w-[100%]'>
-            {vagas.map((vaga) => (
+            {vagas?.map((vaga) => (
                 <CardVaga
                     key={vaga.vagaId}
-                    vaga={vaga.vagaId}
-                    titulo={vaga.tituloVaga}
-                    periodo={`${vaga.dataAbertura} - ${vaga.dataFechamento}`}
+                    vagaId={vaga.vagaId}
+                    titulo={vaga.titulo}
+                    periodo={`${formatarData(vaga.dataAbertura)} - ${formatarData(vaga.dataFechamento)}`}
                     prioridade={vaga.nivelPrioridade}
                     descricao={vaga.descricao}
                 />

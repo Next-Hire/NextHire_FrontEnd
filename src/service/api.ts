@@ -1,7 +1,7 @@
 import axios from "axios";
 import secureLocalStorage from "react-secure-storage"
 
-const apiLocal = process.env.HOST_API
+const apiLocal = process.env.NEXT_PUBLIC_HOST_API
 export const token_key = process.env.TOKEN_JWT || ""
 export const api = axios.create({
     baseURL: apiLocal,

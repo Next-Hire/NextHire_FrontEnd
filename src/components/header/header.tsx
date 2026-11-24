@@ -9,7 +9,7 @@ export default function Header() {
                 <nav className='nav'>
                     <Link href="/vagas">Vagas</Link>
                     <Link href="">Processos Seletivos</Link>
-                    <Link href="">Entrevistas</Link>
+                    <Link href="/entrevista">Entrevistas</Link>
                 </nav>
                 <div className='circleUser'>
                     <p>rh</p>

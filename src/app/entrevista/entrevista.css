@@ -1,0 +1,110 @@
+@reference "../../app/globals.css";
+
+.mainEntrevista {
+    @apply min-h-screen bg-blue-800/15 pb-12;
+}
+
+.sectionEntrevista {
+    @apply flex flex-col items-center justify-center py-8 gap-6;
+}
+
+/* Barra superior estilo FiltroVagas */
+.topoEntrevistaCard {
+    @apply flex flex-col justify-between bg-white rounded-lg w-4/5 p-6 shadow-md gap-5;
+}
+
+.tituloEntrevista {
+    @apply text-4xl font-bold text-blue-950 font-(family-name:--font-instrument-sans) text-shadow-sm;
+}
+
+.btnAgendarEntrevista {
+    @apply flex items-center justify-center gap-2 bg-blue-950 rounded-md text-white px-6 h-10 font-(family-name:--font-instrument-sans) font-semibold shadow-md cursor-pointer;
+}
+
+.btnAgendarEntrevista:hover {
+    @apply motion-safe:animate-pulse;
+}
+
+.btnHoje {
+    @apply border-2 border-blue-950 rounded-md h-9 px-4 bg-white text-blue-950 font-(family-name:--font-jost) font-semibold cursor-pointer hover:bg-blue-50 transition-colors;
+}
+
+.btnNavSemana {
+    @apply flex items-center justify-center border-2 border-blue-950 rounded-md h-9 w-9 bg-white text-blue-950 cursor-pointer hover:bg-blue-50 transition-colors;
+}
+
+/* Container principal dividido entre barra lateral e grade de horários */
+.layoutCalendarioMeet {
+    @apply grid grid-cols-1 lg:grid-cols-[310px_1fr] gap-6 w-4/5 items-start;
+}
+
+.painelLateralMeet {
+    @apply flex flex-col gap-6;
+}
+
+.cardLateralMeet {
+    @apply bg-white rounded-lg p-5 shadow-md flex flex-col gap-4;
+}
+
+/* Grade principal estilo Google Calendar / Meet */
+.gradeSemanaCard {
+    @apply bg-white rounded-lg shadow-md overflow-hidden border border-blue-950/15;
+}
+
+.cabecalhoGradeSemana {
+    @apply grid grid-cols-[72px_repeat(5,1fr)] border-b-2 border-blue-950/15 bg-blue-50/40;
+}
+
+.celulaDiaCabecalho {
+    @apply flex flex-col items-center justify-center py-3 border-l border-blue-950/10 font-(family-name:--font-instrument-sans);
+}
+
+.numeroDiaCabecalho {
+    @apply flex items-center justify-center w-9 h-9 rounded-full text-lg font-bold text-blue-950 mt-1 transition-colors;
+}
+
+.numeroDiaAtivo {
+    @apply bg-blue-950 text-white shadow-sm;
+}
+
+.corpoGradeHorarios {
+    @apply flex flex-col divide-y divide-blue-950/10;
+}
+
+.linhaHorario {
+    @apply grid grid-cols-[72px_repeat(5,1fr)] min-h-22;
+}
+
+.colunaHoraLabel {
+    @apply flex items-start justify-center pt-2 text-xs font-semibold text-blue-950/70 font-(family-name:--font-jost) bg-blue-50/20;
+}
+
+.celulaSlotHorario {
+    @apply relative border-l border-blue-950/10 p-1.5 transition-colors hover:bg-blue-50/30;
+}
+
+/* Card de evento dentro da grade do calendário */
+.cardEventoGrade {
+    @apply flex flex-col justify-between w-full h-full rounded-md p-2 text-left cursor-pointer shadow-sm transition-transform hover:scale-[1.01] font-(family-name:--font-jost);
+}
+
+.eventoTecnica {
+    @apply bg-blue-950 text-white border-l-4 border-[#5682D9];
+}
+
+.eventoTriagem {
+    @apply bg-blue-100 text-blue-950 border-l-4 border-blue-950;
+}
+
+.eventoGestor {
+    @apply bg-green-100 text-green-950 border-l-4 border-green-700;
+}
+
+/* Botão estilo Google Meet para entrar na chamada */
+.btnEntrarMeet {
+    @apply flex items-center justify-center gap-2 bg-blue-950 text-white rounded-md h-10 px-4 font-(family-name:--font-instrument-sans) font-semibold shadow-md cursor-pointer hover:bg-blue-900 transition-colors;
+}
+
+.btnCopiarLink {
+    @apply flex items-center justify-center gap-2 border-2 border-blue-950 text-blue-950 rounded-md h-10 px-4 font-(family-name:--font-jost) font-semibold cursor-pointer hover:bg-blue-50 transition-colors;
+}

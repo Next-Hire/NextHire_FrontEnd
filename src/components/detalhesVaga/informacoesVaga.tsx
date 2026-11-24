@@ -33,7 +33,7 @@ export default function InformacoesVaga() {
 
             <section className='flex flex-col justify-between h-full gap-8 mb-5'>
                 <div className='flex flex-col'>
-                    <h2 className='subtituloInfoVaga'>Descrição</h2>
+                    <h2 className='subtituloInfoVaga '>Descrição</h2>
                     <p className='paragrafoInfoVaga'>
                         {VAGA_MOCK.descricao}
                     </p>

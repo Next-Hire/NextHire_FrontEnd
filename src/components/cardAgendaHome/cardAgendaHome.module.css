@@ -1,15 +1,15 @@
 @reference "../../app/globals.css";
 
 .mainCardAgendaHome{
-    @apply flex flex-col gap-3 ;
+    @apply flex flex-col gap-4 ;
 }
 
 .linhaHorizontal{
-    @apply w-85/100 border-t-1 border-t-blue-950  mt-3 self-center;
+    @apply w-[90%] border-t-1 border-t-blue-950 self-center;
 }
 
 .infosAgenda{
-    @apply flex gap-2 items-center justify-start pl-8 w-9/10;
+    @apply flex gap-2 items-center pl-5;
 
     .textoInfos{
         @apply flex gap-2 text-base font-(family-name:--font-jost);

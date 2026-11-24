@@ -1,10 +1,21 @@
 import Header from "@/components/header/header";
 import { ArrowUp, CalendarCheck2, CalendarDays } from 'lucide-react';
-import './home.module.css';
+import './home.css';
 import CardAgendaHome from "@/components/cardAgendaHome/cardAgendaHome";
 import MiniCalendarioHome from "@/components/calendario/miniCalendarioHome";
 import GraficoCandidatos from "@/components/graficos/graficoCandidatos";
 import GraficoVagas, { type SetorVagasData } from "@/components/graficos/graficoVagas";
+
+import {
+	SelectRoot,
+	SelectTrigger,
+	SelectValue,
+	SelectPortal,
+	SelectPositioner,
+	SelectPopup,
+	SelectItem,
+} from '@/components/select/select';
+
 
 const dadosVagasPorSetor: SetorVagasData[] = [
 	{
@@ -27,6 +38,7 @@ const dadosVagasPorSetor: SetorVagasData[] = [
 	},
 ];
 
+
 export default function Home() {
 	return (
 		<>
@@ -34,67 +46,43 @@ export default function Home() {
 			<main className='containerMain'>
 				<div className='layoutGuide'>
 
-					<div className='saudacao'>
-						<h1>Olá!</h1>
-						<p>Aqui está sua visão operacional completa para hoje.</p>
+					<div className='saudacao card'>
+						<div className='flex items-end gap-[1%]'>
+							<h1>Olá!</h1>
+							<p>Aqui está sua visão operacional completa para hoje.</p>
+						</div>
+						<div className='flex flex-col'>
+							<SelectRoot defaultValue=''>
+								<SelectTrigger>
+									<SelectValue placeholder='Data' />
+								</SelectTrigger>
+
+								<SelectPortal>
+									<SelectPositioner>
+										<SelectPopup>
+											<SelectItem value='Último mês'>Último mês</SelectItem>
+											<SelectItem value='Últimos 3 meses'>Últimos 3 meses</SelectItem>
+											<SelectItem value='Últimos 6 meses'>Últimos 6 meses</SelectItem>
+											<SelectItem value='Último ano'>Último ano</SelectItem>
+										</SelectPopup>
+									</SelectPositioner>
+								</SelectPortal>
+							</SelectRoot>
+						</div>
 					</div>
 
-					<section className='estatisticas'>
-
+					{/* Seção 1 - Gráfico candidatos e agenda entrevistas*/}
+					<section className='graficoCandidatosAgenda '>
 						<article className='card'>
-							<div>
-								<h2>99</h2>
-							</div>
-							<div className='textosCardEstatisticas'>
-								<h3>Vagas abertas</h3>
-								<div className='comparacao'>
-									<div className='destaqueComparacao'>
-										<ArrowUp size={18} />
-										<p>+3</p>
-									</div>
-									<p>vs. mês passado</p>
-								</div>
-							</div>
+							<h3>Visão geral de candidatos</h3>
+							<GraficoCandidatos
+								emAnalise={105}
+								entrevistaMarcada={55}
+								dispensados={30}
+							/>
 						</article>
 
-						<article className='card'>
-							<div>
-								<h2>99</h2>
-							</div>
-							<div className='textosCardEstatisticas'>
-								<h3>Processos em andamento</h3>
-								<div className='comparacao'>
-									<div className='destaqueComparacao'>
-										<ArrowUp size={18} />
-										<p>+3</p>
-									</div>
-									<p>concluídos nesse mês</p>
-								</div>
-							</div>
-						</article>
 
-						<article className='card'>
-							<div>
-								<h2>55</h2>
-							</div>
-							<div className='textosCardEstatisticas'>
-								<h3>Entrevistas marcadas</h3>
-								<div className='comparacao'>
-									<div className='destaqueComparacao gap-1'>
-										<CalendarCheck2 size={18} />
-										<p>3</p>
-									</div>
-									<p>marcadas hoje</p>
-								</div>
-							</div>
-						</article>
-					</section>
-
-					<section className='agendaCalendario'>
-						<article className='card'>
-							<h3>Calendário de entrevistas</h3>
-							<MiniCalendarioHome />
-						</article>
 						<article className='card h-min'>
 							<div className='topoAgenda'>
 								<div>
@@ -111,21 +99,76 @@ export default function Home() {
 						</article>
 					</section>
 
-					<section className='graficos flex gap-[4%]'>
-						<article className='card'>
+
+					{/* Seção 2 - Gráfico vagas e kpi*/}
+					<section className='vagasKpi flex gap-[4%]'>
+						<article className='card flex-1 flex flex-col gap-4;'>
 							<h3>Visão Geral de vagas</h3>
 							<GraficoVagas dados={dadosVagasPorSetor} />
 						</article>
 
-						<article className='card'>
-							<h3>Visão geral de candidatos</h3>
-							<GraficoCandidatos
-								emAnalise={85}
-								entrevistaMarcada={55}
-								dispensados={30}
-							/>
+						{/* Kpis */}
+						<div className='estatisticas flex flex-col gap-[6%]'>
+							<article className='card flex items-center justify-center'>
+								<div>
+									<h2>99</h2>
+								</div>
+								<div className='textosCardEstatisticas'>
+									<h3>Vagas abertas</h3>
+									<div className='comparacao'>
+										<div className='destaqueComparacao'>
+											<ArrowUp size={18} />
+											<p>+3</p>
+										</div>
+										<p>vs. mês passado</p>
+									</div>
+								</div>
+							</article>
+
+
+							<article className='card flex items-center justify-center'>
+								<div>
+									<h2>99</h2>
+								</div>
+								<div className='textosCardEstatisticas'>
+									<h3>Processos em andamento</h3>
+									<div className='comparacao'>
+										<div className='destaqueComparacao'>
+											<ArrowUp size={18} />
+											<p>+3</p>
+										</div>
+										<p>concluídos nesse mês</p>
+									</div>
+								</div>
+							</article>
+
+
+							<article className='card flex items-center justify-center'>
+								<div>
+									<h2>55</h2>
+								</div>
+								<div className='textosCardEstatisticas'>
+									<h3>Entrevistas marcadas</h3>
+									<div className='comparacao'>
+										<div className='destaqueComparacao gap-1'>
+											<CalendarCheck2 size={18} />
+											<p>3</p>
+										</div>
+										<p>marcadas hoje</p>
+									</div>
+								</div>
+							</article>
+						</div>
+					</section>
+
+					{/* Seção 3 - Calendário*/}
+					<section className='calendario'>
+						<article className='card flex flex-col'>
+							<h3>Calendário de entrevistas</h3>
+							<MiniCalendarioHome />
 						</article>
 					</section>
+
 
 				</div>
 			</main>

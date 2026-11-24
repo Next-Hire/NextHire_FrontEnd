@@ -35,7 +35,7 @@ export default function MiniCalendarioHome() {
                 className='w-full font-(family-name:--font-jost) text-blue-950 [--cell-size:--spacing(10)] bg-transparent'
                 classNames={{
                     root: 'w-full',
-                    day: 'flex-1 h-10 aspect-auto',
+                    day: 'flex-1 h-12 aspect-auto',
                 }}
                 components={{
                     DayButton: ({ children, modifiers, className, ...props }) => {
@@ -44,7 +44,7 @@ export default function MiniCalendarioHome() {
                         return (
                             <CalendarDayButton
                                 modifiers={modifiers}
-                                className={`relative aspect-auto h-10 w-full ${temEntrevista
+                                className={`relative aspect-auto h-12 w-full ${temEntrevista
                                         ? 'text-blue-950 font-semibold'
                                         : 'text-slate-400 font-normal'
                                     } ${className ?? ''}`}

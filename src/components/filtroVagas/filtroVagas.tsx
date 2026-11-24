@@ -30,7 +30,8 @@ import {
 import './filtro.module.css';
 
 
-export default function FiltroVagas() {
+export default function  FiltroVagas() {
+    
     return (
         <main className='mainFiltroVaga'>
             <div className='flex content-center self-center justify-between w-[94%]'>

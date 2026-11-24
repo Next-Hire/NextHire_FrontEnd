@@ -28,7 +28,7 @@ export interface VagaCadastrada {
     dataFechamento: Date,
     descricao: string,
     empresaId: number
-    IdiomasDesejados: string[],
+    idiomasDesejados: string[],
     remuneracao: number
     tipoVaga: string,
     nivelPrioridade: string,

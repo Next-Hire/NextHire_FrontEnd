@@ -28,10 +28,10 @@ import {
     SelectItem,
 } from '@/components/select/select';
 import './filtro.module.css';
+import { nivelPrioridadeEnum } from '@/@types/nivelPrioridadeEnum';
 
 
 export default function  FiltroVagas() {
-    
     return (
         <main className='mainFiltroVaga'>
             <div className='flex content-center self-center justify-between w-[94%]'>
@@ -66,9 +66,9 @@ export default function  FiltroVagas() {
                         <SelectPortal>
                             <SelectPositioner>
                                 <SelectPopup>
-                                    <SelectItem value='Governança'>Baixa</SelectItem>
-                                    <SelectItem value='TI'>Média</SelectItem>
-                                    <SelectItem value='RH'>Alta</SelectItem>
+                                    <SelectItem value={nivelPrioridadeEnum[0][0]}>Baixa</SelectItem>
+                                    <SelectItem value={nivelPrioridadeEnum[1][0]}>Média</SelectItem>
+                                    <SelectItem value={nivelPrioridadeEnum[2][0]}>Alta</SelectItem>
                                 </SelectPopup>
                             </SelectPositioner>
                         </SelectPortal>

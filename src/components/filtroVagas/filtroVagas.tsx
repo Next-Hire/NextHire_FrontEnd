@@ -33,7 +33,7 @@ import './filtro.module.css';
 export default function FiltroVagas() {
     return (
         <main className='mainFiltroVaga'>
-            <div className='flex content-center self-center justify-between w-[94%]'>
+            <div className='flex items-center content-center self-center justify-between w-[94%]'>
                 <h1 className='tituloFiltroVaga'>Vagas em andamento</h1>
                 <button className='btnAdicionarVaga' onClick={() => window.location.href = '/criar-vaga'}>+ Abrir nova vaga</button>
             </div>

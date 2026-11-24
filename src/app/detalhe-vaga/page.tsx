@@ -6,9 +6,9 @@ export default function DetalheVagaPage() {
     return (
         <main className='flex flex-col justify-center'>
             <Header />
-            <section className='flex flex-col w-[80%] py-5'>
-                <h1 className='tituloDetalhe'>Desenvolvedor Pleno - Back-end(Python/Django)</h1>
-                <div className='flex justify-between w-250 pl-38'>
+            <section className='flex flex-col w-[80%] pl-38 py-5'>
+                <h1 className='titulo'>Desenvolvedor Pleno - Back-end(Python/Django)</h1>
+                <div className='flex justify-between w-210'>
                     <div className='flex'>
                         <p className='font-(family-name:--font-jost) text-base font-semibold pr-2'>Publicação: </p>
                         <p className='font-(family-name:--font-jost) font-bold text-blue-950'>11/11/2026</p>

@@ -9,7 +9,7 @@
 }
 
 .btnAdicionarVaga {
-    @apply bg-blue-950 rounded-md text-white w-40 font-(family-name:--font-instrument-sans) font-semibold shadow-md;
+    @apply flex items-center justify-center bg-blue-950 rounded-md text-white px-6 h-10 font-(family-name:--font-instrument-sans) font-semibold shadow-md cursor-pointer;
 }
 
 .btnAdicionarVaga:hover {

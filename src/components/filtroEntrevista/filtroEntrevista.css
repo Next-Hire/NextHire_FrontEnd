@@ -1,0 +1,30 @@
+@reference "../../app/globals.css";
+
+.sectionEntrevista {
+    @apply flex flex-col items-center justify-center py-8 gap-6;
+}
+
+/* Barra superior estilo FiltroVagas */
+.topoEntrevistaCard {
+    @apply flex flex-col justify-between bg-white rounded-lg w-4/5 p-6 shadow-md gap-5;
+}
+
+.tituloEntrevista {
+    @apply text-4xl font-bold text-blue-950 font-(family-name:--font-instrument-sans) text-shadow-sm;
+}
+
+.btnAgendarEntrevista {
+    @apply flex items-center justify-center gap-2 bg-blue-950 rounded-md text-white px-6 h-10 font-(family-name:--font-instrument-sans) font-semibold shadow-md cursor-pointer;
+}
+
+.btnAgendarEntrevista:hover {
+    @apply motion-safe:animate-pulse;
+}
+
+.btnHoje {
+    @apply flex flex-row mr-4 justify-between items-center w-auto font-(family-name:--font-jost) text-blue-950 font-semibold border-2 rounded-lg px-6 py-1 border-blue-950 text-shadow-sm hover:motion-safe:animate-pulse cursor-pointer;
+}
+
+.btnNavSemana {
+    @apply flex items-center justify-center border-2 border-blue-950 rounded-md h-9 w-9 bg-white text-blue-950 cursor-pointer hover:motion-safe:animate-pulse cursor-pointer;
+}

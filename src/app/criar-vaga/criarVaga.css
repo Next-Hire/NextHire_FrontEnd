@@ -12,9 +12,6 @@
     @apply flex flex-col gap-6 bg-white rounded-lg w-4/5 p-8 pb-12 shadow-md;
 }
 
-.tituloCriarVaga {
-    @apply text-4xl font-bold text-blue-950 font-(family-name:--font-instrument-sans) text-shadow-sm place-self-start px-38 mb-6;
-}
 
 .labelCriarVaga {
     @apply font-(family-name:--font-instrument-sans) text-base font-semibold text-blue-950 mb-1;
@@ -46,20 +43,11 @@
 }
 
 .btnSalvar {
-    @apply bg-blue-950 rounded-md text-white px-16 h-10 font-(family-name:--font-instrument-sans) font-semibold shadow-md;
-}
-
-.btnSalvar:hover {
-    @apply motion-safe:animate-pulse cursor-pointer;
+    @apply bg-blue-950 rounded-md text-white px-16 h-10 font-(family-name:--font-instrument-sans) font-semibold shadow-md hover:motion-safe:animate-pulse cursor-pointer;
 }
 
 .btnRascunho {
-    @apply flex flex-row justify-between items-center w-50 mx-8 font-(family-name:--font-jost) text-blue-950 font-semibold border-2 rounded-lg px-6 py-1 border-blue-950 text-shadow-sm;
-}
-
-.btnRascunho:hover{
-    @apply motion-safe:animate-pulse cursor-pointer;
-
+    @apply flex flex-row justify-between items-center w-50 mx-8 font-(family-name:--font-jost) text-blue-950 font-semibold border-2 rounded-lg px-6 py-1 border-blue-950 text-shadow-sm hover:motion-safe:animate-pulse cursor-pointer;
 }
 
 .tagCompetencia {

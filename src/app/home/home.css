@@ -1,0 +1,83 @@
+@reference "../globals.css";
+
+.containerMain {
+    @apply flex justify-center min-h-[88vh] py-8;
+}
+
+
+.layoutGuide {
+    @apply flex flex-col w-4/5 gap-[3vw] font-(family-name:--font-instrument-sans);
+}
+
+
+.saudacao {
+    @apply flex flex-col p-8 gap-10;
+}
+
+
+.saudacao h1 {
+    @apply text-5xl text-blue-950 font-bold;
+}
+
+
+.saudacao p {
+    @apply text-xl text-blue-950 font-normal;
+}
+
+.textosCardEstatisticas {
+    @apply flex flex-col gap-2 items-center w-50;
+}
+
+
+.comparacao {
+    @apply flex gap-1.5 text-base;
+
+
+    p {
+        @apply font-(family-name:--font-jost);
+    }
+}
+
+
+.destaqueComparacao {
+    @apply flex text-green-600;
+}
+
+
+.calendario {
+    h3 {
+        @apply text-2xl font-semibold text-center text-blue-950;
+    }
+}
+
+
+.graficoCandidatosAgenda {
+    @apply grid grid-cols-[2.1fr_1fr] gap-[4%];
+
+    article {
+        @apply flex-1 flex flex-col gap-4;
+    }
+
+    .topoAgenda {
+        @apply flex gap-2 items-center pl-5;
+    }
+
+    h3 {
+        @apply text-2xl font-semibold text-center text-blue-950;
+    }
+}
+
+.vagasKpi {
+    @apply grid grid-cols-[2.1fr_1fr] gap-[4%];
+
+    h3 {
+        @apply text-2xl font-semibold text-center text-blue-950;
+    }
+
+    .estatisticas {
+        h2 {
+            @apply text-5xl font-normal;
+        }
+    }
+
+}

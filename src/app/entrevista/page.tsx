@@ -233,264 +233,264 @@ export default function EntrevistaPage() {
                     setFiltroTipo={setFiltroTipo}
                 />
                 {/* Corpo principal: Barra Lateral (Mini Calendário + Detalhes da Sala Meet) + Grade Semanal */}
-            <div className='layoutCalendarioMeet'>
-                {/* Coluna Lateral Esquerda */}
-                <aside className='painelLateralMeet'>
-                    {/* Mini Calendário para navegação rápida */}
-                    <div className='cardLateralMeet items-center'>
-                        <Calendar
-                            mode='single'
-                            selected={dataBase}
-                            onSelect={(novaData) =>
-                                novaData && setDataBase(novaData)
-                            }
-                            locale={ptBR}
-                            modifiers={{
-                                comEntrevista: datasComEntrevista,
-                            }}
-                            className='w-full font-(family-name:--font-jost) text-blue-950 [--cell-size:--spacing(8)] bg-transparent'
-                            classNames={{
-                                root: 'w-full',
-                                day: 'flex-1 h-9 aspect-auto',
-                            }}
-                            components={{
-                                DayButton: ({
-                                    children,
-                                    modifiers,
-                                    className,
-                                    ...props
-                                }) => {
-                                    const temEntrevista =
-                                        modifiers.comEntrevista;
-                                    return (
-                                        <CalendarDayButton
-                                            modifiers={modifiers}
-                                            className={`relative aspect-auto h-9 w-full ${temEntrevista
-                                                ? 'text-blue-950 font-semibold'
-                                                : 'text-slate-400 font-normal'
-                                                } ${className ?? ''}`}
-                                            {...props}
-                                        >
-                                            {children}
-                                            {temEntrevista && (
-                                                <span className='absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-green-500' />
-                                            )}
-                                        </CalendarDayButton>
-                                    );
-                                },
-                            }}
-                        />
-                    </div>
-
-                    {/* Painel de Detalhes da Sala Google Meet (abre ao clicar em uma entrevista na grade) */}
-                    {entrevistaSelecionada && (
-                        <div className='cardLateralMeet border-t-4 border-blue-950'>
-                            
-
-                            <div className='flex items-center gap-3'>
-                               
-                                <div>
-                                    <h3 className='text-xl font-bold text-blue-950 font-(family-name:--font-instrument-sans) leading-tight'>
-                                        {entrevistaSelecionada.candidato}
-                                    </h3>
-                                    <p className='text-base text-blue-950/70 font-(family-name:--font-jost) font-medium'>
-                                        Candidato(a) selecionado(a)
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className='flex flex-col gap-2.5 text-base font-(family-name:--font-jost) text-black p-3 rounded-md border shadow-sm'>
-                                <div className='flex items-center gap-2'>
-                                    <Briefcase className='w-4 h-4 text-blue-950' />
-                                    <span className='font-medium line-clamp-1'>
-                                        {entrevistaSelecionada.vaga}
-                                    </span>
-                                </div>
-                                <div className='flex items-center gap-2'>
-                                    <Clock className='w-4 h-4 text-blue-950' />
-                                    <span >
-                                        {format(
-                                            addDays(
-                                                inicioSemana,
-                                                entrevistaSelecionada.diaOffset
-                                            ),
-                                            "EEEE, dd 'de' MMMM",
-                                            { locale: ptBR }
-                                        )}{' '}
-                                        •{' '}
-                                        <strong className='font-medium text-blue-950'>
-                                            {
-                                                entrevistaSelecionada.horarioInicio
-                                            }{' '}
-                                            -{' '}
-                                            {
-                                                entrevistaSelecionada.horarioFim
-                                            }
-                                        </strong>
-                                    </span>
-                                </div>
-                                <div className='flex items-center gap-2'>
-                                    <User className='w-4 h-4 text-blue-950' />
-                                    <span>
-                                        Avaliador:{' '}
-                                        <strong className='font-medium text-blue-950'>
-                                            {
-                                                entrevistaSelecionada.avaliador
-                                            }
-                                        </strong>
-                                    </span>
-                                </div>
-                            </div>
-
-                            {/* Ações da Sala de Videochamada (Estilo Google Meet) */}
-                            <div className='flex flex-col gap-2 pt-1'>
-                                <button
-                                    type='button'
-                                    className='btnEntrarMeet'
-                                >
-                                    <Video className='w-5 h-5' />
-                                    Entrar na sala de entrevista
-                                </button>
-
-                                <button
-                                    type='button'
-                                    onClick={() =>
-                                        copiarLinkMeet(
-                                            entrevistaSelecionada.linkMeet
-                                        )
-                                    }
-                                    className='btnCopiarLink'
-                                >
-                                    {copiado ? (
-                                        <>
-                                            <Check className='w-4 h-4 text-blue-950' />
-                                            <span className='text-blue-950'>
-                                                Link da sala copiado!
-                                            </span>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Copy className='w-4 h-4' />
-                                            <span className='text-xs'>
-                                                {
-                                                    entrevistaSelecionada.linkMeet
-                                                }
-                                            </span>
-                                        </>
-                                    )}
-                                </button>
-                            </div>
-                        </div>
-                    )}
-                </aside>
-
-                {/* Grade Principal de Horários da Semana (Seg a Sex) */}
-                <div className='gradeSemanaCard'>
-                    {/* Cabeçalho dos dias da semana */}
-                    <div className='cabecalhoGradeSemana'>
-                        <div className='flex items-center justify-center'>
-                        </div>
-                        {diasSemana.map((dia) => {
-                            const ehHoje = isSameDay(dia, hoje);
-                            const ehSelecionado = isSameDay(dia, dataBase);
-                            return (
-                                <div
-                                    key={dia.toISOString()}
-                                    onClick={() => setDataBase(dia)}
-                                    className='celulaDiaCabecalho cursor-pointer hover:bg-blue-100/40 transition-colors'
-                                >
-                                    <span className='text-sm font-semibold uppercase tracking-wider text-blue-950'>
-                                        {format(dia, 'EEE', {
-                                            locale: ptBR,
-                                        })}
-                                    </span>
-                                    <span
-                                        className={`numeroDiaCabecalho ${ehHoje || ehSelecionado
-                                            ? 'numeroDiaAtivo'
-                                            : ''
-                                            }`}
-                                    >
-                                        {format(dia, 'dd')}
-                                    </span>
-                                </div>
-                            );
-                        })}
-                    </div>
-
-                    {/* Linhas de horários (08:00 às 17:00) */}
-                    <div className='corpoGradeHorarios'>
-                        {HORARIOS_GRADE.map((horario) => (
-                            <div key={horario} className='linhaHorario'>
-                                {/* Rótulo da hora */}
-                                <div className='colunaHoraLabel'>
-                                    {horario}
-                                </div>
-
-                                {/* Slots de Segunda a Sexta para aquele horário */}
-                                {diasSemana.map((dia, diaIdx) => {
-                                    const horaLinha = horario.split(':')[0];
-                                    const evento =
-                                        entrevistasFiltradas.find(
-                                            (ev) =>
-                                                ev.diaOffset === diaIdx &&
-                                                ev.horarioInicio.split(':')[0] === horaLinha
+                <div className='layoutCalendarioMeet'>
+                    {/* Coluna Lateral Esquerda */}
+                    <aside className='painelLateralMeet'>
+                        {/* Mini Calendário para navegação rápida */}
+                        <div className='cardLateralMeet items-center'>
+                            <Calendar
+                                mode='single'
+                                selected={dataBase}
+                                onSelect={(novaData) =>
+                                    novaData && setDataBase(novaData)
+                                }
+                                locale={ptBR}
+                                modifiers={{
+                                    comEntrevista: datasComEntrevista,
+                                }}
+                                className='w-full font-(family-name:--font-jost) text-blue-950 [--cell-size:--spacing(8)] bg-transparent'
+                                classNames={{
+                                    root: 'w-full',
+                                    day: 'flex-1 h-9 aspect-auto',
+                                }}
+                                components={{
+                                    DayButton: ({
+                                        children,
+                                        modifiers,
+                                        className,
+                                        ...props
+                                    }) => {
+                                        const temEntrevista =
+                                            modifiers.comEntrevista;
+                                        return (
+                                            <CalendarDayButton
+                                                modifiers={modifiers}
+                                                className={`relative aspect-auto h-9 w-full ${temEntrevista
+                                                    ? 'text-blue-950 font-semibold'
+                                                    : 'text-slate-400 font-normal'
+                                                    } ${className ?? ''}`}
+                                                {...props}
+                                            >
+                                                {children}
+                                                {temEntrevista && (
+                                                    <span className='absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-green-500' />
+                                                )}
+                                            </CalendarDayButton>
                                         );
+                                    },
+                                }}
+                            />
+                        </div>
 
-                                    return (
-                                        <div
-                                            key={`${dia.toISOString()}-${horario}`}
-                                            className='celulaSlotHorario'
-                                        >
-                                            {evento && (
-                                                <button
-                                                    type='button'
-                                                    style={calcularEstiloDuracao(
-                                                        evento.horarioInicio,
-                                                        evento.horarioFim
-                                                    )}
-                                                    onClick={() =>
-                                                        setEntrevistaSelecionada(
-                                                            evento
-                                                        )
+                        {/* Painel de Detalhes da Sala Google Meet (abre ao clicar em uma entrevista na grade) */}
+                        {entrevistaSelecionada && (
+                            <div className='cardLateralMeet border-t-4 border-blue-950'>
+
+
+                                <div className='flex items-center gap-3'>
+
+                                    <div>
+                                        <h3 className='text-xl font-bold text-blue-950 font-(family-name:--font-instrument-sans) leading-tight'>
+                                            {entrevistaSelecionada.candidato}
+                                        </h3>
+                                        <p className='text-base text-blue-950/70 font-(family-name:--font-jost) font-medium'>
+                                            Candidato(a) selecionado(a)
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className='flex flex-col gap-2.5 text-base font-(family-name:--font-jost) text-black p-3 rounded-md border shadow-sm'>
+                                    <div className='flex items-center gap-2'>
+                                        <Briefcase className='w-4 h-4 text-blue-950' />
+                                        <span className='font-medium line-clamp-1'>
+                                            {entrevistaSelecionada.vaga}
+                                        </span>
+                                    </div>
+                                    <div className='flex items-center gap-2'>
+                                        <Clock className='w-4 h-4 text-blue-950' />
+                                        <span >
+                                            {format(
+                                                addDays(
+                                                    inicioSemana,
+                                                    entrevistaSelecionada.diaOffset
+                                                ),
+                                                "EEEE, dd 'de' MMMM",
+                                                { locale: ptBR }
+                                            )}{' '}
+                                            •{' '}
+                                            <strong className='font-medium text-blue-950'>
+                                                {
+                                                    entrevistaSelecionada.horarioInicio
+                                                }{' '}
+                                                -{' '}
+                                                {
+                                                    entrevistaSelecionada.horarioFim
+                                                }
+                                            </strong>
+                                        </span>
+                                    </div>
+                                    <div className='flex items-center gap-2'>
+                                        <User className='w-4 h-4 text-blue-950' />
+                                        <span>
+                                            Avaliador:{' '}
+                                            <strong className='font-medium text-blue-950'>
+                                                {
+                                                    entrevistaSelecionada.avaliador
+                                                }
+                                            </strong>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Ações da Sala de Videochamada (Estilo Google Meet) */}
+                                <div className='flex flex-col gap-2 pt-1'>
+                                    <button
+                                        type='button'
+                                        className='botaoEscuro'
+                                    >
+                                        <Video className='w-5 h-5' />
+                                        Ingressar na chamada
+                                    </button>
+
+                                    <button
+                                        type='button'
+                                        onClick={() =>
+                                            copiarLinkMeet(
+                                                entrevistaSelecionada.linkMeet
+                                            )
+                                        }
+                                        className='botaoClaro'
+                                    >
+                                        {copiado ? (
+                                            <>
+                                                <Check className='w-4 h-4 text-blue-950' />
+                                                <span className='text-blue-950'>
+                                                    Link da sala copiado!
+                                                </span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Copy className='w-4 h-4' />
+                                                <span className='text-xs'>
+                                                    {
+                                                        entrevistaSelecionada.linkMeet
                                                     }
-                                                    className={`cardEventoGrade ${ESTILO_TIPO[
-                                                        evento.tipo
-                                                    ].classe
-                                                        } ${entrevistaSelecionada?.id ===
-                                                            evento.id
-                                                            ? 'ring-2 ring-blue-950 ring-offset-1 z-20'
-                                                            : ''
-                                                        }`}
-                                                >
-                                                    <div className='flex items-center justify-between gap-1'>
-                                                        <span className='text-xs font-semibold'>
-                                                            {
-                                                                evento.horarioInicio
-                                                            }{' '}
-                                                            -{' '}
-                                                            {
-                                                                evento.horarioFim
-                                                            }
-                                                        </span>
-                                                        <Video className='w-3.5 h-3.5 shrink-0 opacity-85' />
-                                                    </div>
-                                                    <p className='font-semibold text-sm leading-tight truncate mt-0.5'>
-                                                        {evento.candidato}
-                                                    </p>
-                                                    <p className='text-sm opacity-85 truncate'>
-                                                        {evento.vaga}
-                                                    </p>
-                                                </button>
-                                            )}
-                                        </div>
-                                    );
-                                })}
+                                                </span>
+                                            </>
+                                        )}
+                                    </button>
+                                </div>
                             </div>
-                        ))}
+                        )}
+                    </aside>
+
+                    {/* Grade Principal de Horários da Semana (Seg a Sex) */}
+                    <div className='gradeSemanaCard'>
+                        {/* Cabeçalho dos dias da semana */}
+                        <div className='cabecalhoGradeSemana'>
+                            <div className='flex items-center justify-center'>
+                            </div>
+                            {diasSemana.map((dia) => {
+                                const ehHoje = isSameDay(dia, hoje);
+                                const ehSelecionado = isSameDay(dia, dataBase);
+                                return (
+                                    <div
+                                        key={dia.toISOString()}
+                                        onClick={() => setDataBase(dia)}
+                                        className='celulaDiaCabecalho cursor-pointer hover:bg-blue-100/40 transition-colors'
+                                    >
+                                        <span className='text-sm font-semibold uppercase tracking-wider text-blue-950'>
+                                            {format(dia, 'EEE', {
+                                                locale: ptBR,
+                                            })}
+                                        </span>
+                                        <span
+                                            className={`numeroDiaCabecalho ${ehHoje || ehSelecionado
+                                                ? 'numeroDiaAtivo'
+                                                : ''
+                                                }`}
+                                        >
+                                            {format(dia, 'dd')}
+                                        </span>
+                                    </div>
+                                );
+                            })}
+                        </div>
+
+                        {/* Linhas de horários (08:00 às 17:00) */}
+                        <div className='corpoGradeHorarios'>
+                            {HORARIOS_GRADE.map((horario) => (
+                                <div key={horario} className='linhaHorario'>
+                                    {/* Rótulo da hora */}
+                                    <div className='colunaHoraLabel'>
+                                        {horario}
+                                    </div>
+
+                                    {/* Slots de Segunda a Sexta para aquele horário */}
+                                    {diasSemana.map((dia, diaIdx) => {
+                                        const horaLinha = horario.split(':')[0];
+                                        const evento =
+                                            entrevistasFiltradas.find(
+                                                (ev) =>
+                                                    ev.diaOffset === diaIdx &&
+                                                    ev.horarioInicio.split(':')[0] === horaLinha
+                                            );
+
+                                        return (
+                                            <div
+                                                key={`${dia.toISOString()}-${horario}`}
+                                                className='celulaSlotHorario'
+                                            >
+                                                {evento && (
+                                                    <button
+                                                        type='button'
+                                                        style={calcularEstiloDuracao(
+                                                            evento.horarioInicio,
+                                                            evento.horarioFim
+                                                        )}
+                                                        onClick={() =>
+                                                            setEntrevistaSelecionada(
+                                                                evento
+                                                            )
+                                                        }
+                                                        className={`cardEventoGrade ${ESTILO_TIPO[
+                                                            evento.tipo
+                                                        ].classe
+                                                            } ${entrevistaSelecionada?.id ===
+                                                                evento.id
+                                                                ? 'ring-2 ring-blue-950 ring-offset-1 z-20'
+                                                                : ''
+                                                            }`}
+                                                    >
+                                                        <div className='flex items-center justify-between gap-1'>
+                                                            <span className='text-xs font-semibold'>
+                                                                {
+                                                                    evento.horarioInicio
+                                                                }{' '}
+                                                                -{' '}
+                                                                {
+                                                                    evento.horarioFim
+                                                                }
+                                                            </span>
+                                                            <Video className='w-3.5 h-3.5 shrink-0 opacity-85' />
+                                                        </div>
+                                                        <p className='font-semibold text-sm leading-tight truncate mt-0.5'>
+                                                            {evento.candidato}
+                                                        </p>
+                                                        <p className='text-sm opacity-85 truncate'>
+                                                            {evento.vaga}
+                                                        </p>
+                                                    </button>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
         </main >
     );
 }

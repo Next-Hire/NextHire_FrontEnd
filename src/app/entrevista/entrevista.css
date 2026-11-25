@@ -65,12 +65,3 @@
 .eventoGestor {
     @apply bg-blue-950 text-blue-100 border-l-4 border-blue-100;
 }
-
-/* Botão estilo Google Meet para entrar na chamada */
-.btnEntrarMeet {
-    @apply flex items-center justify-center gap-2 bg-blue-950 text-white rounded-md h-10 px-4 font-(family-name:--font-instrument-sans) font-semibold shadow-md hover:motion-safe:animate-pulse cursor-pointer;
-}
-
-.btnCopiarLink {
-    @apply flex items-center justify-center gap-2 border-2 border-blue-950 text-blue-950 rounded-md h-10 px-4 font-(family-name:--font-jost) font-semibold hover:motion-safe:animate-pulse cursor-pointer;
-}

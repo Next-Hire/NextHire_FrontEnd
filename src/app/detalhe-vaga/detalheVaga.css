@@ -4,12 +4,3 @@
 .tituloDetalhe {
     @apply text-4xl font-bold text-blue-950 font-(family-name:--font-instrument-sans) text-shadow-sm place-self-start my-6;
 }
-
-.btnEditar {
-    @apply flex flex-row justify-between items-center w-44 mx-8 font-(family-name:--font-jost) text-blue-950 font-semibold border-2 rounded-lg px-6 py-1 border-blue-950 text-shadow-sm hover:motion-safe:animate-pulse cursor-pointer;
-}
-
-.btnBaixar {
-    @apply bg-blue-950 rounded-md text-white px-16 h-10 font-(family-name:--font-instrument-sans) font-semibold shadow-md hover:motion-safe:animate-pulse cursor-pointer;
-
-}

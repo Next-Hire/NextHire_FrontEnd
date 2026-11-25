@@ -14,6 +14,7 @@ import {
     SelectPopup,
     SelectItem,
 } from '@/components/select/select';
+import CriarEntrevista from '../criarEntrevista/criarEntrevista';
 
 interface FiltroEntrevistaProps {
     dataBase?: Date;
@@ -40,10 +41,7 @@ export default function FiltroEntrevista({
                     <h1 className='tituloEntrevista'>Entrevistas</h1>
                 </div>
 
-                <button type='button' className='btnAgendarEntrevista'>
-                    <Plus className='w-5 h-5' />
-                    Agendar nova entrevista
-                </button>
+                <CriarEntrevista />
             </div>
 
             <div className='flex flex-wrap items-center justify-between gap-4 pt-2'>
@@ -51,13 +49,13 @@ export default function FiltroEntrevista({
                 <div className='flex items-center gap-4'>
 
 
-                    <div className='flex items-center gap-2'>
+                    <div className='flex items-center gap-4'>
                         <button
                             type='button'
                             onClick={() =>
                                 atualizarData(subWeeks(dataBase, 1))
                             }
-                            className='btnNavSemana'
+                            className='botaoClaro'
                             aria-label='Semana anterior'
                         >
                             <ChevronLeft className='w-5 h-5' />
@@ -65,7 +63,7 @@ export default function FiltroEntrevista({
                         <button
                             type='button'
                             onClick={() => atualizarData(hoje)}
-                            className='btnHoje'
+                            className='botaoClaro'
                         >
                             Hoje
                         </button>
@@ -74,7 +72,7 @@ export default function FiltroEntrevista({
                             onClick={() =>
                                 atualizarData(addWeeks(dataBase, 1))
                             }
-                            className='btnNavSemana'
+                            className='botaoClaro'
                             aria-label='Próxima semana'
                         >
                             <ChevronRight className='w-5 h-5' />

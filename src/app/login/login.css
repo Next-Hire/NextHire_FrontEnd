@@ -20,14 +20,6 @@
     @apply font-semibold text-blue-950 font-(family-name:--font-jost) text-xl;
 }
 
-.inputLogin {
-    @apply border-2 border-blue-950 rounded-md h-20 w-100 bg-white px-4;
-}
-
-.inputLogin::placeholder {
-    @apply text-blue-950/50 font-(family-name:--font-jost) m-10;
-}
-
 .botaoLogin {
     @apply bg-blue-950 text-white h-12 w-100 rounded-md text-2xl font-medium font-display;
 }

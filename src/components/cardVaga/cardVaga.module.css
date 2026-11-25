@@ -32,7 +32,3 @@
 .linkCardVagaAberto {
     @apply flex flex-row justify-between items-center w-44 underline text-shadow-sm;
 }
-
-.btnCardVagaAberto {
-    @apply bg-blue-950 rounded-md text-white w-64 p-2 font-(family-name:--font-instrument-sans) font-semibold shadow-md;
-}

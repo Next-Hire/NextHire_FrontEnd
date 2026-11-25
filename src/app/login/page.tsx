@@ -47,12 +47,12 @@ export default function LoginPage() {
         <form className='formularioLogin'>
           <div className='flex flex-col justify-between h-18'>
             <label className='labelLogin' htmlFor='email'>Email:</label>
-            <input className='inputLogin' type='email' id='email' name='email' placeholder='emailfuncionario@vortex.com' />
+            <input className='input' type='email' id='email' name='email' placeholder='emailfuncionario@vortex.com' />
           </div>
 
           <div className='flex flex-col justify-between h-18'>
             <label className='labelLogin' htmlFor='senha'>Senha:</label>
-            <input className='inputLogin' type='password' id='senha' name='senha' placeholder='Digite a senha' />
+            <input className='input' type='password' id='senha' name='senha' placeholder='Digite a senha' />
           </div>
 
           <div className='flex flex-col gap-3 mt-5'>

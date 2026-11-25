@@ -57,12 +57,35 @@ const HORARIOS_GRADE = [
     '09:00',
     '10:00',
     '11:00',
+    '12:00',
     '13:00',
     '14:00',
     '15:00',
     '16:00',
     '17:00',
 ];
+
+// Converte "HH:mm" para total de minutos desde 00:00
+function paraMinutos(horario: string): number {
+    const [horas, minutos] = horario.split(':').map(Number);
+    return horas * 60 + (minutos || 0);
+}
+
+// Calcula posição vertical (top) e altura (height) proporcional à linha de 1 hora (60 min = 100%)
+function calcularEstiloDuracao(horarioInicio: string, horarioFim: string) {
+    const inicioMin = paraMinutos(horarioInicio);
+    const fimMin = paraMinutos(horarioFim);
+    const duracaoMin = Math.max(30, fimMin - inicioMin); // Mínimo visual de 30 min
+    const offsetMinutosNaHora = inicioMin % 60;
+
+    const topPercent = (offsetMinutosNaHora / 60) * 100;
+    const heightPercent = (duracaoMin / 60) * 100;
+
+    return {
+        top: `calc(${topPercent}% + 2px)`,
+        height: `calc(${heightPercent}% - 4px)`,
+    };
+}
 
 const ENTREVISTAS_MOCK: EntrevistaEvento[] = [
     {
@@ -73,7 +96,7 @@ const ENTREVISTAS_MOCK: EntrevistaEvento[] = [
         avaliador: 'Mariana Souza (Tech Lead)',
         diaOffset: 0,
         horarioInicio: '09:00',
-        horarioFim: '10:00',
+        horarioFim: '10:30',
         tipo: 'gestor',
         linkMeet: 'meet.nexthire.com/js-fullstack-sr',
     },
@@ -97,7 +120,7 @@ const ENTREVISTAS_MOCK: EntrevistaEvento[] = [
         avaliador: 'Mariana Souza (Tech Lead)',
         diaOffset: 1,
         horarioInicio: '10:00',
-        horarioFim: '11:00',
+        horarioFim: '11:30',
         tipo: 'gestor',
         linkMeet: 'meet.nexthire.com/lm-python-pleno',
     },
@@ -276,16 +299,16 @@ export default function EntrevistaPage() {
                                 </div>
                             </div>
 
-                            <div className='flex flex-col gap-2.5 text-base font-(family-name:--font-jost) text-black bg-blue-50/50 p-3 rounded-md border border-blue-950/10'>
+                            <div className='flex flex-col gap-2.5 text-base font-(family-name:--font-jost) text-black p-3 rounded-md border shadow-sm'>
                                 <div className='flex items-center gap-2'>
-                                    <Briefcase className='w-4 h-4 text-blue-950 shrink-0' />
-                                    <span className='font-semibold line-clamp-1'>
+                                    <Briefcase className='w-4 h-4 text-blue-950' />
+                                    <span className='font-medium line-clamp-1'>
                                         {entrevistaSelecionada.vaga}
                                     </span>
                                 </div>
                                 <div className='flex items-center gap-2'>
-                                    <Clock className='w-4 h-4 text-blue-950 shrink-0' />
-                                    <span>
+                                    <Clock className='w-4 h-4 text-blue-950' />
+                                    <span >
                                         {format(
                                             addDays(
                                                 inicioSemana,
@@ -295,7 +318,7 @@ export default function EntrevistaPage() {
                                             { locale: ptBR }
                                         )}{' '}
                                         •{' '}
-                                        <strong>
+                                        <strong className='font-medium text-blue-950'>
                                             {
                                                 entrevistaSelecionada.horarioInicio
                                             }{' '}
@@ -310,7 +333,7 @@ export default function EntrevistaPage() {
                                     <User className='w-4 h-4 text-blue-950' />
                                     <span>
                                         Avaliador:{' '}
-                                        <strong>
+                                        <strong className='font-medium text-blue-950'>
                                             {
                                                 entrevistaSelecionada.avaliador
                                             }
@@ -340,15 +363,15 @@ export default function EntrevistaPage() {
                                 >
                                     {copiado ? (
                                         <>
-                                            <Check className='w-4 h-4 text-green-700' />
-                                            <span className='text-green-800'>
+                                            <Check className='w-4 h-4 text-blue-950' />
+                                            <span className='text-blue-950'>
                                                 Link da sala copiado!
                                             </span>
                                         </>
                                     ) : (
                                         <>
                                             <Copy className='w-4 h-4' />
-                                            <span className='truncate text-xs'>
+                                            <span className='text-xs'>
                                                 {
                                                     entrevistaSelecionada.linkMeet
                                                 }
@@ -365,8 +388,7 @@ export default function EntrevistaPage() {
                 <div className='gradeSemanaCard'>
                     {/* Cabeçalho dos dias da semana */}
                     <div className='cabecalhoGradeSemana'>
-                        <div className='flex items-center justify-center text-xs font-bold text-blue-950/60 font-(family-name:--font-jost)'>
-                            GMT-3
+                        <div className='flex items-center justify-center'>
                         </div>
                         {diasSemana.map((dia) => {
                             const ehHoje = isSameDay(dia, hoje);
@@ -377,7 +399,7 @@ export default function EntrevistaPage() {
                                     onClick={() => setDataBase(dia)}
                                     className='celulaDiaCabecalho cursor-pointer hover:bg-blue-100/40 transition-colors'
                                 >
-                                    <span className='text-xs font-bold uppercase tracking-wider text-blue-950/70'>
+                                    <span className='text-sm font-semibold uppercase tracking-wider text-blue-950'>
                                         {format(dia, 'EEE', {
                                             locale: ptBR,
                                         })}
@@ -406,11 +428,12 @@ export default function EntrevistaPage() {
 
                                 {/* Slots de Segunda a Sexta para aquele horário */}
                                 {diasSemana.map((dia, diaIdx) => {
+                                    const horaLinha = horario.split(':')[0];
                                     const evento =
                                         entrevistasFiltradas.find(
                                             (ev) =>
                                                 ev.diaOffset === diaIdx &&
-                                                ev.horarioInicio === horario
+                                                ev.horarioInicio.split(':')[0] === horaLinha
                                         );
 
                                     return (
@@ -421,6 +444,10 @@ export default function EntrevistaPage() {
                                             {evento && (
                                                 <button
                                                     type='button'
+                                                    style={calcularEstiloDuracao(
+                                                        evento.horarioInicio,
+                                                        evento.horarioFim
+                                                    )}
                                                     onClick={() =>
                                                         setEntrevistaSelecionada(
                                                             evento
@@ -431,12 +458,12 @@ export default function EntrevistaPage() {
                                                     ].classe
                                                         } ${entrevistaSelecionada?.id ===
                                                             evento.id
-                                                            ? 'ring-2 ring-blue-950 ring-offset-1'
+                                                            ? 'ring-2 ring-blue-950 ring-offset-1 z-20'
                                                             : ''
                                                         }`}
                                                 >
                                                     <div className='flex items-center justify-between gap-1'>
-                                                        <span className='text-xs font-bold'>
+                                                        <span className='text-xs font-semibold'>
                                                             {
                                                                 evento.horarioInicio
                                                             }{' '}
@@ -447,10 +474,10 @@ export default function EntrevistaPage() {
                                                         </span>
                                                         <Video className='w-3.5 h-3.5 shrink-0 opacity-85' />
                                                     </div>
-                                                    <p className='font-bold text-sm leading-tight truncate mt-0.5'>
+                                                    <p className='font-semibold text-sm leading-tight truncate mt-0.5'>
                                                         {evento.candidato}
                                                     </p>
-                                                    <p className='text-xs opacity-85 truncate'>
+                                                    <p className='text-sm opacity-85 truncate'>
                                                         {evento.vaga}
                                                     </p>
                                                 </button>

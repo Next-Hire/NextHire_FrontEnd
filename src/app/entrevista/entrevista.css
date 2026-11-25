@@ -42,7 +42,7 @@
 }
 
 .linhaHorario {
-    @apply grid grid-cols-[72px_1fr_1fr_1fr_1fr_1fr] min-h-22;
+    @apply grid grid-cols-[72px_1fr_1fr_1fr_1fr_1fr] h-22;
 }
 
 .colunaHoraLabel {
@@ -50,12 +50,12 @@
 }
 
 .celulaSlotHorario {
-    @apply relative border-l border-blue-950/10 p-1.5 transition-colors hover:bg-blue-50/30;
+    @apply relative border-l border-blue-950/10 transition-colors hover:bg-blue-50/30 overflow-visible;
 }
 
-/* Card de evento dentro da grade do calendário */
+/* Card de evento posicionado de forma absoluta para manter largura padrão e crescer verticalmente conforme a duração */
 .cardEventoGrade {
-    @apply flex flex-col justify-between w-full h-full rounded-md p-2 text-left cursor-pointer shadow-sm transition-transform hover:scale-[1.01] font-(family-name:--font-jost);
+    @apply absolute left-1.5 right-1.5 z-10 flex flex-col justify-start overflow-hidden rounded-md p-2 text-left cursor-pointer shadow-md transition-transform font-(family-name:--font-jost);
 }
 
 .eventoTriagem {
@@ -63,14 +63,14 @@
 }
 
 .eventoGestor {
-    @apply bg-green-100 text-green-950 border-l-4 border-green-700;
+    @apply bg-blue-950 text-blue-100 border-l-4 border-blue-100;
 }
 
 /* Botão estilo Google Meet para entrar na chamada */
 .btnEntrarMeet {
-    @apply flex items-center justify-center gap-2 bg-blue-950 text-white rounded-md h-10 px-4 font-(family-name:--font-instrument-sans) font-semibold shadow-md cursor-pointer hover:bg-blue-900 transition-colors;
+    @apply flex items-center justify-center gap-2 bg-blue-950 text-white rounded-md h-10 px-4 font-(family-name:--font-instrument-sans) font-semibold shadow-md hover:motion-safe:animate-pulse cursor-pointer;
 }
 
 .btnCopiarLink {
-    @apply flex items-center justify-center gap-2 border-2 border-blue-950 text-blue-950 rounded-md h-10 px-4 font-(family-name:--font-jost) font-semibold cursor-pointer hover:bg-blue-50 transition-colors;
+    @apply flex items-center justify-center gap-2 border-2 border-blue-950 text-blue-950 rounded-md h-10 px-4 font-(family-name:--font-jost) font-semibold hover:motion-safe:animate-pulse cursor-pointer;
 }

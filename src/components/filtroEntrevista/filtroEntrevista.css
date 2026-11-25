@@ -22,7 +22,7 @@
 }
 
 .btnHoje {
-    @apply flex flex-row mr-4 justify-between items-center w-auto font-(family-name:--font-jost) text-blue-950 font-semibold border-2 rounded-lg px-6 py-1 border-blue-950 text-shadow-sm hover:motion-safe:animate-pulse cursor-pointer;
+    @apply flex flex-row justify-between items-center w-auto font-(family-name:--font-jost) text-blue-950 font-semibold border-2 rounded-lg px-6 py-1 border-blue-950 text-shadow-sm hover:motion-safe:animate-pulse cursor-pointer;
 }
 
 .btnNavSemana {

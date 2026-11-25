@@ -25,7 +25,7 @@ const chartConfig = {
     color: "#1e3a8a", 
   },
   entrevista: {
-    label: "Entrevista marcada",
+    label: "Home marcada",
     color: "#2563eb", 
   },
   dispensados: {

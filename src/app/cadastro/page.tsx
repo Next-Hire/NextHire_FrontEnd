@@ -1,3 +1,4 @@
+'use client';
 import GhostFibers from '@/components/ghostfibers/GhostFibers';
 import './cadastro.css';
 
@@ -64,7 +65,7 @@ export default function CadastroPage() {
           </div>
           <div className='flex flex-col gap-3 mt-5'>
             <button className='botaoCadastro' type='submit'>Cadastrar</button>
-            <a className='linkAdministrador' href='/login'>Entrar no sistema como administrador</a>
+            <a href='/home' className='linkAdministrador'>Entrar no sistema como administrador</a>
           </div>
         </form>
       </section>

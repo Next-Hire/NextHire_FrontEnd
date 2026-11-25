@@ -54,7 +54,7 @@ export default function MiniCalendarioHome() {
                                 {temEntrevista && (
                                     <span
                                         className='absolute top-1 right-1 w-2 h-2 rounded-full bg-green-500'
-                                        aria-label='Entrevista marcada'
+                                        aria-label='Home marcada'
                                     />
                                 )}
                             </CalendarDayButton>

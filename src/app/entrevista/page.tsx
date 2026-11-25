@@ -157,7 +157,7 @@ const ESTILO_TIPO: Record<
 > = {
     gestor: {
         classe: 'eventoGestor',
-        label: 'Entrevista com Gestor',
+        label: 'Home com Gestor',
         badgeCor: 'bg-blue-950 text-white',
     },
     triagem: {

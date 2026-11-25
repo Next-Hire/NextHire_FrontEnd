@@ -1,20 +1,42 @@
 import { curriculoVagaRecebido } from "@/@types/curriculoVaga";
 import { VagaRecebida } from "@/@types/vaga";
 import { curriculoVagaService } from "@/service/curriculoVagaService";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export function useCurriculoVaga() { 
+export function useCurriculoVaga() {
     const [curriculoVaga, setCurriculoVaga] = useState<curriculoVagaRecebido[]>([]);
     const [vagasPorCandidato, setVagasPorCandidato] = useState<VagaRecebida[]>([]);
     const [erro, setErro] = useState<string | null>("");
-    const [carregandoCurriculoVaga, setCarregandoCurriculoVaga] = useState(false);
-    const [carregandoVaga, setCarregandoVaga] = useState(false);
+    const [carregando, setCarregado] = useState(false);
     const [totalVagas, setTotalVagas] = useState(0);
     const [totalCandidatos, setTotalCandidatos] = useState(0);
 
-    async function carregarCuriculosPorVagaId(vagaId: number) {
+    async function listarCandidaturasPorEmpresa(empresaId: number) {
         try {
-            setCarregandoCurriculoVaga(true);
+            setCarregado(true);
+            setErro(null)
+            const response = await curriculoVagaService.listarCandidaturasPorEmpresaID(empresaId);
+
+            if (!Array.isArray(response))
+                setCurriculoVaga([])
+
+            //? Atribuindo ao state do curriculos por vaga
+            //? os dados pegos do backend
+            setCurriculoVaga(response)
+            setTotalCandidatos(response.length);
+
+        } catch (error: any) {
+            setCarregado(false);
+            setErro(error);
+            console.log("Erro ao carregar os curriculos da vaga", error);
+        } finally {
+            setCarregado(false);
+        }
+    };
+
+    async function listarCuriculosPorVagaId(vagaId: number) {
+        try {
+            setCarregado(true);
             setErro(null)
             const response = await curriculoVagaService.listarCandidatosPorVagaId(vagaId);
 
@@ -27,17 +49,17 @@ export function useCurriculoVaga() {
             setTotalCandidatos(response.length);
 
         } catch (error: any) {
-            setCarregandoCurriculoVaga(false);
+            setCarregado(false);
             setErro(error);
             console.log("Erro ao carregar os curriculos da vaga", error);
         } finally {
-            setCarregandoCurriculoVaga(false);
+            setCarregado(false);
         }
-    }
+    };
 
-    async function listarVagasPorCandidatoId(candidatoId: number){
+    async function listarVagasPorCandidatoId(candidatoId: number) {
         try {
-            setCarregandoVaga(true);
+            setCarregado(true);
             setErro(null)
             const response = await curriculoVagaService.listarVagasPorCandidatoId(candidatoId);
 
@@ -50,27 +72,76 @@ export function useCurriculoVaga() {
             setTotalVagas(response.length);
 
         } catch (error: any) {
-            setCarregandoVaga(false);
+            setCarregado(false);
             setErro(error);
             console.log("Erro ao carregar os curriculos da vaga", error);
         } finally {
-            setCarregandoVaga(false);
+            setCarregado(false);
         }
-    }
+    };
+
+    async function efetuarCandidatura(curriculoId: number, vagaId: number) {
+        try {
+            setCarregado(true);
+            const response = await curriculoVagaService.efetuarCandidatura(curriculoId, vagaId);
+
+            return response;
+        } catch (error: any) {
+            setCarregado(false);
+            setErro(error);
+        } finally {
+            setCarregado(false)
+        }
+    };
+
+    async function cancelarCandidatura(curriculoId: number, vagaId: number) {
+        try {
+            setCarregado(true);
+            const response = await curriculoVagaService.cancelarCandidatura(curriculoId, vagaId);
+
+            return response;
+        } catch (error: any) {
+            setCarregado(false);
+            setErro(error);
+        } finally {
+            setCarregado(false)
+        }
+    };
+
+    async function avaliarCandidatura(vagaId: number, candidatoId: number) {
+        try {
+            setCarregado(true);
+            const response = await curriculoVagaService.avaliarCandidatura(vagaId, candidatoId);
+
+            return response;
+        } catch (error: any) {
+            setCarregado(false);
+            setErro(error);
+        } finally {
+            setCarregado(false)
+        }
+    };
+
+    useEffect(() => {
+        listarCandidaturasPorEmpresa(1);
+        listarCuriculosPorVagaId(1);
+        listarVagasPorCandidatoId(1);
+    }, []);
 
     return {
         //? Variaveis
         curriculoVaga,
-        carregandoVaga,
-        carregandoCurriculoVaga,
+        carregando,
         erro,
         totalCandidatos,
         vagasPorCandidato,
         totalVagas,
-        
+
         //? Funcoes
-        carregarCuriculosPorVagaId,
+        listarCuriculosPorVagaId,
         listarVagasPorCandidatoId,
-        
+        efetuarCandidatura,
+        cancelarCandidatura,
+        avaliarCandidatura
     }
 }

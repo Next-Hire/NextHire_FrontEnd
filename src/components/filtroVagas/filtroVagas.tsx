@@ -30,8 +30,13 @@ import {
 import './filtro.module.css';
 import { nivelPrioridadeEnum } from '@/@types/nivelPrioridadeEnum';
 
+interface filtroVagasProps {
+    numeroVagas: number,
+    totalCandidatos: number,
+    totalVagas: number,
+}
 
-export default function  FiltroVagas() {
+export default function FiltroVagas(props: filtroVagasProps) {
     return (
         <main className='mainFiltroVaga'>
             <div className='flex content-center self-center justify-between w-[94%]'>
@@ -76,9 +81,9 @@ export default function  FiltroVagas() {
                 </div>
             </div>
             <div className='flex content-center self-center justify-between w-[94%]'>
-                <p className='txtFiltroVaga'>00 Candidatos totais</p>
-                <p className='txtFiltroVaga'>00 Questionários enviados</p>
-                <p className='txtFiltroVaga'>00 Vagas</p>
+                <p className='txtFiltroVaga'>Candidatos: {props.totalCandidatos} </p>
+                <p className='txtFiltroVaga'>Questionários enviados: {props.totalCandidatos}</p>
+                <p className='txtFiltroVaga'>Vagas: {props.numeroVagas}</p>
             </div>
         </main>
     );

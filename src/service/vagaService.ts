@@ -7,6 +7,7 @@ export const vagaService = {
         console.log("Esta é a url construida do endpoint")
         console.log(process.env.NEXT_PUBLIC_HOST_API + "Vaga/vagas")
         console.log("ESTE É O RESULTADO:")
+        
         const response = await api.get<VagaRecebida[]>("Vaga/vagas");
         console.log(response.data)
         return response.data;

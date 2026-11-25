@@ -9,44 +9,45 @@ export interface VagaRecebida {
     dataAbertura: Date,
     dataFechamento: Date,
     descricao: string,
-    nomeEmpresa: string
-    empresaId: number
+    nomeEmpresa: string,
+    empresaId: number,
+    setorId: number,
     IdiomasDesejados: string[],
     StatusVaga: boolean,
     nivelPrioridade: PrioridadeVaga,
-    remuneracao: number
+    remuneracao: number,
     tipoVaga: string,
     tempoExperienciaDesejado: number,
-    titulo: string
-    escala: string
+    titulo: string,
+    escala: string,
 }
 
 export interface VagaCadastrada {
-    tituloVaga: string
+    tituloVaga: string,
     analistaRh: number,
     setorOcupacaoId: number,
     dataFechamento: Date,
     descricao: string,
-    empresaId: number
+    empresaId: number,
     idiomasDesejados: string[],
-    remuneracao: number
+    remuneracao: number,
     tipoVaga: string,
     nivelPrioridade: string,
     tempoExperienciaDesejado: number,
-    escala: string
+    escala: string,
 }
 
 export interface VagaAtualizada {
-    tituloVaga: string
+    tituloVaga: string,
     analistaRh: number,
     setorOcupacaoId: number,
     dataFechamento: Date,
     descricao: string,
-    empresaId: number
+    empresaId: number,
     IdiomasDesejados: string[],
-    remuneracao: number
+    remuneracao: number,
     tipoVaga: string,
     nivelPrioridade: string,
     tempoExperienciaDesejado: number,
-    escala: string
+    escala: string,
 }

@@ -5,10 +5,12 @@ import { Check, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 // --- Container principal do select personalizado ---
-export function SelectRoot(props: Select.Root.Props<string, false>) {
-    return <Select.Root data-slot='select-root' {...props} />;
+export function SelectRoot<
+	Value = string,
+	Multiple extends boolean | undefined = false,
+>(props: Select.Root.Props<Value, Multiple>) {
+	return <Select.Root data-slot='select-root' {...props} />;
 }
-
 // --- Trigger (campo visível que abre o dropdown) ---
 export function SelectTrigger({
     className,
@@ -76,19 +78,22 @@ export function SelectPopup({ className, ...props }: Select.Popup.Props) {
 
 // --- Item da lista com hover e seleção em azul-marinho conforme o design do projeto ---
 export function SelectItem({ className, children, ...props }: Select.Item.Props) {
-    return (
-        <Select.Item
-            data-slot='select-item'
-            className={cn(
-                'group relative flex cursor-pointer items-center justify-between gap-2 rounded-md px-3 py-2 text-sm font-(family-name:--font-jost) text-blue-950 outline-none transition-colors data-[highlighted]:bg-blue-50 data-[selected]:bg-blue-950 data-[selected]:text-white',
-                className,
-            )}
-            {...props}
-        >
-            <span className='flex-1'>{children}</span>
-            <Select.ItemIndicator className='flex h-4 w-4 items-center justify-center text-current'>
-                <Check className='h-3.5 w-3.5' />
-            </Select.ItemIndicator>
-        </Select.Item>
-    );
+	return (
+		<Select.Item
+			data-slot='select-item'
+			className={cn(
+				'group relative flex w-full cursor-pointer items-center justify-between gap-3 rounded-md px-3 py-2 text-sm font-(family-name:--font-jost) text-blue-950 outline-none select-none transition-colors data-[highlighted]:bg-blue-50 data-[selected]:bg-blue-950 data-[selected]:text-white data-[selected]:data-[highlighted]:bg-blue-900',
+				className,
+			)}
+			{...props}
+		>
+			<Select.ItemText className='flex-1 text-left leading-none'>
+				{children}
+			</Select.ItemText>
+
+			<Select.ItemIndicator className='flex h-4 w-4 shrink-0 items-center justify-center text-current'>
+				<Check className='h-3.5 w-3.5' />
+			</Select.ItemIndicator>
+		</Select.Item>
+	);
 }

@@ -6,7 +6,7 @@
 
 
 .layoutGuide {
-    @apply flex flex-col w-4/5 gap-[3%] font-(family-name:--font-instrument-sans);
+    @apply flex flex-col w-4/5 gap-[3vw] font-(family-name:--font-instrument-sans);
 }
 
 
@@ -21,7 +21,7 @@
 
 
 .saudacao p {
-    @apply text-2xl text-blue-950 font-normal;
+    @apply text-xl text-blue-950 font-normal;
 }
 
 .textosCardEstatisticas {

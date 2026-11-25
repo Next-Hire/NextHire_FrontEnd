@@ -1,6 +1,6 @@
 "use client"
 
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from "recharts"
 import {
   ChartContainer,
   ChartTooltip,
@@ -21,18 +21,20 @@ interface GraficoVagasProps {
   dados: SetorVagasData[]
 }
 
+const ORDEM_EXIBICAO = ["vagasAbertas", "processoAndamento", "entrevistas"]
+
 const chartConfig = {
   vagasAbertas: {
     label: "Vagas em aberto",
     color: "#1e3a8a",
   },
   processoAndamento: {
-    label: "Processo em andamento",
-    color: "#2563eb", 
+    label: "Processo seletivo em andamento",
+    color: "#2563eb",
   },
   entrevistas: {
     label: "Entrevistas",
-    color: "#9bc4fd", 
+    color: "#9bc4fd",
   },
 } satisfies ChartConfig
 
@@ -42,7 +44,12 @@ export default function GraficoVagas({ dados }: GraficoVagasProps) {
       config={chartConfig}
       className="min-h-[300px] max-h-[380px] w-full"
     >
-      <BarChart accessibilityLayer data={dados} margin={{ top: 24 }} barGap={6}>
+      <BarChart
+        accessibilityLayer
+        data={dados}
+        margin={{ top: 28 }}
+        barGap={6}
+      >
         <CartesianGrid vertical={false} strokeDasharray="3 3" />
         <XAxis
           dataKey="setor"
@@ -50,20 +57,26 @@ export default function GraficoVagas({ dados }: GraficoVagasProps) {
           tickMargin={10}
           axisLine={false}
         />
+        <YAxis hide domain={[0, "dataMax + 5"]} />
+
         <ChartTooltip
           cursor={false}
           content={<ChartTooltipContent indicator="dashed" />}
         />
+
         <ChartLegend
+          itemSorter={(item) => ORDEM_EXIBICAO.indexOf(String(item.dataKey))}
           content={<ChartLegendContent />}
           className="pt-4 flex-wrap gap-6 justify-center text-sm"
         />
-        
+
+        {/* 1º na esquerda: Vagas em aberto */}
         <Bar
           dataKey="vagasAbertas"
           fill="var(--color-vagasAbertas)"
           radius={4}
           barSize={32}
+          animationDuration={600}
         >
           <LabelList
             position="top"
@@ -74,11 +87,13 @@ export default function GraficoVagas({ dados }: GraficoVagasProps) {
           />
         </Bar>
 
+        {/* 2º no meio: Processo seletivo em andamento */}
         <Bar
           dataKey="processoAndamento"
           fill="var(--color-processoAndamento)"
           radius={4}
           barSize={32}
+          animationDuration={600}
         >
           <LabelList
             position="top"
@@ -89,11 +104,13 @@ export default function GraficoVagas({ dados }: GraficoVagasProps) {
           />
         </Bar>
 
+        {/* 3º na direita: Entrevistas */}
         <Bar
           dataKey="entrevistas"
           fill="var(--color-entrevistas)"
           radius={4}
           barSize={32}
+          animationDuration={600}
         >
           <LabelList
             position="top"

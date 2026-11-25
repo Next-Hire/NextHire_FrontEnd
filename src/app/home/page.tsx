@@ -1,5 +1,7 @@
+'use client';
+
 import Header from "@/components/header/header";
-import { ArrowUp, CalendarCheck2, CalendarDays } from 'lucide-react';
+import { ArrowUp, CalendarCheck2, CalendarDays, Check } from 'lucide-react';
 import './home.css';
 import CardAgendaHome from "@/components/cardAgendaHome/cardAgendaHome";
 import MiniCalendarioHome from "@/components/calendario/miniCalendarioHome";
@@ -15,6 +17,7 @@ import {
 	SelectPopup,
 	SelectItem,
 } from '@/components/select/select';
+import { useState } from "react";
 
 
 const dadosVagasPorSetor: SetorVagasData[] = [
@@ -40,6 +43,37 @@ const dadosVagasPorSetor: SetorVagasData[] = [
 
 
 export default function Home() {
+
+	const [setoresSelecionados, setSetoresSelecionados] = useState<string[]>(['Geral']);
+
+	const dadoGeral: SetorVagasData = {
+		setor: 'Geral',
+		vagasAbertas: dadosVagasPorSetor.reduce((acc, item) => acc + item.vagasAbertas, 0),
+		processoAndamento: dadosVagasPorSetor.reduce((acc, item) => acc + item.processoAndamento, 0),
+		entrevistas: dadosVagasPorSetor.reduce((acc, item) => acc + item.entrevistas, 0),
+	};
+
+	const todasAsOpcoes: SetorVagasData[] = [dadoGeral, ...dadosVagasPorSetor];
+
+	const handleMudarSetores = (novosValores: string[]) => {
+		if (novosValores.length === 0) {
+			setSetoresSelecionados(['Geral']);
+			return;
+		}
+
+		const clicouEmGeral = !setoresSelecionados.includes('Geral') && novosValores.includes('Geral');
+
+		if (clicouEmGeral) {
+			setSetoresSelecionados(['Geral']);
+		} else {
+			setSetoresSelecionados(novosValores.filter((v) => v !== 'Geral'));
+		}
+	};
+
+	const dadosFiltrados = todasAsOpcoes.filter((item) =>
+		setoresSelecionados.includes(item.setor)
+	);
+
 	return (
 		<>
 			<Header />
@@ -103,9 +137,47 @@ export default function Home() {
 					{/* Seção 2 - Gráfico vagas e kpi*/}
 					<section className='vagasKpi flex gap-[4%]'>
 						<article className='card flex-1 flex flex-col gap-4;'>
-							<h3>Visão Geral de vagas</h3>
-							<GraficoVagas dados={dadosVagasPorSetor} />
+							<div className='relative flex items-center justify-center w-full px-4 min-h-10'>
+								<h3>Visão Geral de vagas</h3>
+
+								<div className='absolute right-4'>
+									<SelectRoot
+										multiple
+										value={setoresSelecionados}
+										onValueChange={handleMudarSetores}
+									>
+										<SelectTrigger>
+											<SelectValue placeholder='Setores'>
+												{(valores: string[]) => {
+													if (!valores || valores.length === 0 || valores.includes('Geral')) {
+														return 'Geral';
+													}
+													if (valores.length === dadosVagasPorSetor.length) {
+														return 'Todos os setores';
+													}
+													return valores.join(', ');
+												}}
+											</SelectValue>
+										</SelectTrigger>
+
+										<SelectPortal>
+											<SelectPositioner>
+												<SelectPopup className='flex flex-col gap-1'>
+													{todasAsOpcoes.map((item) => (
+														<SelectItem key={item.setor} value={item.setor}>
+															{item.setor}
+														</SelectItem>
+													))}
+												</SelectPopup>
+											</SelectPositioner>
+										</SelectPortal>
+									</SelectRoot>
+								</div>
+							</div>
+
+							<GraficoVagas dados={dadosFiltrados} />
 						</article>
+
 
 						{/* Kpis */}
 						<div className='estatisticas flex flex-col gap-[6%]'>

@@ -35,7 +35,18 @@ export default function MiniCalendarioHome() {
                 className='w-full font-(family-name:--font-jost) text-blue-950 [--cell-size:--spacing(10)] bg-transparent'
                 classNames={{
                     root: 'w-full',
-                    day: 'flex-1 h-12 aspect-auto',
+                    months: 'w-full relative',
+                    month: 'w-full flex flex-col gap-4',
+                    month_caption: 'flex justify-center items-center w-full h-10',
+                    caption_label: 'text-xl font-medium text-blue-950 capitalize',
+                    nav: 'flex items-center justify-between w-full h-10 absolute top-0 left-0 pointer-events-none',
+                    button_previous: 'pointer-events-auto absolute left-[35%] h-10 w-10 flex items-center justify-center rounded-lg hover:bg-slate-100 [&_svg]:size-6 cursor-pointer',
+                    button_next: 'pointer-events-auto absolute right-[35%] h-10 w-10 flex items-center justify-center rounded-lg hover:bg-slate-100 [&_svg]:size-6 cursor-pointer',
+                    month_grid: 'w-full border-collapse',
+                    weekdays: 'flex w-full',
+                    weekday: 'flex-1 text-center font-normal text-sm text-slate-500',
+                    week: 'flex w-full mt-2',
+                    day: 'flex-1 h-12 p-0 text-center',
                 }}
                 components={{
                     DayButton: ({ children, modifiers, className, ...props }) => {
@@ -53,7 +64,7 @@ export default function MiniCalendarioHome() {
                                 {children}
                                 {temEntrevista && (
                                     <span
-                                        className='absolute top-1 right-1 w-2 h-2 rounded-full bg-green-500'
+                                        className='absolute top-2.5 right-12 w-2 h-2 rounded-full bg-green-500'
                                         aria-label='Entrevista marcada'
                                     />
                                 )}

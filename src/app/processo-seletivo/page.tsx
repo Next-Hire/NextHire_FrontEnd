@@ -13,6 +13,7 @@ import {
 } from '@/components/select/select';
 import CardProcessoSeletivo from "@/components/cardProcessoSeletivo/cardProcessoSeletivo";
 import { useState } from "react";
+import CardProcessoSeletivoAlto from "@/components/cardProcessoSeletivo/cardProcessoSeletivo";
 
 export interface Setor {
     setor: string;
@@ -24,16 +25,61 @@ const setores: Setor[] = [
     { setor: "Administração" },
 ];
 
+export interface Prioridade {
+    prioridade: string;
+}
+
+const prioridades: Prioridade[] = [
+    { prioridade: "Prioridade Alta" },
+    { prioridade: "Prioridade Média" },
+    { prioridade: "Prioridade Baixa" },
+];
+
 export default function ProcessoSeletivoPage() {
-    const [setoresSelecionados, setSetoresSelecionados] = useState<string[]>([]);
+    const [setoresSelecionados, setSetoresSelecionados] = useState<string[]>(['Todos os setores']);
+    const [selectSetoresAberto, setSelectSetoresAberto] = useState(false);
 
     const handleMudarSetores = (novosValores: string[]) => {
-        if (novosValores.includes("Todos os setores")) {
-            setSetoresSelecionados([]);
+        if (novosValores.length === 0) {
+            setSetoresSelecionados(["Todos os setores"]);
             return;
         }
 
-        setSetoresSelecionados(novosValores);
+        const clicouEmTodos =
+            !setoresSelecionados.includes("Todos os setores") &&
+            novosValores.includes("Todos os setores");
+
+        if (clicouEmTodos) {
+            setSetoresSelecionados(["Todos os setores"]);
+            setSelectSetoresAberto(false);
+            return;
+        }
+
+        const semTodos = novosValores.filter((v) => v !== "Todos os setores");
+        setSetoresSelecionados(semTodos.length > 0 ? semTodos : ["Todos os setores"]);
+    };
+
+    const [prioridadesSelecionadas, setPrioridadesSelecionadas] = useState<string[]>(['Todas as prioridades']);
+    const [selectPrioridadeAberta, setSelectPrioridadeAberta] = useState(false);
+
+    const handleMudarPrioridades = (novosValores: string[]) => {
+        if (novosValores.length === 0) {
+            setPrioridadesSelecionadas(["Todas as prioridades"]);
+            return;
+        }
+
+        const clicouEmTodas =
+            !prioridadesSelecionadas.includes("Todas as prioridades") &&
+            novosValores.includes("Todas as prioridades");
+
+        if (clicouEmTodas) {
+            setPrioridadesSelecionadas(["Todas as prioridades"]);
+            setSelectPrioridadeAberta(false);
+            return;
+        }
+
+        const semTodas = novosValores.filter((v) => v !== "Todas as prioridades");
+        setPrioridadesSelecionadas(semTodas.length > 0 ? semTodas : ["Todas as prioridades"]);
     };
 
     return (
@@ -58,6 +104,8 @@ export default function ProcessoSeletivoPage() {
                                 <div className='flex flex-col'>
                                     <SelectRoot
                                         multiple
+                                        open={selectSetoresAberto}
+                                        onOpenChange={setSelectSetoresAberto}
                                         value={setoresSelecionados}
                                         onValueChange={handleMudarSetores}
                                     >
@@ -91,18 +139,36 @@ export default function ProcessoSeletivoPage() {
                                 </div>
 
                                 <div className='flex flex-col'>
-                                    <SelectRoot defaultValue='Último mês'>
+                                    <SelectRoot
+                                        multiple
+                                        open={selectPrioridadeAberta}
+                                        onOpenChange={setSelectPrioridadeAberta}
+                                        value={prioridadesSelecionadas}
+                                        onValueChange={handleMudarPrioridades}
+                                    >
                                         <SelectTrigger>
-                                            <SelectValue placeholder='Data' />
+                                            <SelectValue placeholder="Todas as prioridades">
+                                                {(valores: string[]) => {
+                                                    if (!valores || valores.length === 0 || valores.length === prioridades.length || valores.includes('Todas as prioridades')) {
+                                                        return "Todas as prioridades";
+                                                    }
+                                                    return valores.join(", ");
+                                                }}
+                                            </SelectValue>
                                         </SelectTrigger>
 
                                         <SelectPortal>
                                             <SelectPositioner>
-                                                <SelectPopup>
-                                                    <SelectItem value='Último mês'>Último mês</SelectItem>
-                                                    <SelectItem value='Últimos 3 meses'>Últimos 3 meses</SelectItem>
-                                                    <SelectItem value='Últimos 6 meses'>Últimos 6 meses</SelectItem>
-                                                    <SelectItem value='Último ano'>Último ano</SelectItem>
+                                                <SelectPopup className='flex flex-col gap-1'>
+                                                    <SelectItem value="Todas as prioridades">
+                                                        Todas as prioridades
+                                                    </SelectItem>
+
+                                                    {prioridades.map((item) => (
+                                                        <SelectItem key={item.prioridade} value={item.prioridade}>
+                                                            {item.prioridade}
+                                                        </SelectItem>
+                                                    ))}
                                                 </SelectPopup>
                                             </SelectPositioner>
                                         </SelectPortal>
@@ -110,7 +176,7 @@ export default function ProcessoSeletivoPage() {
                                 </div>
                             </div>
 
-                            <div className='flex gap-10'>
+                            <div className='flex gap-10 font-medium text-base text-blue-950 font-(family-name:--font-instrument-sans)'>
                                 <div>
                                     <p><span>32</span> Candidatos totais</p>
                                 </div>
@@ -121,9 +187,15 @@ export default function ProcessoSeletivoPage() {
                         </article>
                     </section>
 
-                    <section className='flex gap-8'>
-                        <CardProcessoSeletivo />
-                        <CardProcessoSeletivo />
+                    <section className='grid grid-cols-3 justify-between gap-8'>
+                        <CardProcessoSeletivo prioridade_vaga_enum="alto" />
+                        <CardProcessoSeletivo prioridade_vaga_enum="medio"/>
+                        <CardProcessoSeletivo prioridade_vaga_enum="baixo"/>
+                        <CardProcessoSeletivo prioridade_vaga_enum="baixo"/>
+                        <CardProcessoSeletivo prioridade_vaga_enum="medio"/>
+                        <CardProcessoSeletivo prioridade_vaga_enum="alto" />
+                        <CardProcessoSeletivo prioridade_vaga_enum="baixo"/>
+                        <CardProcessoSeletivo prioridade_vaga_enum="alto"/>
                     </section>
                 </div>
             </main>

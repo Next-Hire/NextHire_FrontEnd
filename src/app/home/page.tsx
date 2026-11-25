@@ -86,7 +86,7 @@ export default function Home() {
 							<p>Aqui está sua visão operacional completa para hoje.</p>
 						</div>
 						<div className='flex flex-col'>
-							<SelectRoot defaultValue=''>
+							<SelectRoot defaultValue='Último mês'>
 								<SelectTrigger>
 									<SelectValue placeholder='Data' />
 								</SelectTrigger>

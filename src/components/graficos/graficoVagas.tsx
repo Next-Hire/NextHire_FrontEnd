@@ -70,7 +70,6 @@ export default function GraficoVagas({ dados }: GraficoVagasProps) {
           className="pt-4 flex-wrap gap-6 justify-center text-sm"
         />
 
-        {/* 1º na esquerda: Vagas em aberto */}
         <Bar
           dataKey="vagasAbertas"
           fill="var(--color-vagasAbertas)"
@@ -87,7 +86,6 @@ export default function GraficoVagas({ dados }: GraficoVagasProps) {
           />
         </Bar>
 
-        {/* 2º no meio: Processo seletivo em andamento */}
         <Bar
           dataKey="processoAndamento"
           fill="var(--color-processoAndamento)"
@@ -104,7 +102,6 @@ export default function GraficoVagas({ dados }: GraficoVagasProps) {
           />
         </Bar>
 
-        {/* 3º na direita: Entrevistas */}
         <Bar
           dataKey="entrevistas"
           fill="var(--color-entrevistas)"

@@ -3,12 +3,12 @@ import { api } from "./api";
 import { VagaRecebida } from "@/@types/vaga";
 
 export const curriculoVagaService = {
-    async obterCandidatosPorVagaId(vagaId: number): Promise<curriculoVagaRecebido> {
+    async listarCandidatosPorVagaId(vagaId: number): Promise<curriculoVagaRecebido[]> {
         const response = await api.get(`CurriculoVaga/CandidatosPorVagaId/${vagaId}`);
         return response.data;
     },
 
-    async listarVagasPorCandidatoId(candidatoId: number): Promise<VagaRecebida> {
+    async listarVagasPorCandidatoId(candidatoId: number): Promise<VagaRecebida[]> {
         const response = await api.get(`CurriculoVaga/VagasPorCandidatoId/${candidatoId}`);
         return response.data;
     },

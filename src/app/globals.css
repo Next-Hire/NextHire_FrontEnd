@@ -145,10 +145,14 @@
   }
 }
 
-.card{
-  @apply bg-white rounded-lg py-4 my-1 shadow-md;
+.card {
+  @apply bg-white rounded-lg py-4 my-1 shadow-md p-8;
 }
 
 .titulo {
-  @apply text-4xl font-bold text-blue-950 font-(family-name:--font-instrument-sans) text-shadow-sm place-self-start my-8;
+  @apply text-4xl font-bold text-blue-950 font-(family-name:--font-instrument-sans) text-shadow-sm place-self-start;
+}
+
+.inputFiltro {
+  @apply border-2 border-blue-950 rounded-md h-8 w-75 bg-white shadow-md;
 }

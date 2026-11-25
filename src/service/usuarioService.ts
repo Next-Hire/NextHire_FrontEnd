@@ -12,12 +12,24 @@ export interface FuncionarioPOST {
     cargo: number
 }
 
+export interface LoginResponse{
+    token: string
+}
 export interface UsuarioGET {
     UsuarioId: number,
     Nome: string,
     Email: string,
-    PrimeiroAcesso: boolean,
-    StatusUsuario: boolean
+    PrimeiroAcesso?: boolean,
+    StatusUsuario?: boolean
+}
+
+export interface UsuarioGET_Email{
+    usuarioId: number,
+    nome: string,
+    email: string,
+    primeiroAcesso?: boolean,
+    statusUsuario?: boolean, 
+    tipoUsuario?: number
 }
 
 
@@ -39,6 +51,12 @@ export const usuarioService = {
         const {data} = await api.get<UsuarioGET>(`Usuario/candidatos/`)
         return data
     },
+
+    async buscarUsuarioPorEmail(email: string): Promise<UsuarioGET_Email>{
+        const {data} = await api.get<UsuarioGET_Email>(`Usuario/email/${email}`)
+        console.log("oi")
+        return data
+    }
 
 }
 

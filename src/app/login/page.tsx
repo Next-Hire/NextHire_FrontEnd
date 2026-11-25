@@ -2,10 +2,28 @@
 
 import GhostFibers from '@/components/ghostfibers/GhostFibers';
 import './login.css';
+import { useAuth } from '@/context/AuthContext';
 
 export default function LoginPage() {
-  return (
-    <main className='loginPage'>
+  
+    const {
+      email,
+      setEmail,
+      senha,
+      setSenha,
+      loading,
+      erro,
+      handleLogin,
+      usuario
+    } = useAuth()
+
+
+    
+    
+    
+    
+    return (
+      <main className='loginPage'>
       <div className='fixed inset-0 -z-10 opacity-85'>
         <GhostFibers
           glowColor="#66a5ecff"
@@ -39,24 +57,24 @@ export default function LoginPage() {
           grain={0}
           mouseStrength={1.55}
           lightMode
-        />
+          />
       </div>
 
       <section className='containerForm '>
         <h1 className='tituloLogin'>Login</h1>
-        <form className='formularioLogin'>
+        <form className='formularioLogin' onSubmit={handleLogin}>
           <div className='flex flex-col justify-between h-18'>
             <label className='labelLogin' htmlFor='email'>Email:</label>
-            <input className='inputLogin' type='email' id='email' name='email' placeholder='emailfuncionario@vortex.com' />
+            <input className='inputLogin' type='email' id='email' name='email' placeholder='emailfuncionario@vortex.com' value={email} onChange={(e) => setEmail(e.target.value)}/>
           </div>
 
           <div className='flex flex-col justify-between h-18'>
             <label className='labelLogin' htmlFor='senha'>Senha:</label>
-            <input className='inputLogin' type='password' id='senha' name='senha' placeholder='Digite a senha' />
+            <input className='inputLogin' type='password' id='senha' name='senha' placeholder='Digite a senha' value={senha} onChange={(e) => setSenha(e.target.value)} />
           </div>
 
           <div className='flex flex-col gap-3 mt-5'>
-            <button className='botaoLogin' type='button' onClick={() => window.location.href = '/home'}>Entrar</button>
+            <button className='botaoLogin' type='button'>Entrar</button>
             <a className='linkAdministrador' href='/login'>Esqueceu a senha?</a>
           </div>
         </form>
@@ -68,4 +86,5 @@ export default function LoginPage() {
       </aside>
     </main>
   );
+  
 }

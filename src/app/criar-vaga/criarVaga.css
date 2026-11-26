@@ -13,10 +13,6 @@
 }
 
 
-.labelCriarVaga {
-    @apply font-(family-name:--font-instrument-sans) text-base font-semibold text-blue-950 mb-1;
-}
-
 .textareaCriarVaga {
     @apply border-2 border-blue-950 rounded-md min-h-28 w-full bg-white p-4 text-blue-950 font-(family-name:--font-jost) outline-none resize-y;
 }

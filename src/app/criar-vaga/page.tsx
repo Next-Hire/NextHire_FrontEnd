@@ -48,7 +48,7 @@ export default function CriarVagaPage() {
                     <form className='flex flex-col justify-between h-full gap-8'>
 
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Título da vaga</label>
+                            <label className='label'>Título da vaga</label>
                             <input
                                 type='text'
                                 placeholder='Digite aqui o título da vaga...'
@@ -56,7 +56,7 @@ export default function CriarVagaPage() {
                             />
                         </div>
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Empresa</label>
+                            <label className='label'>Empresa</label>
                             <input
                                 type='text'
                                 placeholder='Digite aqui o nome da empresa...'
@@ -64,7 +64,7 @@ export default function CriarVagaPage() {
                             />
                         </div>
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Responsável do setor</label>
+                            <label className='label'>Responsável do setor</label>
                             <input
                                 type='text'
                                 placeholder='Digite aqui o nome do responsável...'
@@ -72,7 +72,7 @@ export default function CriarVagaPage() {
                             />
                         </div>
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Salário</label>
+                            <label className='label'>Salário</label>
                             <input
                                 type='text'
                                 placeholder='Digite aqui o salário...'
@@ -81,7 +81,7 @@ export default function CriarVagaPage() {
                         </div>
 
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Cargo</label>
+                            <label className='label'>Cargo</label>
                             <input
                                 type='text'
                                 placeholder='Digite aqui o cargo...'
@@ -89,7 +89,7 @@ export default function CriarVagaPage() {
                             />
                         </div>
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Descrição da vaga</label>
+                            <label className='label'>Descrição da vaga</label>
                             <textarea
                                 placeholder='Digite aqui a descrição da vaga...'
                                 className='textareaCriarVaga'
@@ -101,7 +101,7 @@ export default function CriarVagaPage() {
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
                         {/* Seletor de data do calendário */}
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Período da vaga</label>
+                            <label className='label'>Período da vaga</label>
                             <Popover>
                                 <PopoverTrigger className='btnSeletorData'>
                                     <span className={periodo?.from ? 'text-blue-950 font-medium' : 'text-blue-950/50'}>
@@ -136,7 +136,7 @@ export default function CriarVagaPage() {
 
                         {/* Campo: Setor usando Select customizado do Base UI */}
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Idioma</label>
+                            <label className='label'>Idioma</label>
                             <SelectRoot defaultValue=''>
                                 <SelectTrigger className='h-10 w-full'>
                                     <SelectValue placeholder='Idioma...' />
@@ -157,7 +157,7 @@ export default function CriarVagaPage() {
                         </div>
 
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Experiência</label>
+                            <label className='label'>Experiência</label>
                             <SelectRoot defaultValue=''>
                                 <SelectTrigger className='h-10 w-full'>
                                     <SelectValue placeholder='Selecione o nível de experiência...' />
@@ -178,7 +178,7 @@ export default function CriarVagaPage() {
                             </SelectRoot>
                         </div>
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Modelo de trabalho</label>
+                            <label className='label'>Modelo de trabalho</label>
                             <SelectRoot defaultValue=''>
                                 <SelectTrigger className='h-10 w-full'>
                                     <SelectValue placeholder='Selecione o modelo de trabalho...' />
@@ -196,7 +196,7 @@ export default function CriarVagaPage() {
                             </SelectRoot>
                         </div>
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Prioridade</label>
+                            <label className='label'>Prioridade</label>
                             <SelectRoot defaultValue=''>
                                 <SelectTrigger className='h-10 w-full'>
                                     <SelectValue placeholder='Selecione a prioridade...' />
@@ -215,7 +215,7 @@ export default function CriarVagaPage() {
                         </div>
 
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Local</label>
+                            <label className='labelarVaga'>Local</label>
                             <SelectRoot defaultValue=''>
                                 <SelectTrigger className='h-10 w-full'>
                                     <SelectValue placeholder='Selecione o local...' />
@@ -234,7 +234,7 @@ export default function CriarVagaPage() {
                         </div>
 
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Escala de trabalho</label>
+                            <label className='label'>Escala de trabalho</label>
                             <SelectRoot defaultValue=''>
                                 <SelectTrigger className='h-10 w-full'>
                                     <SelectValue placeholder='Selecione a escala de trabalho...' />
@@ -252,7 +252,7 @@ export default function CriarVagaPage() {
                             </SelectRoot>
                         </div>
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Tipo da vaga</label>
+                            <label className='label'>Tipo da vaga</label>
                             <SelectRoot defaultValue=''>
                                 <SelectTrigger className='h-10 w-full'>
                                     <SelectValue placeholder='Selecione o tipo de vaga...' />
@@ -270,7 +270,7 @@ export default function CriarVagaPage() {
                             </SelectRoot>
                         </div>
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Setor</label>
+                            <label className='label'>Setor</label>
                             <SelectRoot defaultValue=''>
                                 <SelectTrigger className='h-10 w-full'>
                                     <SelectValue placeholder='Selecione o setor...' />
@@ -288,7 +288,7 @@ export default function CriarVagaPage() {
                             </SelectRoot>
                         </div>
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Empresa</label>
+                            <label className='label'>Empresa</label>
                             <SelectRoot defaultValue=''>
                                 <SelectTrigger className='h-10 w-full'>
                                     <SelectValue placeholder='Selecione a empresa...' />
@@ -306,7 +306,7 @@ export default function CriarVagaPage() {
                             </SelectRoot>
                         </div>
                         <div className='flex flex-col'>
-                            <label className='labelCriarVaga'>Regime contratual</label>
+                            <label className='label'>Regime contratual</label>
                             <SelectRoot defaultValue=''>
                                 <SelectTrigger className='h-10 w-full'>
                                     <SelectValue placeholder='Selecione o regime contratual...' />

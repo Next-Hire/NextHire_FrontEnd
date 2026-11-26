@@ -4,7 +4,6 @@
     @apply flex justify-center min-h-[88vh] py-8;
 }
 
-
 .layoutGuide {
     @apply flex flex-col w-4/5 gap-[3vw] font-(family-name:--font-instrument-sans);
 }

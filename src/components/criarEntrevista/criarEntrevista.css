@@ -1,0 +1,10 @@
+@reference "../../app/globals.css";
+
+.sobreposicaoCriarEntrevista {
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-blue-950/40 backdrop-blur-[3px] p-4;
+}
+
+
+.tituloCriarEntrevista {
+    @apply text-3xl font-bold text-blue-950 font-(family-name:--font-instrument-sans) text-shadow-sm;
+}

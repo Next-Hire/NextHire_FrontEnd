@@ -45,26 +45,26 @@ export default function CadastroPage() {
         <h1 className='tituloCadastro'>Cadastro</h1>
         <form className='formularioCadastro'>
           <div className='flex flex-col justify-between h-18'>
-            <label className='labelCadastro' htmlFor='nome'>Nome:</label>
+            <label className='label' htmlFor='nome'>Nome:</label>
             <input className='input' type='text' id='nome' name='nome' placeholder='Seu nome aqui' />
           </div>
 
           <div className='flex flex-col justify-between h-18'>
-            <label className='labelCadastro' htmlFor='email'>Email:</label>
+            <label className='label' htmlFor='email'>Email:</label>
             <input className='input' type='email' id='email' name='email' placeholder='emailfuncionario@vortex.com' />
           </div>
 
           <div className='flex flex-col justify-between h-18'>
-            <label className='labelCadastro' htmlFor='senha'>Senha:</label>
+            <label className='label' htmlFor='senha'>Senha:</label>
             <input className='input' type='password' id='senha' name='senha' placeholder='Digite a senha' />
           </div>
 
           <div className='flex flex-col justify-between h-18'>
-            <label className='labelCadastro' htmlFor='confirmarSenha'>Confirmar Senha:</label>
+            <label className='label' htmlFor='confirmarSenha'>Confirmar Senha:</label>
             <input className='input' type='password' id='confirmarSenha' name='confirmarSenha' placeholder='Insira novamente a senha' />
           </div>
           <div className='flex flex-col gap-3 mt-5'>
-            <button className='botaoCadastro' type='submit'>Cadastrar</button>
+            <button className='botaoEscuro' type='submit'>Cadastrar</button>
             <a href='/home' className='linkAdministrador'>Entrar no sistema como administrador</a>
           </div>
         </form>

@@ -7,7 +7,7 @@ import Header from '@/components/header/header';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { type DateRange } from 'react-day-picker';
-import { CalendarIcon } from 'lucide-react';
+import { CalendarIcon, Search } from 'lucide-react';
 
 // --- Componentes do calendário e popover do projeto ---
 import { Calendar } from '@/components/calendario/calendar';

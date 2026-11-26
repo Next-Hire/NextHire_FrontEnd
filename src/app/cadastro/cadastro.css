@@ -13,25 +13,17 @@
 }
 
 .formularioCadastro {
-    @apply flex flex-col justify-between gap-8;
-}
-
-.labelCadastro {
-    @apply font-semibold text-blue-950 font-(family-name:--font-jost) text-xl;
-}
-
-.botaoCadastro {
-    @apply bg-blue-950 text-white h-12 w-100 rounded-md text-2xl font-medium font-display;
+    @apply flex flex-col justify-between gap-8 w-[75%];
 }
 
 .linkAdministrador {
     @apply text-blue-950/80 font-display underline;
 }
 
-.tituloBemVindo{
-     @apply text-blue-950 text-6xl font-bold font-(family-name:--font-instrument-sans) leading-20 h-70 w-70 text-shadow-lg text-shadow-white;
+.tituloBemVindo {
+    @apply text-blue-950 text-6xl font-bold font-(family-name:--font-instrument-sans) leading-20 h-70 w-70 text-shadow-lg text-shadow-white;
 }
 
-.subtituloBemVindo{
+.subtituloBemVindo {
     @apply text-blue-950 text-xl font-semibold font-(family-name:--font-instrument-sans) w-100 text-shadow-lg text-shadow-white;
 }

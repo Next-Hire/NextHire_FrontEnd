@@ -3,6 +3,9 @@
 import GhostFibers from '@/components/ghostfibers/GhostFibers';
 import './login.css';
 import { useAuth } from '@/context/AuthContext';
+import React from 'react';
+// import {  } from '@/context/AuthContext';
+
 
 export default function LoginPage() {
   
@@ -17,7 +20,10 @@ export default function LoginPage() {
       usuario
     } = useAuth()
 
-
+    function realizarLogin(e: React.FormEvent) {
+      e.preventDefault()
+      handleLogin()
+    }
     
     
     
@@ -62,7 +68,7 @@ export default function LoginPage() {
 
       <section className='containerForm '>
         <h1 className='tituloLogin'>Login</h1>
-        <form className='formularioLogin' onSubmit={handleLogin}>
+        <form className='formularioLogin' onSubmit={realizarLogin}>
           <div className='flex flex-col justify-between h-18'>
             <label className='labelLogin' htmlFor='email'>Email:</label>
             <input className='inputLogin' type='email' id='email' name='email' placeholder='emailfuncionario@vortex.com' value={email} onChange={(e) => setEmail(e.target.value)}/>
@@ -74,7 +80,7 @@ export default function LoginPage() {
           </div>
 
           <div className='flex flex-col gap-3 mt-5'>
-            <button className='botaoLogin' type='button'>Entrar</button>
+            <button className='botaoLogin' type='submit'>Entrar</button>
             <a className='linkAdministrador' href='/login'>Esqueceu a senha?</a>
           </div>
         </form>

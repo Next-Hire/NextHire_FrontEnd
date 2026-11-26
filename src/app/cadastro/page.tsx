@@ -6,56 +6,22 @@ import { useState } from 'react';
 import { usuarioService } from '@/service/usuarioService';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { useUsuario } from '../hooks/useUsuarioService';
 
 export default function CadastroPage() {
-  const[nome, setNome] = useState<string>("")
-  const[senha, setSenha] = useState<string>("")
-  const[email, setEmail] = useState<string>("")
-  const[confirmarSenha, setConfirmarSenha] = useState<string>("")
-
-  const[erro, setErro] = useState<string | null>(null)
-  const[loading, setLoading] = useState(false)
-
-  const router = useRouter()
-  const cadastrarUsuario = async (e: React.FormEvent) => {
-      e.preventDefault()
-
-      setErro(null)
-
-    if(!nome.trim() || !email.trim() || !senha.trim())
-      {
-        setErro("Preencha todos os campos obrigatórios!")
-        return
-      }
-    
-    if(senha !== confirmarSenha)
-      {
-        setErro("As senhas não coincidem!")
-        return
-      }
-
-    try {
-      setLoading(true)
-      await usuarioService.cadastrarCandidato(
-        {nome: nome.trim(), email: email.trim(), senha:senha.trim()}
-      )
-      // console.log("Bem vindo ao sistema " + nome + "!")
-      toast.success("Bem vindo ao sistema " + nome + "!")
-      setTimeout(function(){
-        router.replace("/login")
-      }, 3000)
-      router.replace("/login")
-    } catch (error: any) {
-      setErro(error.message || "Erro ao realizar cadastro. ")
-      toast.error(error.message || "Erro ao realizar cadastro")
-    }
-
-    finally
-      {
-        setLoading(false)
-      }
-
-  }
+ const {
+    nome,
+    setNome,
+    email,
+    setEmail,
+    senha,
+    setSenha,
+    confirmarSenha,
+    setConfirmarSenha,
+    erro,
+    loading,
+    cadastrarCandidato,
+  } = useUsuario();
 
   return (
     <main className='cadastroPage'>
@@ -97,7 +63,7 @@ export default function CadastroPage() {
 
       <section className='containerForm'>
         <h1 className='tituloCadastro'>Cadastro</h1>
-        <form className='formularioCadastro' onSubmit={cadastrarUsuario}>
+        <form className='formularioCadastro' onSubmit={cadastrarCandidato}>
           <div className='flex flex-col justify-between h-18'>
             <label className='labelCadastro' htmlFor='nome'>Nome:</label>
             <input className='inputCadastro' type='text' id='nome' name='nome' placeholder='Seu nome aqui' value={nome} onChange={(e) => setNome(e.target.value)}  />

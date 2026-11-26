@@ -1,31 +1,53 @@
-import {vagaService} from "@/service/vagaService";
-import {useState} from "react";
-import {VagaRecebida} from "@/@types/vaga";
-import {homeService} from "@/service/homeService";
+import { useEffect, useState } from "react";
+import { Entrevista } from "@/@types/Home";
+import { VagaRecebida } from "@/@types/vaga";
+import { ProcessoSeletivo } from "@/@types/processoSeletivo";
+import { homeService } from "@/service/homeService";
 
 export function useHome() {
-    const [vagas, setVagas] = useState<VagaRecebida[]>([])
-    const [carregando, setCarregando] = useState(false);
-    const [error, setError] = useState<string | null>("");
-    const [status, setStatus] = useState<boolean>();
+    const [entrevistas, setEntrevistas] = useState<Entrevista[]>([]);
+    const [entrevistasHoje, setEntrevistasHoje] = useState<Entrevista[]>([]);
+    const [vagas, setVagas] = useState<VagaRecebida[]>([]);
+    const [processosSeletivos, setProcessosSeletivos] = useState<ProcessoSeletivo[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    async function carregarVagas() {
-        try {
-            setCarregando(true);
-            setError(null);
+    useEffect(() => {
+        async function carregarDados() {
+            try {
+                const [resEntrevistas, resEntrevistasHoje, resVagas, resProcessos] = await Promise.all([
+                    homeService.listarEntrevistaPorStatus(true),
+                    homeService.listarEntrevistasHoje(),
+                    homeService.listarVagasPorStatus(true),
+                    homeService.listarProcessoPorStatus(true),
+                ]);
 
-            const data = await homeService.listarVagasPorStatus(status);
-
-            if (!Array.isArray(data)) {
-                setVagas([]);
+                setEntrevistas(resEntrevistas);
+                setEntrevistasHoje(resEntrevistasHoje);
+                setVagas(resVagas);
+                setProcessosSeletivos(resProcessos);
+                console.log(resEntrevistas.length);
+                console.log(resVagas.length);
+                console.log(resProcessos.length);
+                console.log(resEntrevistasHoje.length)
+            } catch (error) {
+                console.error("Erro ao carregar dados da Home:", error);
+            } finally {
+                setLoading(false);
             }
-
-            setVagas(data);
-        } catch (error: any) {
-            setError(error);
-            console.error("Erro ao carregar vagas", error);
-        } finally {
-            setCarregando(false);
         }
-    }
+
+        carregarDados();
+    }, []);
+
+    return {
+        entrevistas,
+        entrevistasHoje,
+        vagas,
+        processosSeletivos,
+        totalEntrevistas: entrevistas.length,
+        totalEntrevistasHoje: entrevistasHoje.length,
+        totalVagas: vagas.length,
+        totalProcessos: processosSeletivos.length,
+        loading,
+    };
 }

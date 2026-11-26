@@ -5,7 +5,7 @@ const apiLocal = "https://localhost:7232/api/v1"
 export const token_key = process.env.TOKEN_JWT || "Token"
 export const api = axios.create({
     baseURL: apiLocal,
-    timeout: 1000
+    timeout: 10000
 })
 
 console.log(apiLocal)

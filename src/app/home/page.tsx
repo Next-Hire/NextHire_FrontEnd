@@ -1,12 +1,14 @@
 'use client';
 
+import { useState } from "react";
 import Header from "@/components/header/header";
-import { ArrowUp, CalendarCheck2, CalendarDays, Check } from 'lucide-react';
+import { ArrowUp, CalendarCheck2, CalendarDays } from 'lucide-react';
 import './home.css';
 import CardAgendaHome from "@/components/cardAgendaHome/cardAgendaHome";
 import MiniCalendarioHome from "@/components/calendario/miniCalendarioHome";
 import GraficoCandidatos from "@/components/graficos/graficoCandidatos";
 import GraficoVagas, { type SetorVagasData } from "@/components/graficos/graficoVagas";
+import { useHome } from "@/hooks/useHome"; // ajuste o caminho se o useHome.ts estiver em outra pasta
 
 import {
 	SelectRoot,
@@ -17,8 +19,6 @@ import {
 	SelectPopup,
 	SelectItem,
 } from '@/components/select/select';
-import { useState } from "react";
-
 
 const dadosVagasPorSetor: SetorVagasData[] = [
 	{
@@ -41,8 +41,15 @@ const dadosVagasPorSetor: SetorVagasData[] = [
 	},
 ];
 
-
 export default function Home() {
+	const {
+		entrevistasHoje,
+		totalVagas,
+		totalProcessos,
+		totalEntrevistas,
+		totalEntrevistasHoje,
+		loading,
+	} = useHome();
 
 	const [setoresSelecionados, setSetoresSelecionados] = useState<string[]>(['Geral']);
 
@@ -105,8 +112,8 @@ export default function Home() {
 						</div>
 					</div>
 
-					{/* Seção 1 - Gráfico candidatos e agenda entrevistas*/}
-					<section className='graficoCandidatosAgenda '>
+					{/* Seção 1 - Gráfico candidatos e agenda entrevistas */}
+					<section className='graficoCandidatosAgenda'>
 						<article className='card'>
 							<h3>Visão geral de candidatos</h3>
 							<GraficoCandidatos
@@ -115,7 +122,6 @@ export default function Home() {
 								dispensados={30}
 							/>
 						</article>
-
 
 						<article className='card h-min'>
 							<div className='topoAgenda'>
@@ -127,16 +133,25 @@ export default function Home() {
 									<h3>Hoje</h3>
 								</div>
 							</div>
-							<CardAgendaHome />
-							<CardAgendaHome />
-							<CardAgendaHome />
+
+							{loading ? (
+								<p className='text-sm text-gray-500 py-4'>Carregando agenda...</p>
+							) : entrevistasHoje.length === 0 ? (
+								<p className='text-sm text-gray-500 py-4'>Nenhuma entrevista marcada para hoje.</p>
+							) : (
+								entrevistasHoje.map((entrevista) => (
+									<CardAgendaHome
+										key={entrevista.entrevistaId}
+										entrevista={entrevista}
+									/>
+								))
+							)}
 						</article>
 					</section>
 
-
-					{/* Seção 2 - Gráfico vagas e kpi*/}
+					{/* Seção 2 - Gráfico vagas e kpi */}
 					<section className='vagasKpi flex gap-[4%]'>
-						<article className='card flex-1 flex flex-col gap-4;'>
+						<article className='card flex-1 flex flex-col gap-4'>
 							<div className='relative flex items-center justify-center w-full px-4 min-h-10'>
 								<h3>Visão Geral de vagas</h3>
 
@@ -178,12 +193,11 @@ export default function Home() {
 							<GraficoVagas dados={dadosFiltrados} />
 						</article>
 
-
 						{/* Kpis */}
 						<div className='estatisticas flex flex-col gap-[6%]'>
 							<article className='card flex items-center justify-center'>
 								<div>
-									<h2>99</h2>
+									<h2>{loading ? "..." : totalVagas}</h2>
 								</div>
 								<div className='textosCardEstatisticas'>
 									<h3>Vagas abertas</h3>
@@ -197,10 +211,9 @@ export default function Home() {
 								</div>
 							</article>
 
-
 							<article className='card flex items-center justify-center'>
 								<div>
-									<h2>99</h2>
+									<h2>{loading ? "..." : totalProcessos}</h2>
 								</div>
 								<div className='textosCardEstatisticas'>
 									<h3>Processos em andamento</h3>
@@ -214,17 +227,16 @@ export default function Home() {
 								</div>
 							</article>
 
-
 							<article className='card flex items-center justify-center'>
 								<div>
-									<h2>55</h2>
+									<h2>{loading ? "..." : totalEntrevistas}</h2>
 								</div>
 								<div className='textosCardEstatisticas'>
 									<h3>Entrevistas marcadas</h3>
 									<div className='comparacao'>
 										<div className='destaqueComparacao gap-1'>
 											<CalendarCheck2 size={18} />
-											<p>3</p>
+											<p>{loading ? "..." : totalEntrevistasHoje}</p>
 										</div>
 										<p>marcadas hoje</p>
 									</div>
@@ -233,14 +245,13 @@ export default function Home() {
 						</div>
 					</section>
 
-					{/* Seção 3 - Calendário*/}
+					{/* Seção 3 - Calendário */}
 					<section className='calendario'>
 						<article className='card flex flex-col'>
 							<h3>Calendário de entrevistas</h3>
 							<MiniCalendarioHome />
 						</article>
 					</section>
-
 
 				</div>
 			</main>

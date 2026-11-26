@@ -4,6 +4,9 @@ import { useState } from 'react';
 import Header from '@/components/header/header';
 import './criarVaga.css';
 
+// --- hook da entidade vagas ---
+import { useVagas } from '@/hooks/useVagas';
+
 // --- Bibliotecas de calendário e data ---
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
@@ -28,13 +31,39 @@ import {
     SelectPopup,
     SelectItem,
 } from '@/components/select/select';
+import { VagaCadastrada } from '@/@types/vaga';
 
 export default function CriarVagaPage() {
+    //? states referentes a vaga adicionada / futuramente atualizada
+    const [vagaCadastrada, setVagaCadastrada] = useState<VagaCadastrada | null>(null)
+
+    const [tituloVaga, setTitutloVaga] = useState("");
+    const [analistaRh, setAnalistaRh] = useState<number>(0);
+    const [setorOcupacaoId, setSetorOcupacaoId] = useState<number>(0);
+    const [dataFechamento, setDataFechamento] = useState<Date>(new Date());
+    const [descricao, setDescricao] = useState("");
+    const [empresaId, setEmpresaId] = useState<number>(0);
+    const [idiomasDesejados, setIdiomasDesejados] = useState<string[] | null>([]);
+    const [remuneracao, setRemuneracao] = useState<number>(0);
+    const [tipoVaga, setTipoVaga] = useState("");
+    const [nivelPrioridade, setNivelPrioridade] = useState("");
+    const [tempoExperienciaDesejado, setTempoExp] = useState<number>(0)
+    const [escala, setEscala] = useState("");
+
+
     // --- Estado do período da vaga para o calendário ---
     const [periodo, setPeriodo] = useState<DateRange | undefined>({
         from: undefined,
         to: undefined,
     });
+
+    const {
+        carregando,
+        erro,
+
+        filtrarVagas,
+        cadastrarVagas,
+    } = useVagas();
 
     return (
         <main className='mainCriarVaga'>
@@ -43,7 +72,14 @@ export default function CriarVagaPage() {
                 <h1 className='tituloCriarVaga'>Adicionar nova vaga</h1>
                 <div className='secaoFormVaga'>
 
-                    <form className='flex flex-col justify-between h-full gap-8'>
+                    <form className='flex flex-col justify-between h-full gap-8'
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            if (vagaCadastrada == null)
+                                return;
+
+                            cadastrarVagas(vagaCadastrada);
+                        }}>
 
                         <div className='flex flex-col'>
                             <label className='labelCriarVaga'>Título da vaga</label>
@@ -51,16 +87,25 @@ export default function CriarVagaPage() {
                                 type='text'
                                 placeholder='Digite aqui o título da vaga...'
                                 className='inputCriarVaga'
+                                value={tituloVaga}
+                                onChange={(e) => setTitutloVaga(e.target.value)}
                             />
                         </div>
-                        <div className='flex flex-col'>
+
+                        {/*//? aqui, a empresa vai vir de froma automatica por meio do analista que esta logado! */}
+                        {/*//? por conta disso este campo nao é necessário... */}
+                        {/* <div className='flex flex-col'>
                             <label className='labelCriarVaga'>Empresa</label>
                             <input
                                 type='text'
                                 placeholder='Digite aqui o nome da empresa...'
                                 className='inputCriarVaga'
+                                value={empresaId}
+                                // onBlur={(e) => }
                             />
-                        </div>
+                        </div> */}
+
+                        {/*//? Aqui temos que transformar este campo em dropdown e não input...  */}
                         <div className='flex flex-col'>
                             <label className='labelCriarVaga'>Responsável do setor</label>
                             <input
@@ -72,9 +117,11 @@ export default function CriarVagaPage() {
                         <div className='flex flex-col'>
                             <label className='labelCriarVaga'>Salário</label>
                             <input
-                                type='text'
+                                type='number'
                                 placeholder='Digite aqui o salário...'
                                 className='inputCriarVaga'
+                                value={remuneracao}
+                                onChange={(e) => setRemuneracao(Number.parseInt(e.target.value))}
                             />
                         </div>
 
@@ -84,6 +131,7 @@ export default function CriarVagaPage() {
                                 type='text'
                                 placeholder='Digite aqui o cargo...'
                                 className='inputCriarVaga'
+                                value={}
                             />
                         </div>
                         <div className='flex flex-col'>

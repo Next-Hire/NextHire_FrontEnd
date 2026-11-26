@@ -17,7 +17,7 @@ export default function VagasPage() {
     numeroVagas,
     vagas,
     carregando,
-    error,
+    erro,
     filtrarVagas
   } = useVagas();
 

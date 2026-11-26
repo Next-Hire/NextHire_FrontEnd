@@ -8,28 +8,28 @@ import React from 'react';
 
 
 export default function LoginPage() {
-  
-    const {
-      email,
-      setEmail,
-      senha,
-      setSenha,
-      loading,
-      erro,
-      handleLogin,
-      usuario
-    } = useAuth()
 
-    function realizarLogin(e: React.FormEvent) {
-      e.preventDefault()
-      handleLogin()
-    }
-    
-    
-    
-    
-    return (
-      <main className='loginPage'>
+  const {
+    email,
+    setEmail,
+    senha,
+    setSenha,
+    loading,
+    erro,
+    handleLogin,
+    usuario
+  } = useAuth()
+
+  function realizarLogin(e: React.FormEvent) {
+    e.preventDefault()
+    handleLogin()
+  }
+
+
+
+
+  return (
+    <main className='loginPage'>
       <div className='fixed inset-0 -z-10 opacity-85'>
         <GhostFibers
           glowColor="#66a5ecff"
@@ -63,7 +63,7 @@ export default function LoginPage() {
           grain={0}
           mouseStrength={1.55}
           lightMode
-          />
+        />
       </div>
 
       <section className='containerForm '>
@@ -71,7 +71,7 @@ export default function LoginPage() {
         <form className='formularioLogin' onSubmit={realizarLogin}>
           <div className='flex flex-col justify-between h-18'>
             <label className='labelLogin' htmlFor='email'>Email:</label>
-            <input className='inputLogin' type='email' id='email' name='email' placeholder='emailfuncionario@vortex.com' value={email} onChange={(e) => setEmail(e.target.value)}/>
+            <input className='inputLogin' type='email' id='email' name='email' placeholder='emailfuncionario@vortex.com' value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
 
           <div className='flex flex-col justify-between h-18'>
@@ -82,6 +82,9 @@ export default function LoginPage() {
           <div className='flex flex-col gap-3 mt-5'>
             <button className='botaoLogin' type='submit'>Entrar</button>
             <a className='linkAdministrador' href='/login'>Esqueceu a senha?</a>
+            <a href="https://localhost:7232/api/v1/Auth/LinkedIn">
+              Entrar com LinkedIn
+            </a>
           </div>
         </form>
       </section>
@@ -92,5 +95,5 @@ export default function LoginPage() {
       </aside>
     </main>
   );
-  
+
 }

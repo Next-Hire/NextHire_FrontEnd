@@ -42,6 +42,7 @@ export interface AuthContextData {
   loading: boolean
   erro: string | null
   handleLogin: () => Promise<void>
+  loginComToken: (tokenRecode: string) => Promise<void> // token para o linkedin
   logout: () => void
   atualizarEstadoUsuario: (novosDados: Partial<UsuarioGET>) => void
 }
@@ -50,7 +51,7 @@ export interface AuthContextData {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 export function decodificarToken(token: string) {
-  var replace = useRouter()
+  
   try {
     const decoded = jwtDecode<UsuarioPayload>(token)
 
@@ -190,6 +191,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setSenha("")
 
       toast.success("Bem vindo ao sistema "+ usuarioEncontrado.nome)
+      console.log("sucesso")
       setTimeout(() => {
         router.replace("/home")
       }, 3000)
@@ -214,6 +216,47 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             finally {
               setLoading(false)
             }
+  }
+
+  async function loginComToken(tokenRecode: string){
+
+try {
+      setLoading(true)
+      const usuarioDecodificado = decodificarToken(tokenRecode)
+
+      if (!usuarioDecodificado || !usuarioDecodificado.email) {
+        throw new Error("Token inválido")
+      }
+
+      // Salva o token usando o mesmo padrão do seu authService
+      // (Se o seu authService tiver um método salvarToken, use-o aqui; caso contrário, mantenha o localStorage)
+      localStorage.setItem("token", tokenRecode)
+      setToken(tokenRecode)
+
+      const dadosUsuarioAPI = await authService.getUsuario(usuarioDecodificado.email)
+
+      const usuarioEncontrado: UsuarioGET = {
+        usuarioId: dadosUsuarioAPI?.usuarioId ?? usuarioDecodificado.usuarioId ?? 0,
+        nome: dadosUsuarioAPI?.nome ?? usuarioDecodificado.nome ?? "Usuário",
+        email: dadosUsuarioAPI?.email ?? usuarioDecodificado.email,
+        primeiroAcesso: dadosUsuarioAPI?.primeiroAcesso ?? false,
+        statusUsuario: dadosUsuarioAPI?.statusUsuario ?? true,
+        tipoUsuario: dadosUsuarioAPI?.tipoUsuario ?? usuarioDecodificado.tipoUsuario ?? 0,
+      }
+
+      setUsuario(usuarioEncontrado)
+      authService.salvarUsuario(usuarioEncontrado)
+
+      toast.success("Bem vindo ao sistema " + usuarioEncontrado.nome)
+      router.replace("/home")
+    } catch (error) {
+      console.error("Erro ao autenticar com LinkedIn:", error)
+      toast.error("Falha ao processar login com LinkedIn.")
+      router.replace("/login")
+    } finally {
+      setLoading(false)
+    }
+
   }
 
   function logout() {
@@ -244,6 +287,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         loading,
         erro,
         handleLogin,
+        loginComToken,
         logout,
         atualizarEstadoUsuario,
       }}

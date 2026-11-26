@@ -13,7 +13,6 @@ import {
 } from '@/components/select/select';
 import CardProcessoSeletivo from "@/components/cardProcessoSeletivo/cardProcessoSeletivo";
 import { useState } from "react";
-import CardProcessoSeletivoAlto from "@/components/cardProcessoSeletivo/cardProcessoSeletivo";
 
 export interface Setor {
     setor: string;
@@ -187,7 +186,7 @@ export default function ProcessoSeletivoPage() {
                         </article>
                     </section>
 
-                    <section className='grid grid-cols-3 justify-between gap-8'>
+                    <section className='grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6 justify-between gap-8'>
                         <CardProcessoSeletivo prioridade_vaga_enum="alto" />
                         <CardProcessoSeletivo prioridade_vaga_enum="medio"/>
                         <CardProcessoSeletivo prioridade_vaga_enum="baixo"/>

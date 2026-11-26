@@ -15,15 +15,15 @@ interface CardVagaProps {
 const PRIORIDADE_STYLES: Record<PrioridadeVaga, { texto: string; cor: string }> = {
     baixa: {
         texto: 'Prioridade baixa',
-        cor: 'bg-green-100 text-green-900',
+        cor: 'bg-green-200 text-green-900',
     },
     media: {
         texto: 'Prioridade média',
-        cor: 'bg-yellow-100 text-yellow-900',
+        cor: 'bg-yellow-200 text-yellow-900',
     },
     alta: {
         texto: 'Prioridade alta',
-        cor: 'bg-red-100 text-red-900',
+        cor: 'bg-red-200 text-red-900',
     },
 };
 

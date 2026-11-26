@@ -1,8 +1,28 @@
-'use client';
+'use client'
+
 import GhostFibers from '@/components/ghostfibers/GhostFibers';
 import './cadastro.css';
+import { useState } from 'react';
+import { usuarioService } from '@/service/usuarioService';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
+import { useUsuario } from '../hooks/useUsuarioService';
 
 export default function CadastroPage() {
+ const {
+    nome,
+    setNome,
+    email,
+    setEmail,
+    senha,
+    setSenha,
+    confirmarSenha,
+    setConfirmarSenha,
+    erro,
+    loading,
+    cadastrarCandidato,
+  } = useUsuario();
+
   return (
     <main className='cadastroPage'>
       <div className='fixed inset-0 -z-10'>
@@ -43,29 +63,29 @@ export default function CadastroPage() {
 
       <section className='containerForm'>
         <h1 className='tituloCadastro'>Cadastro</h1>
-        <form className='formularioCadastro'>
+        <form className='formularioCadastro' onSubmit={cadastrarCandidato}>
           <div className='flex flex-col justify-between h-18'>
             <label className='labelCadastro' htmlFor='nome'>Nome:</label>
-            <input className='inputCadastro' type='text' id='nome' name='nome' placeholder='Seu nome aqui' />
+            <input className='inputCadastro' type='text' id='nome' name='nome' placeholder='Seu nome aqui' value={nome} onChange={(e) => setNome(e.target.value)}  />
           </div>
 
           <div className='flex flex-col justify-between h-18'>
             <label className='labelCadastro' htmlFor='email'>Email:</label>
-            <input className='inputCadastro' type='email' id='email' name='email' placeholder='emailfuncionario@vortex.com' />
+            <input className='inputCadastro' type='email' id='email' name='email' placeholder='emailfuncionario@vortex.com' value={email} onChange={(e) => setEmail(e.target.value)}/>
           </div>
 
           <div className='flex flex-col justify-between h-18'>
             <label className='labelCadastro' htmlFor='senha'>Senha:</label>
-            <input className='inputCadastro' type='password' id='senha' name='senha' placeholder='Digite a senha' />
+            <input className='inputCadastro' type='password' id='senha' name='senha' placeholder='Digite a senha' value={senha} onChange={(e) => setSenha(e.target.value)}/>
           </div>
 
           <div className='flex flex-col justify-between h-18'>
             <label className='labelCadastro' htmlFor='confirmarSenha'>Confirmar Senha:</label>
-            <input className='inputCadastro' type='password' id='confirmarSenha' name='confirmarSenha' placeholder='Insira novamente a senha' />
+            <input className='inputCadastro' type='password' id='confirmarSenha' name='confirmarSenha' placeholder='Insira novamente a senha' value={confirmarSenha} onChange={(e) => setConfirmarSenha(e.target.value)}/>
           </div>
           <div className='flex flex-col gap-3 mt-5'>
             <button className='botaoCadastro' type='submit'>Cadastrar</button>
-            <a href='/home' className='linkAdministrador'>Entrar no sistema como administrador</a>
+            <a className='linkAdministrador' href='/login'>Entrar no sistema como administrador</a>
           </div>
         </form>
       </section>

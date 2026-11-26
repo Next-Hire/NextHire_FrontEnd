@@ -1,6 +1,6 @@
 import secureLocalStorage from "react-secure-storage";
 import { api, token_key } from "./api";
-import { FuncionarioPOST, LoginRequest, LoginResponse, UsuarioGET, UsuarioGET_Email, UsuarioLogin, usuarioService } from "./usuarioService";
+import { candidatoPOST, FuncionarioPOST, LoginRequest, LoginResponse, UsuarioGET, usuarioService } from "./usuarioService";
 
 export const authService = {
 
@@ -25,24 +25,15 @@ export const authService = {
 
     },
 
-    async getUsuario(email: string): Promise<UsuarioGET_Email | null> {
+    async getUsuario(email: string): Promise<UsuarioGET | null> {
         const response = await usuarioService.buscarUsuarioPorEmail(email);
         return response;
     },
 
     
-    async cadastrarCandidato(dados: UsuarioLogin): Promise<UsuarioLogin> {
-        const {data} = await api.post("Usuario/candidato", dados )
-        return data
-    },
-    async cadastrarFuncionario(dados: FuncionarioPOST, empresaId: number): Promise<FuncionarioPOST>{
+ 
 
-        const {data} = await api.post(`Usuario/funcionario/${empresaId}` + dados)
-        return data
-        
-    },
-
-    async salvarUsuario(usuario: UsuarioGET_Email): Promise<void> {
+    async salvarUsuario(usuario: UsuarioGET): Promise<void> {
         await secureLocalStorage.setItem('teste',JSON.stringify(usuario)) // 
     }
 

@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Instrument_Sans, Jost } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/context/AuthContext";
+
+
+import { Toaster } from "sonner";
+
 
 const instrumentSans = Instrument_Sans({
-  variable: "--font-instrument-sans",
   subsets: ["latin"],
+  variable: "--font-instrument-sans",
   weight: ["400", "500", "600", "700"],
 });
 
@@ -25,7 +30,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${instrumentSans.variable} ${jost.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#EDF0F7]">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#EDF0F7]">
+        <AuthProvider> 
+        {/* Necessário colocar para segurar o login e a sessão do usuário com context. */}
+        <Toaster richColors position="top-right" duration={3000}/>
+        {children}
+
+        </AuthProvider>
+        
+        </body>
     </html>
   );
 }

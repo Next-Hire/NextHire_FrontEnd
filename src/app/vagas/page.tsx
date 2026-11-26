@@ -9,7 +9,10 @@ import { vagaService } from '@/service/vagaService';
 import { useEffect, useState } from 'react';
 
 export default function VagasPage() {
-  //
+  const [termoBuscado, setTermoBuscado] = useState("");
+  const [setorSelecionado, setSetorSelecionado] = useState("");
+  const [prioridadeSelecionada, setPrioridadeSelcionada] = useState("");
+
   const {
     numeroVagas,
     vagas,
@@ -17,6 +20,12 @@ export default function VagasPage() {
     error,
     filtrarVagas
   } = useVagas();
+
+  const vagasFiltradas = filtrarVagas(
+    termoBuscado,
+    setorSelecionado,
+    prioridadeSelecionada
+  );
 
   const {
     curriculoVaga,
@@ -38,9 +47,15 @@ export default function VagasPage() {
           totalCandidatos={totalCandidatos}
           totalVagas={totalVagas}
           numeroVagas={numeroVagas}
+          termo={termoBuscado}
+          aoDigitar={setTermoBuscado}
+          setor={setorSelecionado}
+          aoMudarSetor={setSetorSelecionado}
+          prioridade={prioridadeSelecionada}
+          aoMudarPrioridade={setPrioridadeSelcionada}
         />
 
-        <ListaVaga vagas={vagas} />
+        <ListaVaga vagas={vagasFiltradas} />
       </section>
     </main>
   );

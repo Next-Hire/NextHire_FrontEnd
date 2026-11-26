@@ -34,7 +34,13 @@ interface filtroVagasProps {
     numeroVagas: number,
     totalCandidatos: number,
     totalVagas: number,
-}
+    termo: string,
+    aoDigitar: (novoTermo: string) => void,
+    setor: string,
+    aoMudarSetor: (novoSetor: string) => void,
+    prioridade: string,
+    aoMudarPrioridade: (novaPrioridade: string) => void
+};
 
 export default function FiltroVagas(props: filtroVagasProps) {
     return (
@@ -44,9 +50,14 @@ export default function FiltroVagas(props: filtroVagasProps) {
                 <button className='btnAdicionarVaga' onClick={() => window.location.href = '/criar-vaga'}>+ Abrir nova vaga</button>
             </div>
             <div className='flex content-center self-center justify-between w-[94%]'>
-                <input type="text" placeholder='Pesquisar por vaga, candidato...' className='inputFiltroVaga' />
+                <input
+                    type="text"
+                    placeholder='Pesquisar por vaga, candidato...'
+                    className='inputFiltroVaga'
+                    value={props.termo}
+                    onChange={(e) => props.aoDigitar(e.target.value)} />
                 <div className='flex flex-col'>
-                    <SelectRoot defaultValue=''>
+                    <SelectRoot defaultValue='' value={props.setor} onValueChange={props.aoMudarSetor} >
                         <SelectTrigger>
                             <SelectValue placeholder='Setor...' />
                         </SelectTrigger>
@@ -63,7 +74,7 @@ export default function FiltroVagas(props: filtroVagasProps) {
                     </SelectRoot>
                 </div>
                 <div className='flex flex-col'>
-                    <SelectRoot defaultValue=''>
+                    <SelectRoot defaultValue='' value={props.prioridade} onValueChange={props.aoMudarPrioridade}>
                         <SelectTrigger>
                             <SelectValue placeholder='Prioridade...' />
                         </SelectTrigger>
@@ -71,9 +82,9 @@ export default function FiltroVagas(props: filtroVagasProps) {
                         <SelectPortal>
                             <SelectPositioner>
                                 <SelectPopup>
-                                    <SelectItem value={nivelPrioridadeEnum[0][0]}>Baixa</SelectItem>
-                                    <SelectItem value={nivelPrioridadeEnum[1][0]}>Média</SelectItem>
-                                    <SelectItem value={nivelPrioridadeEnum[2][0]}>Alta</SelectItem>
+                                    { nivelPrioridadeEnum.map((prioridade) => (
+                                        <SelectItem key={prioridade[2]} value={prioridade[0]}>{prioridade[1]}</SelectItem>
+                                    ))}
                                 </SelectPopup>
                             </SelectPositioner>
                         </SelectPortal>

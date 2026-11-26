@@ -11,6 +11,7 @@ export interface VagaRecebida {
     descricao: string,
     nomeEmpresa: string,
     empresaId: number,
+    nomeSetor: string,
     setorId: number,
     IdiomasDesejados: string[],
     StatusVaga: boolean,

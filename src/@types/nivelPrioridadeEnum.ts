@@ -1,5 +1,5 @@
 export const nivelPrioridadeEnum: string[][] = [
-    ["Baixa", "Baixa"],
-    ["Média", "Media"],
-    ["Alta", "Alta"],
+    ["Baixa", "Baixa", "1"],
+    ["Media", "Média", "2"],
+    ["Alta", "Alta", "3"],
 ] 

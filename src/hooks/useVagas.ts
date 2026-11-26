@@ -29,16 +29,14 @@ export function useVagas() {
         }
     }
 
-    async function filtrarVagas(setor?: string, prioridade?: string) {
-        if (!setor && !prioridade)
-            return vagas;
+    function filtrarVagas(termo?: string, setor?: string, prioridade?: string) {
+        return vagas.filter((vaga) => {
+            const bateTermo = !termo || vaga.titulo.toLocaleLowerCase().includes(termo.toLocaleLowerCase());
+            const bateSetor = !setor || vaga.nomeSetor.toLowerCase().includes(setor.toLowerCase());
+            const batePrioridade = !prioridade || vaga.nivelPrioridade.toLowerCase().includes(prioridade.toLowerCase());
 
-        if (prioridade && !setor)
-            return vagas.filter(v => v.nivelPrioridade == prioridade)
-
-        if (setor && !prioridade)
-            return vagas.filter(v => v.setorId == setor)
-
+            return bateTermo && bateSetor && batePrioridade;
+        })
     }
 
     useEffect(() => {

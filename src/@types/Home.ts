@@ -18,3 +18,8 @@ export interface Entrevista {
     processoSeletivoId: number;
     listaCandidatos: CandidatoEntrevista[];
 }
+
+export interface Setor_Ocupacao{
+    setor_OcupacaoId: number;
+    nomeSetor: string;
+}

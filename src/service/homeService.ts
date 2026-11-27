@@ -1,5 +1,5 @@
 import { api } from "./api";
-import { Entrevista } from "../@types/Home";
+import {Entrevista, Setor_Ocupacao} from "../@types/Home";
 import { VagaRecebida } from "@/@types/vaga";
 import { ProcessoSeletivo } from "@/@types/processoSeletivo";
 
@@ -27,4 +27,9 @@ export const homeService = {
         const response = await api.get<ProcessoSeletivo[]>(`ProcessoSeletivo/ProcessoSeletivo/status/${status}`);
         return response.data;
     },
+
+    async listarSetor(): Promise<Setor_Ocupacao[]> {
+        const response = await api.get<Setor_Ocupacao[]>(`Setor_Ocupacao`)
+        return response.data;
+    }
 };

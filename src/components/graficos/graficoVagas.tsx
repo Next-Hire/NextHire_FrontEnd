@@ -10,6 +10,8 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart"
 
+import { useHome } from "@/hooks/useHome";
+
 export interface SetorVagasData {
   setor: string
   vagasAbertas: number

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import Header from "@/components/header/header";
 import { ArrowUp, CalendarCheck2, CalendarDays } from 'lucide-react';
 import './home.css';
@@ -8,7 +8,7 @@ import CardAgendaHome from "@/components/cardAgendaHome/cardAgendaHome";
 import MiniCalendarioHome from "@/components/calendario/miniCalendarioHome";
 import GraficoCandidatos from "@/components/graficos/graficoCandidatos";
 import GraficoVagas, { type SetorVagasData } from "@/components/graficos/graficoVagas";
-import { useHome } from "@/hooks/useHome"; // ajuste o caminho se o useHome.ts estiver em outra pasta
+import { useHome } from "@/hooks/useHome";
 
 import {
 	SelectRoot,
@@ -48,8 +48,17 @@ export default function Home() {
 		totalProcessos,
 		totalEntrevistas,
 		totalEntrevistasHoje,
+		setor,
 		loading,
 	} = useHome();
+
+	const opcoesSetores = [
+		{ value: "Geral", label: "Geral" },
+		...setor.map((item) => ({
+			value: item.nomeSetor,
+			label: item.nomeSetor,
+		})),
+	];
 
 	const [setoresSelecionados, setSetoresSelecionados] = useState<string[]>(['Geral']);
 
@@ -167,7 +176,7 @@ export default function Home() {
 													if (!valores || valores.length === 0 || valores.includes('Geral')) {
 														return 'Geral';
 													}
-													if (valores.length === dadosVagasPorSetor.length) {
+													if (valores.length === setor.length) {
 														return 'Todos os setores';
 													}
 													return valores.join(', ');
@@ -177,13 +186,21 @@ export default function Home() {
 
 										<SelectPortal>
 											<SelectPositioner>
-												<SelectPopup className='flex flex-col gap-1'>
-													{todasAsOpcoes.map((item) => (
-														<SelectItem key={item.setor} value={item.setor}>
-															{item.setor}
+												{loading ? (
+													<SelectItem value="carregando" disabled>
+														Carregando setores...
+													</SelectItem>
+												) : setor.length === 0 ? (
+													<SelectItem value="vazio" disabled>
+														Nenhum setor encontrado
+													</SelectItem>
+												) : (
+													opcoesSetores.map((item) => (
+														<SelectItem key={item.value} value={item.value}>
+															{item.label}
 														</SelectItem>
-													))}
-												</SelectPopup>
+													))
+												)}
 											</SelectPositioner>
 										</SelectPortal>
 									</SelectRoot>

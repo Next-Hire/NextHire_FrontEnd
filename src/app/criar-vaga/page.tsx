@@ -55,22 +55,7 @@ export default function CriarVagaPage() {
                                 className='input'
                             />
                         </div>
-                        <div className='flex flex-col'>
-                            <label className='label'>Empresa</label>
-                            <input
-                                type='text'
-                                placeholder='Digite aqui o nome da empresa...'
-                                className='input'
-                            />
-                        </div>
-                        <div className='flex flex-col'>
-                            <label className='label'>Responsável do setor</label>
-                            <input
-                                type='text'
-                                placeholder='Digite aqui o nome do responsável...'
-                                className='input'
-                            />
-                        </div>
+
                         <div className='flex flex-col'>
                             <label className='label'>Salário</label>
                             <input
@@ -288,18 +273,18 @@ export default function CriarVagaPage() {
                             </SelectRoot>
                         </div>
                         <div className='flex flex-col'>
-                            <label className='label'>Empresa</label>
+                            <label className='label'>Responsável por setor</label>
                             <SelectRoot defaultValue=''>
                                 <SelectTrigger className='h-10 w-full'>
-                                    <SelectValue placeholder='Selecione a empresa...' />
+                                    <SelectValue placeholder='Selecione o responsável setor...' />
                                 </SelectTrigger>
 
                                 <SelectPortal>
                                     <SelectPositioner>
                                         <SelectPopup>
-                                            <SelectItem value='Vortex'>Vortex</SelectItem>
-                                            <SelectItem value='Rappi'>Rappi</SelectItem>
-                                            <SelectItem value='L4'>L4</SelectItem>
+                                            <SelectItem value='Gomes'>Gomes</SelectItem>
+                                            <SelectItem value='Ricardo'>Ricardo</SelectItem>
+                                            <SelectItem value='Aline'>Aline</SelectItem>
                                         </SelectPopup>
                                     </SelectPositioner>
                                 </SelectPortal>

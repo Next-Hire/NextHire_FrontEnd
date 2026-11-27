@@ -188,13 +188,13 @@ export default function ProcessoSeletivoPage() {
 
                     <section className='grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6 justify-between gap-8'>
                         <CardProcessoSeletivo prioridade_vaga_enum="alto" />
-                        <CardProcessoSeletivo prioridade_vaga_enum="medio"/>
-                        <CardProcessoSeletivo prioridade_vaga_enum="baixo"/>
-                        <CardProcessoSeletivo prioridade_vaga_enum="baixo"/>
-                        <CardProcessoSeletivo prioridade_vaga_enum="medio"/>
+                        <CardProcessoSeletivo prioridade_vaga_enum="medio" />
+                        <CardProcessoSeletivo prioridade_vaga_enum="baixo" />
+                        <CardProcessoSeletivo prioridade_vaga_enum="baixo" />
+                        <CardProcessoSeletivo prioridade_vaga_enum="medio" />
                         <CardProcessoSeletivo prioridade_vaga_enum="alto" />
-                        <CardProcessoSeletivo prioridade_vaga_enum="baixo"/>
-                        <CardProcessoSeletivo prioridade_vaga_enum="alto"/>
+                        <CardProcessoSeletivo prioridade_vaga_enum="baixo" />
+                        <CardProcessoSeletivo prioridade_vaga_enum="alto" />
                     </section>
                 </div>
             </main>

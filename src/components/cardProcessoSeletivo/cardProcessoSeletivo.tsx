@@ -50,10 +50,10 @@ export default function CardProcessoSeletivo({ prioridade_vaga_enum }: CardProps
         </h4>
 
         <div
-          className={`${estiloAtual.fundo} shrink-0 rounded-lg flex items-center justify-center`}
+          className={`${estiloAtual.fundo} shrink-0 rounded-lg flex items-center justify-center text-sm sm:text-base font-semibold px-4 py-1 text-center whitespace-nowrap font-(family-name:--font-jost)`}
         >
           <p
-            className={`${estiloAtual.corTexto} text-sm sm:text-base font-medium px-3 py-1 text-center whitespace-nowrap`}
+            className={`${estiloAtual.corTexto} `}
           >
             {estiloAtual.texto}
           </p>
@@ -61,7 +61,7 @@ export default function CardProcessoSeletivo({ prioridade_vaga_enum }: CardProps
       </div>
 
       <div className="flex flex-col gap-3">
-        <div className="font-semibold text-sm sm:text-base text-gray-600 space-y-1">
+        <div className="font-semibold text-sm sm:text-base text-gray-600 space-y-1 font-(family-name:--font-jost)">
           <p>
             Setor: <span className="font-medium">Tecnologia da informação</span>
           </p>
@@ -74,7 +74,7 @@ export default function CardProcessoSeletivo({ prioridade_vaga_enum }: CardProps
         </div>
 
         <div className="flex gap-1 items-center underline">
-          <Link href="" className="text-sm font-medium text-[#7D8EC4]">
+          <Link href="/ranking" className="text-sm font-medium font-(family-name:--font-jost) text-[#7D8EC4]">
             Ver detalhes do processo
           </Link>
           <MoveRight strokeWidth={1.6} color="#7D8EC4" className="w-4 h-4 shrink-0" />

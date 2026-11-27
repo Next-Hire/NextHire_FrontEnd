@@ -40,7 +40,7 @@ export default function CriarVagaPage() {
         <main className='mainCriarVaga'>
             <Header />
             <section className='sectionCriarVaga'>
-                <div className='w-full pl-38'>
+                <div className='w-full pl-38 pb-8'>
                     <h1 className='titulo'>Adicionar nova vaga</h1>
                 </div>
                 <div className='secaoFormVaga'>

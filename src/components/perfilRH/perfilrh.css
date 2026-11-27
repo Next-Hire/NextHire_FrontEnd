@@ -1,0 +1,10 @@
+@reference "../../app/globals.css";
+
+.circleUser {
+    @apply flex items-center justify-center w-14 h-14 bg-[#5682D9] rounded-full text-3xl text-blue-950 font-bold;
+}
+
+
+.sobreposicaoPerfilRH {
+    @apply fixed inset-0 z-50 flex items-center justify-end bg-blue-950/40 backdrop-blur-[3px];
+}

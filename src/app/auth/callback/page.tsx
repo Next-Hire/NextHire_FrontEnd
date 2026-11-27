@@ -25,7 +25,7 @@ function CallbackHandler() {
 
   return (
     <div className="flex h-screen items-center justify-center">
-      <p>Finalizando autenticação com LinkedIn...</p>
+      <p>Finalizando autenticação...</p>
     </div>
   );
 }

@@ -1,14 +1,12 @@
-'use client';
+"use client";
 
-import GhostFibers from '@/components/ghostfibers/GhostFibers';
-import './login.css';
-import { useAuth } from '@/context/AuthContext';
-import React from 'react';
+import GhostFibers from "@/components/ghostfibers/GhostFibers";
+import "./login.css";
+import { useAuth } from "@/context/AuthContext";
+import React from "react";
 // import {  } from '@/context/AuthContext';
 
-
 export default function LoginPage() {
-
   const {
     email,
     setEmail,
@@ -17,20 +15,17 @@ export default function LoginPage() {
     loading,
     erro,
     handleLogin,
-    usuario
-  } = useAuth()
+    usuario,
+  } = useAuth();
 
   function realizarLogin(e: React.FormEvent) {
-    e.preventDefault()
-    handleLogin()
+    e.preventDefault();
+    handleLogin();
   }
 
-
-
-
   return (
-    <main className='loginPage'>
-      <div className='fixed inset-0 -z-10 opacity-85'>
+    <main className="loginPage">
+      <div className="fixed inset-0 -z-10 opacity-85">
         <GhostFibers
           glowColor="#66a5ecff"
           layers={3}
@@ -66,34 +61,62 @@ export default function LoginPage() {
         />
       </div>
 
-      <section className='containerForm '>
-        <h1 className='tituloLogin'>Login</h1>
-        <form className='formularioLogin' onSubmit={realizarLogin}>
-          <div className='flex flex-col justify-between h-18'>
-            <label className='labelLogin' htmlFor='email'>Email:</label>
-            <input className='inputLogin' type='email' id='email' name='email' placeholder='emailfuncionario@vortex.com' value={email} onChange={(e) => setEmail(e.target.value)} />
+      <section className="containerForm ">
+        <h1 className="tituloLogin">Login</h1>
+        <form className="formularioLogin" onSubmit={realizarLogin}>
+          <div className="flex flex-col justify-between h-18">
+            <label className="labelLogin" htmlFor="email">
+              Email:
+            </label>
+            <input
+              className="inputLogin"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="emailfuncionario@vortex.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
 
-          <div className='flex flex-col justify-between h-18'>
-            <label className='labelLogin' htmlFor='senha'>Senha:</label>
-            <input className='inputLogin' type='password' id='senha' name='senha' placeholder='Digite a senha' value={senha} onChange={(e) => setSenha(e.target.value)} />
+          <div className="flex flex-col justify-between h-18">
+            <label className="labelLogin" htmlFor="senha">
+              Senha:
+            </label>
+            <input
+              className="inputLogin"
+              type="password"
+              id="senha"
+              name="senha"
+              placeholder="Digite a senha"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+            />
           </div>
 
-          <div className='flex flex-col gap-3 mt-5'>
-            <button className='botaoLogin' type='submit'>Entrar</button>
-            <a className='linkAdministrador' href='/login'>Esqueceu a senha?</a>
-            <a href="https://localhost:7232/api/v1/Auth/LinkedIn">
+          <div className="flex flex-col gap-3 mt-5">
+            <button className="botaoLogin" type="submit">
+              Entrar
+            </button>
+            <a className="linkAdministrador" href="/login">
+              Esqueceu a senha?
+            </a>
+            <a href="https://localhost:7232/api/v1/Autenticacao/linkedin">
               Entrar com LinkedIn
+            </a>
+            <a href="https://localhost:7232/api/v1/Autenticacao/google">
+              Entrar com Google
             </a>
           </div>
         </form>
       </section>
 
-      <aside className='asideLogin'>
-        <h1 className='bemvindoLogin'>Seja bem vindo ao NextHire</h1>
-        <h2 className='subtituloBemvindo'>Seu sistema para criação de vagas e avaliação de candidatos</h2>
+      <aside className="asideLogin">
+        <h1 className="bemvindoLogin">Seja bem vindo ao NextHire</h1>
+        <h2 className="subtituloBemvindo">
+          Seu sistema para criação de vagas e avaliação de candidatos
+        </h2>
       </aside>
     </main>
   );
-
 }
